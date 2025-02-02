@@ -1,0 +1,14 @@
+
+.nav-wrapper{
+    padding: 12px 0;
+}
+.nav-ul-wrapper{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-toggle-btn{
+    
+}
