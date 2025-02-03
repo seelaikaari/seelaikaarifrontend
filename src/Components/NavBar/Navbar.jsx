@@ -45,20 +45,17 @@ const Navbar = () => {
                     <div className='col-md-4 col-5 d-flex justify-content-center'>
                         <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100" /></Link>
                     </div>
-                    <div className='col-md-4 text-end'>
-                        <ul className='nav-ul-wrapper justify-content-end'>
-                            <li className='nav-item'><Link to="" className='nav-link'><FaRegUserCircle/></Link></li>
-                            <li className='nav-item'><Link to="/Cart" className='nav-link'><MdOutlineShoppingCart/></Link></li>
-                            <li className='nav-item'><a href="" className='nav-link'><FaRegHeart/></a></li>
+                   
                     <div className='col-md-4 col-5 text-end'>
                         <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
                             <li className='nav-item'><Link  className='nav-link'><FaRegUserCircle/></Link></li>
-                            <li className='nav-item'><Link  className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">1</span></Link></li>
+                            <li className='nav-item'><Link to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">1</span></Link></li>
                             <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart/> <span className="prod-count-num">1</span></Link></li>
                         </ul>
                     </div>
                 </div>
             </div>
+
         </nav>
     </header>
   )
