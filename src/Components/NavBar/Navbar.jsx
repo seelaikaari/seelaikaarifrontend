@@ -4,7 +4,7 @@ import {Link,NavLink} from "react-router-dom"
 import "./NavBar.css"
 //icons
 import { FaRegUserCircle,FaRegHeart } from "react-icons/fa";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart  } from "react-icons/md";
 //images
 import logo from "../../assets/images/logo-1.avif"
 const Navbar = () => {
@@ -33,8 +33,8 @@ const Navbar = () => {
                     </div>
                     <div className='col-md-4 text-end'>
                         <ul className='nav-ul-wrapper justify-content-end'>
-                            <li className='nav-item'><a href="" className='nav-link'><FaRegUserCircle/></a></li>
-                            <li className='nav-item'><a href="" className='nav-link'><MdOutlineShoppingCart/></a></li>
+                            <li className='nav-item'><Link to="" className='nav-link'><FaRegUserCircle/></Link></li>
+                            <li className='nav-item'><Link to="/Cart" className='nav-link'><MdOutlineShoppingCart/></Link></li>
                             <li className='nav-item'><a href="" className='nav-link'><FaRegHeart/></a></li>
                         </ul>
                     </div>
