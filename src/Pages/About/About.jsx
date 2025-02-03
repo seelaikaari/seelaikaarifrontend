@@ -1,8 +1,7 @@
-import React from "react";
 import "./About.css";
 import "animate.css";
 
-
+ 
 const About = () => {
   return (
     <div className="about-us container">
