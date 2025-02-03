@@ -28,10 +28,10 @@ const Footer = () => {
                             <div className="col-md-4">
                                 <h4 className="title-ft">Quick Links</h4>
                                 <ul className="ft-ul-wrapper">
-                                    <li><Link className="ft-nav-link">Home</Link></li>
-                                    <li><Link className="ft-nav-link">About</Link></li>
-                                    <li><Link className="ft-nav-link">Contact</Link></li>
-                                    <li><Link className="ft-nav-link">Shop</Link></li>
+                                    <li><Link to="/" className="ft-nav-link">Home</Link></li>
+                                    <li><Link to="/About" className="ft-nav-link">About</Link></li>
+                                    <li><Link to="/Contact" className="ft-nav-link">Contact</Link></li>
+                                    <li><Link to="/Product" className="ft-nav-link">Shop</Link></li>
                                 </ul>
                             </div>
                         </div>

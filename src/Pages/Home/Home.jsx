@@ -190,7 +190,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="home-sec-2-wrapper">
+      <section className="home-sec-2-wrapper sect-4-bg-texture">
         <div className="container">
             <div className="row row-gap-5">
             <div className="col-md-8">

@@ -29,10 +29,10 @@ const Navbar = () => {
                                 </Link> 
                                 <button className="mob-nav-close-btn" onClick={()=>setToggle(!toggle)}><IoClose/></button>
                             </li>
-                            <li className='nav-item'><NavLink to="/" className='nav-link'>Home</NavLink></li>
-                            <li className='nav-item'><NavLink to="/Contact"  className='nav-link'>Contact</NavLink></li>
-                            <li className='nav-item'><NavLink to="/About"  className='nav-link'>About</NavLink></li>
-                            <li className='nav-item'><NavLink to="/Product"  className='nav-link'>Product</NavLink></li>
+                            <li className='nav-item'><NavLink to="/" onClick={()=>setToggle(false)} className='nav-link'>Home</NavLink></li>
+                            <li className='nav-item'><NavLink to="/Contact" onClick={()=>setToggle(false)}  className='nav-link'>Contact</NavLink></li>
+                            <li className='nav-item'><NavLink to="/About" onClick={()=>setToggle(false)} className='nav-link'>About</NavLink></li>
+                            <li className='nav-item'><NavLink to="/Product" onClick={()=>setToggle(false)} className='nav-link'>Product</NavLink></li>
                         </ul>
                         <div className='d-md-none d-block'>
                             <button className='nav-toggle-btn' onClick={()=>setToggle(!toggle)}>

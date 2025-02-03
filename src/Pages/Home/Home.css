@@ -78,3 +78,16 @@
         margin: 10px 0 40px;
     }
 }
+/* .sect-4-bg-texture{
+    position: relative;
+}
+.sect-4-bg-texture::after{
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: url("../../assets/images/homepage/bg-texture.png") top center no-repeat;
+    background-size: 400px;
+    top: 1%;
+
+} */

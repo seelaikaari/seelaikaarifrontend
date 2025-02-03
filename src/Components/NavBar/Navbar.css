@@ -88,6 +88,7 @@ ul.nav-ul-wrapper .nav-item .nav-link svg{
         align-items: start;
         transition: 1s;
         border: 1px solid #f3f3f3;
+        z-index: 3;
     }
     .mon-nav-ul .nav-item{
         margin: 0px 25px;
