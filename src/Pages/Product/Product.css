@@ -1,0 +1,30 @@
+/* Styling for the filter heading */
+.filter-heading {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  /* Styling for the icon */
+  .filter-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: #e91e63;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover effect for the heading */
+  .filter-heading:hover {
+    color: #e91e63;
+  }
+  
+  /* Hover effect for the icon */
+  .filter-heading:hover .filter-icon {
+    transform: scale(1.2);
+  }
+  
