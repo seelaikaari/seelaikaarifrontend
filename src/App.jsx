@@ -5,6 +5,8 @@ import Home from "./Pages/Home/Home"
 import About from "./Pages/About/About"
 import Contact from "./Pages/Contact/Contact"
 import Product from "./Pages/Product/Product"
+import Footer from "./Components/Footer/Footer.jsx"
+import Wishlist from "./Pages/wishlist/Wishlist.jsx"
 import { Route,Routes } from "react-router-dom"; 
 //Css
 import './App.css'
@@ -14,19 +16,17 @@ function App() {
   return (
     <>
       <NavBar/>
-
       <main>
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/About" element={<About/>} />
             <Route path="/Contact" element={<Contact/>} />
             <Route path="/Product" element={<Product/>} />
+            <Route path="/Wishlist" element={<Wishlist/>} />
           </Routes>
       </main>
-
-
+      <Footer/>
     </>
   )
 }
-
 export default App
