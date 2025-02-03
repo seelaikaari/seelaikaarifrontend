@@ -1,41 +1,55 @@
-import React from 'react'
+
 import {Link,NavLink} from "react-router-dom"
+import { useState } from "react";
+
 //Css
 import "./NavBar.css"
+
 //icons
 import { FaRegUserCircle,FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
+
 //images
 import logo from "../../assets/images/logo-1.avif"
+
 const Navbar = () => {
+    const [toggle,setToggle]=useState(false)
   return (
     <header>
         <nav className='nav-wrapper'>
             <div className="container nav-wrap-inner">
                 <div className="row align-items-center">
-                    <div className='col-md-4'>
-                        <ul className='nav-ul-wrapper justify-content-start'>
+                    <div className='col-md-4 col-2'>
+                        <div className={`bg-mask d-md-none  ${toggle?"d-block":"d-none"}`}></div>
+                        <ul className={`nav-ul-wrapper justify-content-start mon-nav-ul ${toggle?"mob-toggles-show":""}`}>
+                            <li className="mob-toggle-li d-md-none d-flex">
+                                <Link to="/">
+                                    <img src={logo} alt="logo" className="w-100" />
+                                </Link> 
+                                <button className="mob-nav-close-btn" onClick={()=>setToggle(!toggle)}><IoClose/></button>
+                            </li>
                             <li className='nav-item'><NavLink to="/" className='nav-link'>Home</NavLink></li>
                             <li className='nav-item'><NavLink to="/Contact"  className='nav-link'>Contact</NavLink></li>
                             <li className='nav-item'><NavLink to="/About"  className='nav-link'>About</NavLink></li>
                             <li className='nav-item'><NavLink to="/Product"  className='nav-link'>Product</NavLink></li>
                         </ul>
-                        <div className='d-none'>
-                            <button className='nav-toggle-btn'>
+                        <div className='d-md-none d-block'>
+                            <button className='nav-toggle-btn' onClick={()=>setToggle(!toggle)}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </button>
                         </div>
                     </div>
-                    <div className='col-md-4  d-flex justify-content-center'>
-                        <Link to="/" className='text-center'><img src={logo} alt="" /></Link>
+                    <div className='col-md-4 col-5 d-flex justify-content-center'>
+                        <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100" /></Link>
                     </div>
-                    <div className='col-md-4 text-end'>
-                        <ul className='nav-ul-wrapper justify-content-end'>
-                            <li className='nav-item'><a href="" className='nav-link'><FaRegUserCircle/></a></li>
-                            <li className='nav-item'><a href="" className='nav-link'><MdOutlineShoppingCart/></a></li>
-                            <li className='nav-item'><a href="" className='nav-link'><FaRegHeart/></a></li>
+                    <div className='col-md-4 col-5 text-end'>
+                        <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
+                            <li className='nav-item'><Link  className='nav-link'><FaRegUserCircle/></Link></li>
+                            <li className='nav-item'><Link  className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">1</span></Link></li>
+                            <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart/> <span className="prod-count-num">1</span></Link></li>
                         </ul>
                     </div>
                 </div>
