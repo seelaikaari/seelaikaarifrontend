@@ -7,7 +7,7 @@ import "./NavBar.css"
 
 //icons
 import { FaRegUserCircle,FaRegHeart } from "react-icons/fa";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart  } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
 //images
@@ -45,6 +45,11 @@ const Navbar = () => {
                     <div className='col-md-4 col-5 d-flex justify-content-center'>
                         <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100" /></Link>
                     </div>
+                    <div className='col-md-4 text-end'>
+                        <ul className='nav-ul-wrapper justify-content-end'>
+                            <li className='nav-item'><Link to="" className='nav-link'><FaRegUserCircle/></Link></li>
+                            <li className='nav-item'><Link to="/Cart" className='nav-link'><MdOutlineShoppingCart/></Link></li>
+                            <li className='nav-item'><a href="" className='nav-link'><FaRegHeart/></a></li>
                     <div className='col-md-4 col-5 text-end'>
                         <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
                             <li className='nav-item'><Link  className='nav-link'><FaRegUserCircle/></Link></li>
