@@ -1,7 +1,7 @@
-
+import HomeCategory from "../../Components/homecategories/HomeCategory";
 //images
-import banner1 from "../../assets/images/banner/1.webp"
-import banner2 from "../../assets/images/banner/2.webp"
+import banner1 from "../../assets/images/banner/banner1.png"
+import banner2 from "../../assets/images/banner/banner1.png"
 import image1 from "../../assets/images/homepage/1.jpg"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -182,7 +182,7 @@ const Home = () => {
               <div className="row my-4 row-gap-4">
                 {Category.map((items,index)=>
                   <div className="col-md-3 col-6" key={index}>
-                    <img src={items.img} alt={items.imgCaption} className="w-100" />
+                    <HomeCategory items={items} />
                   </div>
                 )}
                 

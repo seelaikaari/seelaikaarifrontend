@@ -43,7 +43,7 @@
 .wlist-btn-wrapper{
     justify-content: space-between;
     margin: 20px 0;
-    gap: 25px;
+    gap: 8px;
 }
 .wishlist-dlt-btn{
     background: #D8C3A5;
@@ -69,9 +69,7 @@
     font-weight: 600;
     font-size: 15px;
 }
-.wishlist-wrap-cont{
-    padding: 10px 20px;
-}
+
 .wishList-empty{
     height: 85vh;
 }
@@ -95,4 +93,14 @@
     border-radius: 4px;
     font-size: 14px ;
     font-weight: 600;
+}
+@media only screen and (min-width:1300px){
+    .wishlist-wrap-cont{
+        padding: 10px 20px;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1023px){
+    .wishlist-wrap-cont{
+        padding: 10px 20px;
+    }
 }

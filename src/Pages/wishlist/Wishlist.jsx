@@ -2,11 +2,12 @@
 import { Link } from "react-router-dom";
 //images
 import image1 from "../../assets/images/homepage/1.jpg"
-
+import emptyWishlist from "../../assets/images/wishlist/empty-wishlist.png"
 //icons
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+
 //Css
 import "./Wishlist.css"
 
@@ -19,7 +20,7 @@ const Wishlist = () => {
             <div className="container">
                 <h2 className="wlist-ht">Wishlist Products (2)</h2>
                 <div className="row wishlist-inner-wrap">
-                    <div className="col-md-3">
+                    <div className="col-lg-3 col-md-6">
                         <div className="wishlist-wrap-cont">
                             <img src={image1} alt="" className="w-100" />
                             <p className="wishlist-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -41,6 +42,7 @@ const Wishlist = () => {
         <section className="wishList-empty">
             <div className="container">
                 <div className="inner-empt-wlist">
+                    <img src={emptyWishlist} alt="" width="300px" />
                     <h5 className="wish-empty-title text-center">No wishes yet! Find something you love and add it here.</h5>
                     <Link to="/Product" className="empty-wishlist-btn" >Shop Now</Link>
                 </div>

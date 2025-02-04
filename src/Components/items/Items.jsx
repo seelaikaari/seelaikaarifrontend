@@ -18,9 +18,9 @@ const Items = () => {
           <p>Blue Muslin Blend Bandhani Print Suit Set With Sequins</p>
         </div>
         <div className="product-price">
-        <span class="normal-price">₹ 1,500.00</span>
-        <span class="offer-price">₹ 1,200.00</span>
-       <span class="discount">50%</span>
+        <span className="normal-price">₹ 1,500.00</span>
+        <span className="offer-price">₹ 1,200.00</span>
+       <span className="discount">50%</span>
         </div>
         <div className="product-size">
           <span>s</span>
