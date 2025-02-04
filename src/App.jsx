@@ -6,7 +6,7 @@ import Cart from "./Pages/Cart/Cart"
 import About from "./Pages/About/About"
 import Contact from "./Pages/Contact/Contact"
 import Product from "./Pages/Product/Product"
-
+import SignupForm from "./Pages/siginup/SignUp.jsx"
 import Footer from "./Components/Footer/Footer.jsx"
 import Wishlist from "./Pages/wishlist/Wishlist.jsx"
 import { Route,Routes } from "react-router-dom"; 
@@ -27,6 +27,7 @@ function App() {
             <Route path="/Product" element={<Product/>} />
             <Route path="/Cart" element={<Cart/>} />
             <Route path="/Wishlist" element={<Wishlist/>} />
+            <Route path="/signup" element={<SignupForm />} />
           </Routes>
       </main>
       <Footer/>

@@ -48,7 +48,7 @@ const Navbar = () => {
                    
                     <div className='col-md-4 col-5 text-end'>
                         <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
-                            <li className='nav-item'><Link  className='nav-link'><FaRegUserCircle/></Link></li>
+                            <li className='nav-item'><Link to="/signup" className='nav-link'><FaRegUserCircle/></Link></li>
                             <li className='nav-item'><Link to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">1</span></Link></li>
                             <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart/> <span className="prod-count-num">1</span></Link></li>
                         </ul>
