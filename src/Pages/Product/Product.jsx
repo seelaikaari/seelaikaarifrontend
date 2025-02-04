@@ -148,7 +148,7 @@ const Product = () => {
                 <FaSearchMinus className="not-found-icon" />
                 <h2>Oops! No Sarees Found</h2>
                 <p>
-                  We couldn't find any sarees based on your search. Please try
+                  We couldnt find any sarees based on your search. Please try
                   again with different keywords or filters.
                 </p>
               </div>
