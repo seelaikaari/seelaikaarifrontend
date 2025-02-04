@@ -8,10 +8,10 @@ const Items = ({ prdts }) => {
    const dispatch = useDispatch();
    const wishlist = useSelector((state) => state.wishlist.wishlist); 
    const navigate = useNavigate();
+   
    const handleClick = () => {
-    navigate("/ProductDetail", { state: { product: prdts } }); // Passing prdts as state
+    navigate("/ProductDetail", { state: { product: prdts } }); 
   };
-   // Check if the current product is in the wishlist
    const isWishlisted = wishlist.some((item) => item.id === prdts.id);
  
    const toggleWishlist = () => {

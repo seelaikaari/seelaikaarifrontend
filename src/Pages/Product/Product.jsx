@@ -1,6 +1,6 @@
 
 // export default Product;
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../api/fetchProduct";
 import ProductSideBar from "../../Components/productsidebar/ProductSidebar.jsx";
