@@ -1,61 +1,79 @@
 import "./About.css";
 import "animate.css";
 
- 
 const About = () => {
   return (
-    <div className="about-us container">
-      <div className="row align-items-center">
-        <h1 className="text-center mb-4">About Seelaikari</h1>
+    <div className="about-container">
+      <div className="about-content">
+        <h1 className="about-title animate__animated animate__fadeInUp">
+          About Seelaikari
+        </h1>
 
-        <div className="col-md-6 about-text animate__animated animate__fadeInLeft">
+        <div className="about-text animate__animated animate__fadeInLeft">
           <p>
-            Welcome to <strong>Seelaikari</strong>, your one-stop destination
-            for the finest collection of traditional silk sarees and a wide
-            variety of other exquisite sarees. Our mission is to preserve the
-            rich cultural heritage of India through timeless craftsmanship and
-            vibrant designs. Each saree at Seelaikari is carefully handpicked,
-            showcasing the artistry and intricacy of skilled artisans who have
-            perfected their craft over generations.
+            At <strong>Seelaikari</strong>, we celebrate the essence of
+            tradition through meticulously crafted sarees that reflect the
+            beauty of Indian heritage. Every piece is designed to honor the
+            artistry of skilled weavers, ensuring that elegance meets cultural
+            authenticity.
           </p>
 
-          <h2 className="section-title">The Seelaikari Story</h2>
+          <h2 className="section-heading">Our Story</h2>
           <p>
-            Seelaikari was founded with a deep passion for Indian heritage and
-            the timeless beauty of sarees. Our journey began with a vision to
-            bring authentic, high-quality sarees to every woman who values
-            tradition and elegance. We work closely with skilled artisans across
-            India, ensuring that every weave, pattern, and color embodies the
-            soul of our rich textile legacy.
+            Seelaikari was founded with a simple yet profound vision—to
+            reintroduce the charm of handwoven sarees to modern women. Inspired
+            by generations of weaving expertise, we work closely with artisans
+            from various regions to bring you sarees that embody craftsmanship,
+            culture, and class.
           </p>
 
-          <h2 className="section-title">Our Craftsmanship</h2>
+          <h2 className="section-heading">Why Choose Seelaikari?</h2>
           <p>
-            Each saree at Seelaikari is a masterpiece, woven with care and
-            dedication. Our artisans use age-old techniques, blending tradition
-            with modern aesthetics. From the luxurious Kanjivaram silk to the
-            airy elegance of Chanderi cotton, we curate sarees that cater to
-            every taste and occasion. Our designs celebrate India's diverse
-            weaving traditions, making each drape a story in itself.
+            In a world of mass production, we stand apart by embracing
+            authenticity. Every saree is handcrafted, ensuring exclusivity in
+            every weave. Our collections offer something for every occasion,
+            whether it’s a grand celebration, a wedding, or an elegant everyday
+            drape.
           </p>
 
-          <h2 className="section-title">Meet Our Founder</h2>
+          <ul className="about-list">
+            <li>🌿 100% authentic, handwoven sarees</li>
+            <li>🧵 Supporting traditional artisans and fair trade</li>
+            <li>🎨 Unique designs blending classic and contemporary styles</li>
+            <li>📦 Worldwide shipping with love and care</li>
+          </ul>
+
+          <h2 className="section-heading">Our Craftsmanship</h2>
+          <p>
+            From the regal <strong>Kanjivaram silks</strong> to the delicate{" "}
+            <strong>Chikankari cottons</strong>, each saree is a masterpiece. We
+            take pride in sourcing pure fabrics, natural dyes, and traditional
+            weaving techniques passed down through generations.
+          </p>
+
+          <h2 className="section-heading">Sustainability & Ethical Fashion</h2>
+          <p>
+            At Seelaikari, we believe in sustainable fashion that honors both
+            people and the planet. We partner with handloom clusters, ensuring
+            that artisans receive fair wages and that their invaluable craft is
+            preserved for the future.
+          </p>
+
+          <h2 className="section-heading">Meet Our Founder</h2>
           <p>
             <strong>Akilesh A</strong>, the visionary behind Seelaikari, has
-            always been fascinated by the timeless grace of sarees. With a deep
-            appreciation for traditional craftsmanship and a desire to empower
-            artisans, she embarked on a journey to create a brand that connects
-            heritage with modern fashion. Under her leadership, Seelaikari has
-            grown into a trusted name, celebrating the artistry and culture of
-            India's textile industry.
+            always been captivated by the grace of sarees. With a deep-rooted
+            love for heritage textiles, Akilesh embarked on a journey to create
+            a brand that uplifts weavers and makes handloom sarees accessible to
+            all.
           </p>
         </div>
 
-        <div className="col-md-6 text-center animate__animated animate__fadeInRight">
+        <div className="about-image-container animate__animated animate__fadeInRight">
           <img
             src="https://files.oaiusercontent.com/file-F5eSqDRHn6Xd1mhoqnXvMo?se=2025-02-03T11%3A35%3A19Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Db9f43d46-117e-4085-b0cd-c3255dcc3da2.webp&sig=E5f4fVmQDR8toJhSURoehofHMTppV5hz1ciEkM0dNrY%3D"
-            alt="About Seelaikari"
-            className="img-fluid about-image"
+            alt="Seelaikari Sarees"
+            className="about-image"
           />
         </div>
       </div>

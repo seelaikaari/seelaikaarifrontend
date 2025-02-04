@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Contact.css'; // Importing CSS file
+import './Contact.css'; 
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +71,9 @@ const Contact = () => {
       <div className="map-container">
         <iframe 
           title="Location Map"
-          src="https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9539974,77.6309395,11z/data=!3m1!4b1!4m6!3m5!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9715987!4d77.5945627!16zL20vMDljMTc?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoASAFQAw%3D%3Dhttps://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.905795154984!2d80.2171425147017!3d13.08064029079656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267960fbbebf3%3A0x6a56a20d2063a350!2sAB-149%2C%202nd%20Floor%20%2C%203rd%20Main%20Road%2C%20Anna%20Nagar%2C%20Chennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1675368374261!5m2!1sen!2sus" 
+          src='
+
+https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62265.572914295124!2d77.79151043072625!3d12.739607733468766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae70c883f728a3%3A0xd71a6bc0275ac9be!2sHosur%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1738671243525!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade'
           width="100%" 
           height="300" 
           style={{border: 0}} 
@@ -142,13 +144,9 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="checkbox">
-          <input type="checkbox" id="save-info" />
-          <label htmlFor="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-        </div>
 
        <div className='form-button'>
-       <button type="submit">Submit</button>
+       <button type="submit" className='contact-btn'>Submit</button>
        </div>
       </form>
     </div>

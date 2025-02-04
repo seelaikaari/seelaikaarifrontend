@@ -1,30 +1,20 @@
 import React, { useState } from 'react';
-import "./Cart.css";
-import { FaTrashAlt } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import './Cart.css';
+import { FaTrashAlt } from 'react-icons/fa';
 
-const DisclaimerModal = ({ showModal, handleClose, handleAccept }) => {
+const DisclaimerModal = ({ showModal, handleClose }) => {
   if (!showModal) return null;
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h3>Terms of Service</h3>
-        <div className="modal-body">
-          <p><strong>Returns and Exchange</strong> of any Seelaikari product is only possible under the following conditions:</p>
-          <ol>
-            <li><strong>DAMAGED GOODS</strong> - We closely inspect every piece of merchandise...</li>
-            <li><strong>WRONG ORDERS</strong> - If the item you received is not what you originally ordered...</li>
-            <li><strong>Colors</strong> - We have made every effort to display the colors of our products...</li>
-            <li><strong>SIZE AVAILABILITY OF OUTFITS ON THE WEBSITE</strong> - We follow a standard measurement chart...</li>
-            <li><strong>Alterations</strong> - If you have a query regarding the size...</li>
-            <li><strong>Dispatch</strong> - Domestic orders will be dispatched within 3 weeks...</li>
-            <li><strong>LIST OF NON-RETURNABLE OR NON-EXCHANGEABLE PRODUCTS</strong> - Custom made and made-to-order products...</li>
-            <li><strong>TERMS OF RETURN & EXCHANGE</strong> - All items to be returned or exchanged must be unused...</li>
-          </ol>
-        </div>
+        <h3 className='modal-header'>Terms & Conditions</h3>
+        <p> * By proceeding, you agree to our return, exchange, and product policies.</p>
+        <p> * No damage</p>
         <div className="modal-footer">
-          <button onClick={() => handleClose(false)}>Cancel</button>
-          <button onClick={() => handleAccept()}>Accept</button>
+          <button className="modal-btn cancel" onClick={() => handleClose(false)}>Cancel</button>
+          <button className="modal-btn accept" onClick={() => handleClose(true)}>Agree</button>
         </div>
       </div>
     </div>
@@ -32,12 +22,13 @@ const DisclaimerModal = ({ showModal, handleClose, handleAccept }) => {
 };
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
       name: 'Designer Draped Saree in Gold',
-      description: 'DESIGNER DRAPED SAREE IN GOLD',
-      size: 'Large',
+      description: 'Elegant gold-draped saree with fine craftsmanship.',
+      size: 'L',
       price: 37500,
       discountedPrice: 18750,
       image: 'https://www.studio149fashion.com/cdn/shop/files/DSC4568-Editcopyn.jpg?v=1714324495&width=600',
@@ -46,8 +37,8 @@ const Cart = () => {
     {
       id: 2,
       name: 'Designer White Silk Saree',
-      description: 'DESIGNER WHITE SILK SAREE',
-      size: 'Medium',
+      description: 'Luxurious silk saree in pure white.',
+      size: 'M',
       price: 32000,
       discountedPrice: 16000,
       image: 'https://www.studio149fashion.com/cdn/shop/files/6449rt.jpg?v=1733915970&width=533',
@@ -58,20 +49,10 @@ const Cart = () => {
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const increaseQuantity = (id) => {
+  const updateQuantity = (id, amount) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQuantity = (id) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
+        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + amount) } : item
       )
     );
   };
@@ -86,80 +67,74 @@ const Cart = () => {
       .toFixed(2);
   };
 
-  const handleTermsChange = () => {
-    setShowModal(true);
+  const handleTermsCheckbox = () => {
+    if (isTermsAccepted) {
+      setIsTermsAccepted(false); // Uncheck if already checked
+    } else {
+      setShowModal(true); // Show modal to accept terms
+    }
   };
 
-  const handleModalClose = (accept) => {
+  const handleTermsClose = (accepted) => {
     setShowModal(false);
-    if (accept) {
+    if (accepted) {
       setIsTermsAccepted(true);
     }
   };
 
   return (
-    <div className="cartPageContainer">
-      {cartItems.length === 0 ? (
-        <div>
-          <p>No cart items</p>
-          <button onClick={() => alert('Returning to shop')}>Return to Shop</button>
-        </div>
-      ) : (
-        <div>
-          <h2>Shopping Cart ({cartItems.length})</h2>
-          <div className="cartItems">
-            {cartItems.map((item) => (
-              <div key={item.id} className="cartItem">
-                <img src={item.image} alt={item.name} className="cartItemImage" />
-                <div className="item-description">
-                  <div>
-                    <p>{item.name}</p>
-                    <p>{item.description}</p>
-                    <p>{item.size}</p>
+    <div className="cart-container">
+      <h2>Shopping Cart</h2>
+      <div className="cart-layout">
+     
+        <div className="cart-items">
+          {cartItems.map((item) => (
+            <div key={item.id} className="cart-card">
+              <img src={item.image} alt={item.name} className="cart-img" />
+              <div className="cart-details">
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+                <p><strong>Size:</strong> {item.size}</p>
+                <div className="cart-actions">
+                  <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
+                  <div className="quantity-controls">
+                    <button onClick={() => updateQuantity(item.id, -1)} className='cart-decrease-btn'>-</button>
+                    <span className='cart-quantity'>{item.quantity}</span>
+                    <button onClick={() => updateQuantity(item.id, 1)} className='cart-increase-btn'>+</button>
                   </div>
-                  <div>
-                    <p>Rs. {item.discountedPrice * item.quantity} </p>
-                    <button onClick={() => decreaseQuantity(item.id)}>-</button>
-                    <span className="item-quantity">{item.quantity}</span>
-                    <button onClick={() => increaseQuantity(item.id)}>+</button>
-                  </div>
-                  <div className="remove-cart-item">
-                    <button className="bg-danger" onClick={() => removeItem(item.id)}>
-                      <FaTrashAlt />
-                    </button>
-                  </div>
+                  <button className="remove-btn" onClick={() => removeItem(item.id)}>
+                    <FaTrashAlt />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="cartSummary">
-            <div className="subtotal">
-              <p>Subtotal</p>
-              <p>Rs. {getTotalPrice()}</p>
             </div>
-            <div className="termsAndConditions">
-              <label className='label'>
-                <input
-                  type="checkbox"
-                  checked={isTermsAccepted}
-                  onChange={handleTermsChange}
-                /> &nbsp;
-                I agree with Terms & Conditions
-              </label>
-            </div>
-            <div className="cartButtons">
-              <button
-                disabled={!isTermsAccepted}
-                onClick={() => alert('Proceeding to Checkout')}
-              >
-                Checkout
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
-      )}
-      <DisclaimerModal showModal={showModal} handleClose={handleModalClose} handleAccept={() => handleModalClose(true)} />
+
+      
+        <div className="cart-summary">
+          <h3 className='order-head'>Order Summary</h3>
+          <p>Subtotal: Rs. <strong>{getTotalPrice()}</strong></p>
+          <div className="terms">
+            <label>
+              <input
+                type="checkbox"
+                checked={isTermsAccepted}
+                onChange={handleTermsCheckbox}
+              />{" "}
+              I agree with Terms & Conditions
+            </label>
+          </div>
+          <button className="checkout-btn" disabled={!isTermsAccepted} onClick={() => alert('Proceeding to Checkout')}>
+            Proceed to Checkout
+          </button>
+          <button className="continue-shopping-btn" onClick={() => navigate('/Product')}>
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+
+      <DisclaimerModal showModal={showModal} handleClose={handleTermsClose} />
     </div>
   );
 };
