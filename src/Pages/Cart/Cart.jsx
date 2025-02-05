@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 import { FaTrashAlt } from 'react-icons/fa';
+import RazorpayPayment from '../RazorpayPayment/RazorpayPayment';
 
 const DisclaimerModal = ({ showModal, handleClose }) => {
   if (!showModal) return null;
@@ -69,9 +70,9 @@ const Cart = () => {
 
   const handleTermsCheckbox = () => {
     if (isTermsAccepted) {
-      setIsTermsAccepted(false); // Uncheck if already checked
+      setIsTermsAccepted(false);
     } else {
-      setShowModal(true); // Show modal to accept terms
+      setShowModal(true);
     }
   };
 
@@ -86,7 +87,6 @@ const Cart = () => {
     <div className="cart-container">
       <h2>Shopping Cart</h2>
       <div className="cart-layout">
-     
         <div className="cart-items">
           {cartItems.map((item) => (
             <div key={item.id} className="cart-card">
@@ -111,7 +111,6 @@ const Cart = () => {
           ))}
         </div>
 
-      
         <div className="cart-summary">
           <h3 className='order-head'>Order Summary</h3>
           <p>Subtotal: Rs. <strong>{getTotalPrice()}</strong></p>
@@ -125,9 +124,7 @@ const Cart = () => {
               I agree with Terms & Conditions
             </label>
           </div>
-          <button className="checkout-btn" disabled={!isTermsAccepted} onClick={() => alert('Proceeding to Checkout')}>
-            Proceed to Checkout
-          </button>
+          <RazorpayPayment totalAmount={getTotalPrice()} isTermsAccepted={isTermsAccepted} setCartItems={setCartItems}/>
           <button className="continue-shopping-btn" onClick={() => navigate('/Product')}>
             Continue Shopping
           </button>

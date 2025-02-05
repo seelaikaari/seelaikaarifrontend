@@ -1,8 +1,10 @@
 
-.cart-container {
+.cart-container{
 width: 80%;
   margin: auto;
-  padding: 20px;
+  padding-bottom: 40px !important;
+  padding-top: 20px;
+
 }
 
 h2 {
@@ -61,6 +63,7 @@ h2 {
 
 
 .quantity-controls {
+  margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -204,14 +207,16 @@ h2 {
   background: #ccc;
   cursor: not-allowed;
 }
+
+
 @media(min-width:768px) {    
   .cart-card{
     flex-direction: row !important;
   }    
   .modal-footer{
     gap: 10px;
-
   } 
+ 
 
 }
 
@@ -220,6 +225,7 @@ h2 {
   .cart-layout {
     grid-template-columns: 1fr;
   }
+  
 
   .cart-card {
     flex-direction: column;
@@ -236,9 +242,10 @@ h2 {
 
   .remove-btn {
     position: relative;
-    bottom: unset;
+    bottom: 39px;
     right: unset;
     align-self: flex-end;
+    left: 80%;
   }
   .cart-details{
     gap: 10px;
