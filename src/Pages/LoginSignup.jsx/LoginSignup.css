@@ -93,6 +93,7 @@
 .dont-btn-log{
     font-size: 13px;
     text-align: center;
+    cursor: pointer;
 }
 .dont-btn-log{
     text-decoration: underline;
