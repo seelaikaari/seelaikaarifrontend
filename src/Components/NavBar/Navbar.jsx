@@ -11,7 +11,7 @@ import { MdOutlineShoppingCart  } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
 //images
-import logo from "../../assets/images/logo-1.jpg"
+import logo from "../../assets/images/logo-2.avif"
 
 const Navbar = () => {
     const [toggle,setToggle]=useState(false)
@@ -43,7 +43,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className='col-md-4 col-5 d-flex justify-content-center'>
-                        <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100" style={{height:"100px"}} /></Link>
+                        <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100"  /></Link>
                     </div>
                    
                     <div className='col-md-4 col-5 text-end'>

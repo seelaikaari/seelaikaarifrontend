@@ -17,7 +17,6 @@ const Wishlist = () => {
     
     dispatch(removeFromWishlist(id));
   };
-
   return (
     <>
       {wishlist && wishlist.length > 0 ? (
@@ -62,6 +61,7 @@ const Wishlist = () => {
         <section className="wishList-empty">
           <div className="container">
             <div className="inner-empt-wlist">
+              <img src={emptyWishlist} width="200px" alt="" />
               <h5 className="wish-empty-title text-center">
                 No wishes yet! Find something you love and add it here.
               </h5>
