@@ -11,7 +11,7 @@ import { MdOutlineShoppingCart  } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
 //images
-import logo from "../../assets/images/logo-1.avif"
+import logo from "../../assets/images/logo-2.avif"
 
 const Navbar = () => {
     const [toggle,setToggle]=useState(false)
@@ -25,7 +25,7 @@ const Navbar = () => {
                         <ul className={`nav-ul-wrapper justify-content-start mon-nav-ul ${toggle?"mob-toggles-show":""}`}>
                             <li className="mob-toggle-li d-md-none d-flex">
                                 <Link to="/">
-                                    <img src={logo} alt="logo" className="w-100" />
+                                    <img src={logo} alt="logo" className="w-100" style={{height:"100px"}} />
                                 </Link> 
                                 <button className="mob-nav-close-btn" onClick={()=>setToggle(!toggle)}><IoClose/></button>
                             </li>
@@ -43,12 +43,12 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className='col-md-4 col-5 d-flex justify-content-center'>
-                        <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100" /></Link>
+                        <Link to="/" className='text-center'><img src={logo} alt="logo" className="w-100"  /></Link>
                     </div>
                    
                     <div className='col-md-4 col-5 text-end'>
                         <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
-                            <li className='nav-item'><Link  className='nav-link'><FaRegUserCircle/></Link></li>
+                            <li className='nav-item'><Link to="/signup" className='nav-link'><FaRegUserCircle/></Link></li>
                             <li className='nav-item'><Link to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">1</span></Link></li>
                             <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart/> <span className="prod-count-num">1</span></Link></li>
                         </ul>
