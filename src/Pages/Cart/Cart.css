@@ -1,10 +1,9 @@
-
-.cart-container{
-width: 80%;
+/* Cart Container */
+.cart-container {
+  width: 80%;
   margin: auto;
   padding-bottom: 40px !important;
   padding-top: 20px;
-
 }
 
 h2 {
@@ -13,6 +12,7 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Cart Layout */
 .cart-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -25,6 +25,7 @@ h2 {
   gap: 20px;
 }
 
+/* Cart Item Card */
 .cart-card {
   display: flex;
   background: white;
@@ -36,12 +37,6 @@ h2 {
   align-items: center;
 }
 
-.price{
-  font-weight: bold;
-}
-.cart-quantity{
-  margin-top: 7px;
-}
 .cart-img {
   width: 200px;
   height: 260px;
@@ -50,7 +45,6 @@ h2 {
   border-radius: 5px;
   padding: 5px;
 }
-
 
 .cart-details {
   flex: 1;
@@ -61,15 +55,48 @@ h2 {
   height: 100%;
 }
 
+.price {
+  font-weight: bold;
+  font-size: 20px;
+}
 
+/* Quantity Controls */
 .quantity-controls {
-  margin-top: 8px;
+  margin-top: 11px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+.cart-quantity {
+  font-size: 18px;
+  /* font-weight: bold; */
+ width: 32px;
+  text-align: center;
+}
 
+/* Buttons for increasing and decreasing quantity */
+.cart-decrease-btn,
+.cart-increase-btn {
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* .cart-decrease-btn {
+  color: #ff4d4d;
+}
+
+.cart-increase-btn {
+  color: #2ecc71;
+} */
+
+.cart-decrease-btn:hover,
+.cart-increase-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Remove Button */
 .remove-btn {
   position: absolute;
   bottom: 20px;
@@ -77,11 +104,16 @@ h2 {
   background: none;
   border: none;
   color: red;
-  font-size: 24px;  
+  font-size: 24px;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
 
+.remove-btn:hover {
+  transform: scale(1.2);
+}
 
+/* Cart Summary */
 .cart-summary {
   background: white;
   padding: 25px;
@@ -89,14 +121,16 @@ h2 {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.cart-summary .order-head{
+
+.cart-summary .order-head {
   padding-bottom: 10px;
 }
-.terms{
+
+.terms {
   padding: 10px 0px;
 }
 
-
+/* Checkout and Continue Shopping Buttons */
 .checkout-btn,
 .continue-shopping-btn {
   width: 100%;
@@ -106,53 +140,28 @@ h2 {
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 .checkout-btn {
   background-color: #27ae60;
   color: white;
 }
-.cart-decrease-btn, .cart-increase-btn {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: white;
-  border: 2px solid #333;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.cart-decrease-btn {
-  color: red;
-  border-color: red;
-}
-
-.cart-increase-btn {
-  color: green;
-  border-color: green;
-}
-
-.cart-decrease-btn:hover {
-  background-color: red;
-  color: white;
-}
-
-.cart-increase-btn:hover {
-  background-color: green;
-  color: white;
-}
-
 
 .continue-shopping-btn {
   background-color: #ff6b6b;
   color: white;
 }
 
+.checkout-btn:hover {
+  background-color: #218c53;
+}
+
+.continue-shopping-btn:hover {
+  background-color: #e64c4c;
+}
+
+/* Modal Styling */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -169,13 +178,13 @@ h2 {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  /* text-align: center; */
   width: 350px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content .modal-header {
- margin: 0 auto;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .modal-footer {
@@ -202,30 +211,25 @@ h2 {
   color: white;
 }
 
-
 .checkout-btn:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
 
-
-@media(min-width:768px) {    
-  .cart-card{
+/* Responsive Design */
+@media (min-width: 768px) {
+  .cart-card {
     flex-direction: row !important;
-  }    
-  .modal-footer{
+  }
+  .modal-footer {
     gap: 10px;
-  } 
- 
-
+  }
 }
-
 
 @media (max-width: 768px) {
   .cart-layout {
     grid-template-columns: 1fr;
   }
-  
 
   .cart-card {
     flex-direction: column;
@@ -234,10 +238,10 @@ h2 {
   }
 
   .cart-img {
-    /* width: 100%; */
     margin: 0 auto;
-
+    /* width: 100%; */
     height: auto;
+    margin-bottom: 20px;
   }
 
   .remove-btn {
@@ -247,7 +251,8 @@ h2 {
     align-self: flex-end;
     left: 80%;
   }
-  .cart-details{
+
+  .cart-details {
     gap: 10px;
   }
 }

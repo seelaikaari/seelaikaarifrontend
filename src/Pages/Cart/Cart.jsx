@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Cart.css';
-import { FaTrashAlt } from 'react-icons/fa';
-import RazorpayPayment from '../RazorpayPayment/RazorpayPayment';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Cart.css";
+import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
 
 const DisclaimerModal = ({ showModal, handleClose }) => {
   if (!showModal) return null;
@@ -10,12 +10,16 @@ const DisclaimerModal = ({ showModal, handleClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h3 className='modal-header'>Terms & Conditions</h3>
+        <h3 className="modal-header">Terms & Conditions</h3>
         <p> * By proceeding, you agree to our return, exchange, and product policies.</p>
         <p> * No damage</p>
         <div className="modal-footer">
-          <button className="modal-btn cancel" onClick={() => handleClose(false)}>Cancel</button>
-          <button className="modal-btn accept" onClick={() => handleClose(true)}>Agree</button>
+          <button className="modal-btn cancel" onClick={() => handleClose(false)}>
+            Cancel
+          </button>
+          <button className="modal-btn accept" onClick={() => handleClose(true)}>
+            Agree
+          </button>
         </div>
       </div>
     </div>
@@ -27,22 +31,22 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: 'Designer Draped Saree in Gold',
-      description: 'Elegant gold-draped saree with fine craftsmanship.',
-      size: 'L',
+      name: "Designer Draped Saree in Gold",
+      description: "Elegant gold-draped saree with fine craftsmanship.",
+      size: "L",
       price: 37500,
       discountedPrice: 18750,
-      image: 'https://www.studio149fashion.com/cdn/shop/files/DSC4568-Editcopyn.jpg?v=1714324495&width=600',
+      image: "https://www.studio149fashion.com/cdn/shop/files/DSC4568-Editcopyn.jpg?v=1714324495&width=600",
       quantity: 1,
     },
     {
       id: 2,
-      name: 'Designer White Silk Saree',
-      description: 'Luxurious silk saree in pure white.',
-      size: 'M',
+      name: "Designer White Silk Saree",
+      description: "Luxurious silk saree in pure white.",
+      size: "M",
       price: 32000,
       discountedPrice: 16000,
-      image: 'https://www.studio149fashion.com/cdn/shop/files/6449rt.jpg?v=1733915970&width=533',
+      image: "https://www.studio149fashion.com/cdn/shop/files/6449rt.jpg?v=1733915970&width=533",
       quantity: 1,
     },
   ]);
@@ -94,13 +98,25 @@ const Cart = () => {
               <div className="cart-details">
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
-                <p><strong>Size:</strong> {item.size}</p>
+                <p>
+                  <strong>Size:</strong> {item.size}
+                </p>
                 <div className="cart-actions">
                   <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
                   <div className="quantity-controls">
-                    <button onClick={() => updateQuantity(item.id, -1)} className='cart-decrease-btn'>-</button>
-                    <span className='cart-quantity'>{item.quantity}</span>
-                    <button onClick={() => updateQuantity(item.id, 1)} className='cart-increase-btn'>+</button>
+                   <div className="decrease-btn">
+                   <FaMinusCircle
+                      onClick={() => updateQuantity(item.id, -1)}
+                      className="cart-decrease-btn"
+                    />
+                   </div>
+                    <span className="cart-quantity">{item.quantity}</span>
+                <div className="increase-btn">
+                <FaPlusCircle 
+                      onClick={() => updateQuantity(item.id, 1)}
+                      className="cart-increase-btn"
+                    />
+                </div>
                   </div>
                   <button className="remove-btn" onClick={() => removeItem(item.id)}>
                     <FaTrashAlt />
@@ -112,20 +128,17 @@ const Cart = () => {
         </div>
 
         <div className="cart-summary">
-          <h3 className='order-head'>Order Summary</h3>
-          <p>Subtotal: Rs. <strong>{getTotalPrice()}</strong></p>
+          <h3 className="order-head">Order Summary</h3>
+          <p className="price">
+            Subtotal: Rs. <strong>{getTotalPrice()}</strong>
+          </p>
           <div className="terms">
             <label>
-              <input
-                type="checkbox"
-                checked={isTermsAccepted}
-                onChange={handleTermsCheckbox}
-              />{" "}
-              I agree with Terms & Conditions
+              <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsCheckbox} /> I agree with Terms & Conditions
             </label>
           </div>
-          <RazorpayPayment totalAmount={getTotalPrice()} isTermsAccepted={isTermsAccepted} setCartItems={setCartItems}/>
-          <button className="continue-shopping-btn" onClick={() => navigate('/Product')}>
+          <RazorpayPayment totalAmount={getTotalPrice()} isTermsAccepted={isTermsAccepted} setCartItems={setCartItems} />
+          <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
             Continue Shopping
           </button>
         </div>
