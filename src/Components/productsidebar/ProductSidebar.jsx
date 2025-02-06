@@ -1,6 +1,6 @@
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { useState } from "react";
-import "./ProductSidebar.css";
+import "../productsidebar/ProductSidebar.css";
 import PriceRangeSlider from "../../Components/productsidebar/PriceRange.jsx";
 
 const ProductSideBar = ({ filopt, title, handleChange }) => {

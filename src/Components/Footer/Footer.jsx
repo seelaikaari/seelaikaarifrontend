@@ -7,7 +7,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 //css
-import "./Footer.css"
+import "../Footer/Footer.css";
 
 const Footer = () => {
     return (

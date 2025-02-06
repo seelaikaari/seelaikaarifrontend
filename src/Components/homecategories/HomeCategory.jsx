@@ -1,5 +1,5 @@
 
-import "./HomeCategory.css"
+import "../homecategories/HomeCategory.css"
 const HomeCategory = ({items}) => {
     return (
         <>

@@ -1,6 +1,6 @@
 
 //Css
-import "./Buttons.css"
+import "../buttons/Buttons.css";
 
 const PrimaryButton = () => {
     return (

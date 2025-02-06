@@ -1,4 +1,4 @@
-import "./About.css";
+import "../About/About.css";
 import "animate.css";
 
 const About = () => {

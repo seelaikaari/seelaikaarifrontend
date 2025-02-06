@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
-import "./Checkout.css";
+import "../Checkout/Checkout.css";
 
 function Checkout() {
   const location = useLocation();
@@ -86,7 +86,7 @@ function Checkout() {
         </form>
         </div>
         <div className="col-md-6">
-            {cartItems.map((item)=>{
+            {cartItems.map((item,index)=>{
                 
                 return(
                     // <div key={item.id}>
@@ -94,7 +94,7 @@ function Checkout() {
                     //     <p>Price: {item.price}</p>
                     //     <p>Quantity: {item.quantity}</p>
                     // </div>
-                    <div className="row razorpay-items">
+                    <div className="row razorpay-items" key={index}>
                         <div className="col-3 ">
                             <img src={item.image} alt={item.name} className="w-100"/>
                         </div>

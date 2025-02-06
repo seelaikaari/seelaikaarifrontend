@@ -15,7 +15,7 @@ import { RiLoginCircleLine } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { IoMail } from "react-icons/io5";
 //Css
-import "./LoginSignup.css"
+import "../LoginSignup/LoginSignup.css";
 
 const LoginSignup = () => {
     const [loginsignuotoggle, setLoginsignuotoggle] = useState(true)

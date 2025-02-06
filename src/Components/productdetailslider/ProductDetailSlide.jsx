@@ -9,7 +9,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import "./ProductDetailSlide.css"
+import "../productdetailslider/ProductDetailSlide.css";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';

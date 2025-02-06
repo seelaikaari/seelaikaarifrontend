@@ -9,7 +9,7 @@ import Product from "./Pages/Product/Product"
 import ProductDetail from "./Pages/productDetail/ProductDetail.jsx"
 import Footer from "./Components/Footer/Footer.jsx"
 import Wishlist from "./Pages/wishlist/Wishlist.jsx"
-import LoginSignup from "./Pages/LoginSignup.jsx/LoginSignup.jsx"
+import LoginSignup from "./Pages/LoginSignup/LoginSignup.jsx"
 import Checkout from "./Pages/Checkout/Checkout.jsx"
 import { Route,Routes } from "react-router-dom"; 
 

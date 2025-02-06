@@ -1,5 +1,5 @@
 import React from 'react';
-import "./RazorpayPayment.css";
+import "../RazorpayPayment/RazorpayPayment.css";
 
 const RazorpayPayment = ({ totalAmount, userDetails, setCartItems }) => {
 

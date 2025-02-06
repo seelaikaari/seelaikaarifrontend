@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 //Css
-import "./SimilarProduct.css"
+import "../similarproduct/SimilarProduct.css";
 
 // import required modules
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';

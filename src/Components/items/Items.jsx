@@ -1,5 +1,5 @@
 import { FaHeart } from "react-icons/fa"; // Importing the heart icon
-import "./items.css";
+import "../items/Items.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToWishlist,

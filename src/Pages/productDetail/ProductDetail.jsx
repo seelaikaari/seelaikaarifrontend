@@ -2,7 +2,7 @@ import ProductDetailSlide from "../../Components/productdetailslider/ProductDeta
 import SimilarProduct from "../../Components/similarproduct/SimilarProduct";
 import { IoCart } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
-import "./ProductDetail.css";
+import "../productDetail/ProductDetail.css";
 import { useLocation,useNavigate } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
 import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';

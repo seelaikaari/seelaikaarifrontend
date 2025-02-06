@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Cart.css";
+import "../Cart/Cart.css";
 import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
 import { useDispatch, useSelector } from 'react-redux';
