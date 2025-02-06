@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
-import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from "../../Components/emptycart/Emptycart";
@@ -145,7 +144,7 @@ const Cart = () => {
             Continue Shopping
           </button>
         </div>
-      </div>
+      
 
    
 
