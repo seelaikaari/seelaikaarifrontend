@@ -10,9 +10,9 @@ import img7 from "../assets/images/products/pr5.jpg";
 const products = [
   {
     id: 1,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accuBanarasian tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     price: 6398.26,
     category: "Chanderi",
     brand: "Buzzdog",
@@ -25,14 +25,14 @@ const products = [
       { customerName: "Greer Tewelson", rating: 0, reviewDate: "4/23/2020" },
       { customerName: "Aube Houchin", rating: 4, reviewDate: "6/20/2020" },
       {
-        customerName: "Adriaens Tremoille",
+        customerName: "APatolaiaens Tremoille",
         rating: 0,
         reviewDate: "5/10/2023",
       },
       { customerName: "Vivyanne Boarer", rating: 3, reviewDate: "12/19/2020" },
       { customerName: "Gibby Applegate", rating: 1, reviewDate: "5/2/2020" },
       { customerName: "Cole Guillard", rating: 3, reviewDate: "1/15/2023" },
-      { customerName: "Saudra Bonett", rating: 4, reviewDate: "4/30/2022" },
+      { customerName: "SauPatolaa Bonett", rating: 4, reviewDate: "4/30/2022" },
       { customerName: "Valma Renney", rating: 2, reviewDate: "10/3/2022" },
       { customerName: "Manolo Ledekker", rating: 3, reviewDate: "6/14/2025" },
     ],
@@ -40,7 +40,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     price: 12198.7,
@@ -57,7 +57,7 @@ const products = [
       { name: "Yellow" },
       { name: "Pink" },
       { name: "Puce" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
     ],
     images: [{url:img2}],
     stock: 94,
@@ -77,7 +77,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     price: 14771.09,
@@ -112,19 +112,19 @@ const products = [
   },
   {
     id: 4,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictuBanarasit. Etiam faucibus cursus urna. Ut tellus.",
     price: 9608.84,
     category: "Chanderi",
     brand: "Wikizz",
     material: "Linen",
-    color: [{ name: "Crimson" }],
+    color: [{ name: "CriBanarasion" }],
     images: [{ url: img4 }],
     stock: 20,
     reviews: [
       { customerName: "Cori Coverlyn", rating: 4, reviewDate: "3/15/2020" },
-      { customerName: "Orren Harmson", rating: 5, reviewDate: "10/20/2023" },
+      { customerName: "Orren HarBanarasion", rating: 5, reviewDate: "10/20/2023" },
       { customerName: "Saxe Ropking", rating: 2, reviewDate: "12/20/2025" },
       { customerName: "Marguerite Trowl", rating: 2, reviewDate: "11/23/2022" },
       { customerName: "Maure Carlino", rating: 2, reviewDate: "10/6/2023" },
@@ -140,7 +140,7 @@ const products = [
   },
   {
     id: 5,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     price: 2813.56,
@@ -155,7 +155,7 @@ const products = [
     reviews: [
       { customerName: "Ardelis McCluskey", rating: 3, reviewDate: "5/12/2021" },
       { customerName: "Helen Cecere", rating: 1, reviewDate: "8/4/2022" },
-      { customerName: "Fredrika Lambot", rating: 1, reviewDate: "2/16/2025" },
+      { customerName: "FrePatolaika Lambot", rating: 1, reviewDate: "2/16/2025" },
       { customerName: "Mona Stockau", rating: 0, reviewDate: "5/25/2024" },
       { customerName: "Sheffy Slyne", rating: 1, reviewDate: "8/2/2023" },
       { customerName: "Ashla Payley", rating: 2, reviewDate: "1/9/2024" },
@@ -167,7 +167,7 @@ const products = [
   },
   {
     id: 6,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
     price: 3868.91,
@@ -197,7 +197,7 @@ const products = [
   },
   {
     id: 7,
-    name: "Dr",
+    name: "Patola",
     description:
       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
     price: 10192.11,
@@ -225,9 +225,9 @@ const products = [
   },
   {
     id: 8,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+      "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accuBanarasian felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
     price: 11227.47,
     category: "Bandhani",
     brand: "Flashspan",
@@ -268,7 +268,7 @@ const products = [
   },
   {
     id: 9,
-    name: "Dr",
+    name: "Patola",
     description:
       "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     price: 19946.54,
@@ -279,7 +279,7 @@ const products = [
       { name: "Mauv" },
       { name: "Maroon" },
       { name: "Yellow" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Mauv" },
       { name: "Puce" },
       { name: "Pink" },
@@ -302,15 +302,15 @@ const products = [
   },
   {
     id: 10,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+      "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, henPatolaerit at, vulputate vitae, nisl.",
     price: 1440.05,
     category: "Gadwal",
     brand: "Ooba",
     material: "Net",
     color: [
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Teal" },
       { name: "Green" },
       { name: "Puce" },
@@ -337,7 +337,7 @@ const products = [
   },
   {
     id: 11,
-    name: "Ms",
+    name: "Banarasi",
     description: "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
     price: 246.64,
     category: "Gadwal",
@@ -363,9 +363,9 @@ const products = [
   },
   {
     id: 12,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
     price: 10827.53,
     category: "Bandhani",
     brand: "Centizu",
@@ -374,7 +374,7 @@ const products = [
       { name: "Maroon" },
       { name: "Mauv" },
       { name: "Puce" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Purple" },
       { name: "Orange" },
       { name: "Khaki" },
@@ -441,7 +441,7 @@ const products = [
   },
   {
     id: 14,
-    name: "Ms",
+    name: "Banarasi",
     description:
       "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
     price: 290.97,
@@ -473,7 +473,7 @@ const products = [
   },
   {
     id: 15,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
     price: 4030.8,
@@ -525,7 +525,7 @@ const products = [
       { customerName: "Berna Lefever", rating: 2, reviewDate: "6/22/2024" },
       { customerName: "Bellina Goodere", rating: 0, reviewDate: "6/27/2020" },
       { customerName: "Mano Burditt", rating: 4, reviewDate: "3/26/2023" },
-      { customerName: "Kalie Drohan", rating: 1, reviewDate: "9/25/2021" },
+      { customerName: "Kalie Patolaohan", rating: 1, reviewDate: "9/25/2021" },
       { customerName: "Retha Rosenschein", rating: 2, reviewDate: "7/21/2021" },
       { customerName: "Bella Goathrop", rating: 3, reviewDate: "10/1/2020" },
       {
@@ -538,7 +538,7 @@ const products = [
   },
   {
     id: 16,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
     price: 15267.37,
@@ -595,9 +595,9 @@ const products = [
   },
   {
     id: 17,
-    name: "Dr",
+    name: "Patola",
     description:
-      "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+      "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accuBanarasian odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accuBanarasian tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     price: 17408.87,
     category: "Paithani",
     brand: "Edgeblab",
@@ -605,7 +605,7 @@ const products = [
     color: [
       { name: "Orange" },
       { name: "Maroon" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Red" },
       { name: "Turquoise" },
     ],
@@ -638,7 +638,7 @@ const products = [
   },
   {
     id: 18,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
     price: 5298.38,
@@ -695,7 +695,7 @@ const products = [
       { name: "Teal" },
       { name: "Purple" },
       { name: "Green" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
     ],
     images: [
       {
@@ -745,7 +745,7 @@ const products = [
   },
   {
     id: 20,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     price: 2903.76,
@@ -785,7 +785,7 @@ const products = [
   },
   {
     id: 21,
-    name: "Ms",
+    name: "Banarasi",
     description:
       "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     price: 15176.45,
@@ -848,9 +848,9 @@ const products = [
   },
   {
     id: 22,
-    name: "Mr",
+    name: "Banarasi",
     description:
-      "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+      "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accuBanarasian odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
     price: 270.73,
     category: "Paithani",
     brand: "Skinte",
@@ -858,7 +858,7 @@ const products = [
     color: [
       { name: "Puce" },
       { name: "Indigo" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Mauv" },
       { name: "Puce" },
       { name: "Puce" },
@@ -869,7 +869,7 @@ const products = [
     }],
     stock: 29,
     reviews: [
-      { customerName: "Bibi Ramsdale", rating: 3, reviewDate: "12/21/2021" },
+      { customerName: "Bibi RaBanarasidale", rating: 3, reviewDate: "12/21/2021" },
       { customerName: "Noellyn Tingey", rating: 3, reviewDate: "2/2/2022" },
       { customerName: "Adelind Morgon", rating: 0, reviewDate: "9/18/2023" },
       { customerName: "Gwenny Menguy", rating: 5, reviewDate: "12/13/2024" },
@@ -971,7 +971,7 @@ const products = [
   },
   {
     id: 25,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
     price: 14025.08,
@@ -981,9 +981,9 @@ const products = [
     color: [
       { name: "Turquoise" },
       { name: "Purple" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Yellow" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
     ],
     images: [
       {
@@ -1028,7 +1028,7 @@ const products = [
   },
   {
     id: 26,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
     price: 9509.36,
@@ -1100,9 +1100,9 @@ const products = [
   },
   {
     id: 27,
-    name: "Dr",
+    name: "Patola",
     description:
-      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     price: 2726.89,
     category: "Chanderi",
     brand: "Jamia",
@@ -1136,7 +1136,7 @@ const products = [
   },
   {
     id: 28,
-    name: "Dr",
+    name: "Patola",
     description:
       "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
     price: 8252.1,
@@ -1181,7 +1181,7 @@ const products = [
   },
   {
     id: 29,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
     price: 11993.24,
@@ -1222,7 +1222,7 @@ const products = [
   },
   {
     id: 30,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
     price: 16336.22,
@@ -1267,7 +1267,7 @@ const products = [
   },
   {
     id: 31,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
     price: 17773.18,
@@ -1321,9 +1321,9 @@ const products = [
   },
   {
     id: 32,
-    name: "Mrs",
+    name: "Banarasis",
     description:
-      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictuBanarasit.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     price: 15761.2,
     category: "Paithani",
     brand: "Twitternation",
@@ -1366,7 +1366,7 @@ const products = [
   },
   {
     id: 33,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
     price: 13311.73,
@@ -1377,7 +1377,7 @@ const products = [
       { name: "Yellow" },
       { name: "Blue" },
       { name: "Indigo" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Turquoise" },
       { name: "Khaki" },
       { name: "Khaki" },
@@ -1431,9 +1431,9 @@ const products = [
   },
   {
     id: 35,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "In hac habitasse platea dictuBanarasit. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
     price: 11560.72,
     category: "Bandhani",
     brand: "Oodoo",
@@ -1477,9 +1477,9 @@ const products = [
   },
   {
     id: 36,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictuBanarasit. Etiam faucibus cursus urna. Ut tellus.",
     price: 844.06,
     category: "Chanderi",
     brand: "Einti",
@@ -1534,7 +1534,7 @@ const products = [
   },
   {
     id: 37,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
     price: 15812.24,
@@ -1570,9 +1570,9 @@ const products = [
   },
   {
     id: 38,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictuBanarasit. Etiam faucibus cursus urna. Ut tellus.",
     price: 3978.81,
     category: "Banarasi",
     brand: "Flashspan",
@@ -1605,7 +1605,7 @@ const products = [
     color: [
       { name: "Green" },
       { name: "Red" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Blue" },
     ],
     images: [
@@ -1647,7 +1647,7 @@ const products = [
   },
   {
     id: 40,
-    name: "Dr",
+    name: "Patola",
     description:
       "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
     price: 3175.51,
@@ -1683,14 +1683,14 @@ const products = [
     ],
     stock: 49,
     reviews: [
-      { customerName: "Shea Garms", rating: 4, reviewDate: "11/24/2025" },
+      { customerName: "Shea GarBanarasi", rating: 4, reviewDate: "11/24/2025" },
       { customerName: "Tully Duxbarry", rating: 4, reviewDate: "1/19/2025" },
     ],
     size: [{ name: "XL" }, { name: "L" }, { name: "XXL" }, { name: "L" }],
   },
   {
     id: 41,
-    name: "Dr",
+    name: "Patola",
     description:
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
     price: 16311.57,
@@ -1722,9 +1722,9 @@ const products = [
   },
   {
     id: 42,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
     price: 16289.81,
     category: "Gadwal",
     brand: "Vinder",
@@ -1803,13 +1803,13 @@ const products = [
         rating: 4,
         reviewDate: "1/11/2023",
       },
-      { customerName: "Padraic Lampkin", rating: 0, reviewDate: "5/20/2025" },
+      { customerName: "PaPatolaaic Lampkin", rating: 0, reviewDate: "5/20/2025" },
     ],
     size: [{ name: "M" }, { name: "M" }],
   },
   {
     id: 44,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
     price: 7518.57,
@@ -1901,7 +1901,7 @@ const products = [
     id: 46,
     name: "Rev",
     description:
-      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictuBanarasit.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
     price: 9992.52,
     category: "Kanchipuram",
     brand: "Jabbercube",
@@ -1950,7 +1950,7 @@ const products = [
   },
   {
     id: 47,
-    name: "Ms",
+    name: "Banarasi",
     description:
       "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
     price: 9976.72,
@@ -1998,9 +1998,9 @@ const products = [
   },
   {
     id: 48,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+      "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accuBanarasian felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
     price: 13105.45,
     category: "Chanderi",
     brand: "Wikizz",
@@ -2019,7 +2019,7 @@ const products = [
     stock: 31,
     reviews: [
       { customerName: "Goldy McMearty", rating: 3, reviewDate: "5/4/2023" },
-      { customerName: "Mortimer Kendred", rating: 1, reviewDate: "4/17/2021" },
+      { customerName: "Mortimer KenPatolaed", rating: 1, reviewDate: "4/17/2021" },
       { customerName: "Lanna Flamank", rating: 4, reviewDate: "1/29/2025" },
       { customerName: "Wittie Searle", rating: 3, reviewDate: "7/11/2023" },
       { customerName: "Maryjo Hammell", rating: 3, reviewDate: "10/2/2023" },
@@ -2028,9 +2028,9 @@ const products = [
   },
   {
     id: 49,
-    name: "Mrs",
+    name: "Banarasis",
     description:
-      "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "Curabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     price: 8046.87,
     category: "Paithani",
     brand: "BlogXS",
@@ -2141,9 +2141,9 @@ const products = [
   },
   {
     id: 51,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+      "Curabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
     price: 1695.73,
     category: "Chanderi",
     brand: "Tavu",
@@ -2197,7 +2197,7 @@ const products = [
   },
   {
     id: 52,
-    name: "Dr",
+    name: "Patola",
     description:
       "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     price: 3305.28,
@@ -2241,7 +2241,7 @@ const products = [
     reviews: [
       { customerName: "Merrel Wiz", rating: 3, reviewDate: "8/16/2025" },
       { customerName: "Tynan Swindlehurst", rating: 3, reviewDate: "3/2/2023" },
-      { customerName: "Pris Andreasen", rating: 1, reviewDate: "12/25/2020" },
+      { customerName: "Pris AnPatolaeasen", rating: 1, reviewDate: "12/25/2020" },
       { customerName: "Easter Salliss", rating: 4, reviewDate: "5/15/2024" },
       { customerName: "Baryram Cuttle", rating: 3, reviewDate: "3/24/2024" },
     ],
@@ -2255,7 +2255,7 @@ const products = [
   },
   {
     id: 53,
-    name: "Dr",
+    name: "Patola",
     description:
       "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
     price: 131.26,
@@ -2281,7 +2281,7 @@ const products = [
   },
   {
     id: 54,
-    name: "Ms",
+    name: "Banarasi",
     description:
       "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
     price: 5178.66,
@@ -2349,14 +2349,14 @@ const products = [
   },
   {
     id: 55,
-    name: "Mr",
+    name: "Banarasi",
     description:
-      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     price: 4980.06,
     category: "Chanderi",
     brand: "Livefish",
     material: "Wool",
-    color: [{ name: "Teal" }, { name: "Crimson" }, { name: "Purple" }],
+    color: [{ name: "Teal" }, { name: "CriBanarasion" }, { name: "Purple" }],
     images: [
       {
         url: img1,
@@ -2389,7 +2389,7 @@ const products = [
   },
   {
     id: 56,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
     price: 10505.06,
@@ -2435,7 +2435,7 @@ const products = [
     id: 57,
     name: "Rev",
     description:
-      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictuBanarasit.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
     price: 13507.12,
     category: "Pochampally",
     brand: "Demimbu",
@@ -2444,7 +2444,7 @@ const products = [
       { name: "Turquoise" },
       { name: "Maroon" },
       { name: "Fuscia" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Fuscia" },
     ],
     images: [
@@ -2486,7 +2486,7 @@ const products = [
   },
   {
     id: 58,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
     price: 19856.31,
@@ -2616,9 +2616,9 @@ const products = [
   },
   {
     id: 60,
-    name: "Dr",
+    name: "Patola",
     description:
-      "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+      "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, henPatolaerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
     price: 6135.67,
     category: "Chanderi",
     brand: "Mynte",
@@ -2665,7 +2665,7 @@ const products = [
   },
   {
     id: 61,
-    name: "Dr",
+    name: "Patola",
     description:
       "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
     price: 1034.75,
@@ -2706,7 +2706,7 @@ const products = [
       { customerName: "Yulma Smalley", rating: 4, reviewDate: "3/11/2020" },
       { customerName: "Francisco Macro", rating: 5, reviewDate: "9/9/2024" },
       {
-        customerName: "Audra Rosenberger",
+        customerName: "AuPatolaa Rosenberger",
         rating: 1,
         reviewDate: "12/17/2025",
       },
@@ -2715,7 +2715,7 @@ const products = [
   },
   {
     id: 62,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
     price: 6502.32,
@@ -2756,9 +2756,9 @@ const products = [
   },
   {
     id: 63,
-    name: "Dr",
+    name: "Patola",
     description:
-      "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "Curabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     price: 16435.88,
     category: "Banarasi",
     brand: "Mydo",
@@ -2767,7 +2767,7 @@ const products = [
       { name: "Aquamarine" },
       { name: "Red" },
       { name: "Turquoise" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
     ],
     images: [
       {
@@ -2814,7 +2814,7 @@ const products = [
   },
   {
     id: 64,
-    name: "Dr",
+    name: "Patola",
     description:
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
     price: 5327.71,
@@ -2823,7 +2823,7 @@ const products = [
     material: "Wool",
     color: [
       { name: "Blue" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Red" },
       { name: "Mauv" },
     ],
@@ -2844,9 +2844,9 @@ const products = [
   },
   {
     id: 65,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+      "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, henPatolaerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
     price: 706.1,
     category: "Bandhani",
     brand: "Kanoodle",
@@ -2882,9 +2882,9 @@ const products = [
   },
   {
     id: 66,
-    name: "Dr",
+    name: "Patola",
     description:
-      "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+      "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accuBanarasian tortor quis turpis.",
     price: 12499.45,
     category: "Kanchipuram",
     brand: "Trupe",
@@ -2918,7 +2918,7 @@ const products = [
     reviews: [
       { customerName: "Dulcie Panniers", rating: 3, reviewDate: "4/15/2020" },
       {
-        customerName: "Victoria Hendrickx",
+        customerName: "Victoria HenPatolaickx",
         rating: 2,
         reviewDate: "5/29/2021",
       },
@@ -2931,7 +2931,7 @@ const products = [
   },
   {
     id: 67,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
     price: 18525.77,
@@ -2987,7 +2987,7 @@ const products = [
     id: 68,
     name: "Rev",
     description:
-      "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "Curabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
     price: 1053.77,
     category: "Paithani",
     brand: "Brightbean",
@@ -3034,7 +3034,7 @@ const products = [
   },
   {
     id: 69,
-    name: "Dr",
+    name: "Patola",
     description:
       "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
     price: 8786.49,
@@ -3054,9 +3054,9 @@ const products = [
   },
   {
     id: 70,
-    name: "Dr",
+    name: "Patola",
     description:
-      "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+      "In hac habitasse platea dictuBanarasit. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accuBanarasian tortor quis turpis.",
     price: 2016.65,
     category: "Kanchipuram",
     brand: "Skippad",
@@ -3065,7 +3065,7 @@ const products = [
       { name: "Indigo" },
       { name: "Turquoise" },
       { name: "Green" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Maroon" },
       { name: "Orange" },
     ],
@@ -3109,9 +3109,9 @@ const products = [
   },
   {
     id: 71,
-    name: "Dr",
+    name: "Patola",
     description:
-      "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+      "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictuBanarasit.",
     price: 4678.61,
     category: "Banarasi",
     brand: "Voolith",
@@ -3137,7 +3137,7 @@ const products = [
   },
   {
     id: 72,
-    name: "Dr",
+    name: "Patola",
     description:
       "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
     price: 6165.24,
@@ -3227,7 +3227,7 @@ const products = [
   },
   {
     id: 74,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
       "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
     price: 12317.03,
@@ -3273,9 +3273,9 @@ const products = [
   },
   {
     id: 75,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+      "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accuBanarasian felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
     price: 13560.34,
     category: "Gadwal",
     brand: "Twimm",
@@ -3284,7 +3284,7 @@ const products = [
       { name: "Turquoise" },
       { name: "Goldenrod" },
       { name: "Violet" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Puce" },
       { name: "Blue" },
       { name: "Blue" },
@@ -3304,7 +3304,7 @@ const products = [
   },
   {
     id: 76,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
     price: 19638.49,
@@ -3385,8 +3385,8 @@ const products = [
       { customerName: "Jacquelin Perelli", rating: 5, reviewDate: "2/20/2022" },
       { customerName: "Cherie Glazyer", rating: 3, reviewDate: "9/30/2025" },
       { customerName: "Rana Larmett", rating: 5, reviewDate: "8/9/2024" },
-      { customerName: "Mel Hendriksen", rating: 2, reviewDate: "12/30/2024" },
-      { customerName: "Drake Ramos", rating: 5, reviewDate: "7/18/2021" },
+      { customerName: "Mel HenPatolaiksen", rating: 2, reviewDate: "12/30/2024" },
+      { customerName: "Patolaake Ramos", rating: 5, reviewDate: "7/18/2021" },
     ],
     size: [{ name: "S" }, { name: "XL" }, { name: "S" }, { name: "L" }],
   },
@@ -3438,9 +3438,9 @@ const products = [
   },
   {
     id: 79,
-    name: "Mr",
+    name: "Banarasi",
     description:
-      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictuBanarasit.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
     price: 7508.92,
     category: "Paithani",
     brand: "Voolia",
@@ -3478,9 +3478,9 @@ const products = [
   },
   {
     id: 80,
-    name: "Mr",
+    name: "Banarasi",
     description:
-      "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+      "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, henPatolaerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
     price: 8484.01,
     category: "Chanderi",
     brand: "Twimm",
@@ -3517,7 +3517,7 @@ const products = [
   },
   {
     id: 81,
-    name: "Dr",
+    name: "Patola",
     description:
       "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
     price: 12609.79,
@@ -3552,7 +3552,7 @@ const products = [
   },
   {
     id: 82,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     price: 1364.76,
@@ -3589,12 +3589,12 @@ const products = [
   },
   {
     id: 83,
-    name: "Ms",
+    name: "Banarasi",
     description:
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
     price: 13762.83,
     category: "Bandhani",
-    brand: "Shuffledrive",
+    brand: "ShufflePatolaive",
     material: "Linen",
     color: [
       { name: "Puce" },
@@ -3620,9 +3620,9 @@ const products = [
   },
   {
     id: 84,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+      "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictuBanarasit. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
     price: 17370.82,
     category: "Bandhani",
     brand: "Meeveo",
@@ -3669,7 +3669,7 @@ const products = [
   },
   {
     id: 85,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     price: 18902.68,
@@ -3677,7 +3677,7 @@ const products = [
     brand: "Browsebug",
     material: "Wool",
     color: [
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Maroon" },
       { name: "Maroon" },
       { name: "Maroon" },
@@ -3706,9 +3706,9 @@ const products = [
   },
   {
     id: 86,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+      "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accuBanarasian felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
     price: 17823.39,
     category: "Banarasi",
     brand: "Rhyloo",
@@ -3753,7 +3753,7 @@ const products = [
         reviewDate: "1/22/2025",
       },
       { customerName: "Melina Ruff", rating: 3, reviewDate: "6/18/2024" },
-      { customerName: "Padraig Rosthorn", rating: 2, reviewDate: "11/4/2023" },
+      { customerName: "PaPatolaaig Rosthorn", rating: 2, reviewDate: "11/4/2023" },
       { customerName: "Wenonah Mccaull", rating: 1, reviewDate: "2/7/2024" },
     ],
     size: [
@@ -3818,9 +3818,9 @@ const products = [
   },
   {
     id: 88,
-    name: "Ms",
+    name: "Banarasi",
     description:
-      "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "Curabitur gravida nisi at nibh. In hac habitasse platea dictuBanarasit. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
     price: 8548.0,
     category: "Gadwal",
     brand: "Brightbean",
@@ -3863,7 +3863,7 @@ const products = [
       { customerName: "Merry Jeste", rating: 4, reviewDate: "9/6/2021" },
       { customerName: "Joanne McOrkill", rating: 0, reviewDate: "2/27/2020" },
       {
-        customerName: "Kendricks Scholler",
+        customerName: "KenPatolaicks Scholler",
         rating: 2,
         reviewDate: "9/28/2020",
       },
@@ -3875,7 +3875,7 @@ const products = [
   },
   {
     id: 89,
-    name: "Dr",
+    name: "Patola",
     description:
       "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     price: 19066.3,
@@ -3898,7 +3898,7 @@ const products = [
     reviews: [
       { customerName: "Thekla Croston", rating: 0, reviewDate: "3/16/2020" },
       { customerName: "Rock Mc Caghan", rating: 3, reviewDate: "10/4/2025" },
-      { customerName: "Perkin Drinkhill", rating: 2, reviewDate: "2/27/2024" },
+      { customerName: "Perkin Patolainkhill", rating: 2, reviewDate: "2/27/2024" },
       { customerName: "Amby Goatman", rating: 4, reviewDate: "12/20/2024" },
       { customerName: "Garvey Mc Pake", rating: 2, reviewDate: "3/2/2025" },
       { customerName: "Kaia Canas", rating: 3, reviewDate: "10/7/2022" },
@@ -3912,9 +3912,9 @@ const products = [
   },
   {
     id: 90,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictuBanarasit. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
     price: 11006.33,
     category: "Kanchipuram",
     brand: "Twitterbeat",
@@ -3958,7 +3958,7 @@ const products = [
   },
   {
     id: 91,
-    name: "Mr",
+    name: "Banarasi",
     description:
       "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
     price: 18566.6,
@@ -4003,7 +4003,7 @@ const products = [
   },
   {
     id: 92,
-    name: "Dr",
+    name: "Patola",
     description:
       "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     price: 545.01,
@@ -4053,7 +4053,7 @@ const products = [
   },
   {
     id: 93,
-    name: "Dr",
+    name: "Patola",
     description:
       "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
     price: 3074.88,
@@ -4100,7 +4100,7 @@ const products = [
     id: 94,
     name: "Rev",
     description:
-      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accuBanarasian tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
     price: 19019.83,
     category: "Bandhani",
     brand: "Riffpedia",
@@ -4146,9 +4146,9 @@ const products = [
   },
   {
     id: 95,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description:
-      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accuBanarasian tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
     price: 5674.96,
     category: "Gadwal",
     brand: "Jamia",
@@ -4190,7 +4190,7 @@ const products = [
   },
   {
     id: 96,
-    name: "Ms",
+    name: "Banarasi",
     description:
       "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     price: 11425.98,
@@ -4204,7 +4204,7 @@ const products = [
       { name: "Maroon" },
       { name: "Goldenrod" },
       { name: "Red" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
       { name: "Teal" },
     ],
     images: [
@@ -4233,7 +4233,7 @@ const products = [
   },
   {
     id: 97,
-    name: "Honorable",
+    name: "Kanjivaram ",
     description: "Fusce consequat. Nulla nisl. Nunc nisl.",
     price: 13176.91,
     category: "Paithani",
@@ -4275,7 +4275,7 @@ const products = [
   },
   {
     id: 98,
-    name: "Mrs",
+    name: "Banarasis",
     description:
       "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
     price: 10810.71,
@@ -4330,7 +4330,7 @@ const products = [
       { name: "Puce" },
       { name: "Violet" },
       { name: "Goldenrod" },
-      { name: "Crimson" },
+      { name: "CriBanarasion" },
     ],
     images: [
       {
