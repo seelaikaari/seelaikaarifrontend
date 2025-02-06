@@ -133,17 +133,19 @@ const Cart = () => {
           <p className="price">
             Subtotal: Rs. <strong>{getTotalPrice()}</strong>
           </p>
-          <div className="terms">
-            <label>
-              <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsCheckbox} /> I agree with Terms & Conditions
-            </label>
-          </div>
-          <RazorpayPayment totalAmount={getTotalPrice()} isTermsAccepted={isTermsAccepted} setCartItems={setCartItems} />
+          <button 
+            className="checkout-btn"
+            onClick={() => navigate('/checkout', { state: { cartItems, totalAmount: getTotalPrice() } })}
+          >
+            Proceed to Checkout
+          </button>
           <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
             Continue Shopping
           </button>
         </div>
       </div>
+
+   
 
       <DisclaimerModal showModal={showModal} handleClose={handleTermsClose} />
     </div>

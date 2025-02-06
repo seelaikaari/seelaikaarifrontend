@@ -11,6 +11,7 @@ import SignupForm from "./Pages/siginup/SignUp.jsx"
 import Footer from "./Components/Footer/Footer.jsx"
 import Wishlist from "./Pages/wishlist/Wishlist.jsx"
 import LoginSignup from "./Pages/LoginSignup.jsx/LoginSignup.jsx"
+import Checkout from "./Pages/Checkout/Checkout.jsx"
 import { Route,Routes } from "react-router-dom"; 
 
 //Css
@@ -34,6 +35,7 @@ function App() {
             <Route path="/ProductDetail" element={<ProductDetail/>} />
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/login" element={<LoginSignup />} />
+            <Route path="/Checkout" element={<Checkout />} />
           </Routes>
       </main>
       <Footer/>

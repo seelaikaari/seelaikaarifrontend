@@ -1,37 +1,7 @@
-import React, { useState } from 'react';
-import "./RazorpayPayment.css"
+import React from 'react';
+import "./RazorpayPayment.css";
 
-const RazorpayPayment = ({ totalAmount, isTermsAccepted ,setCartItems}) => {
-  const [showForm, setShowForm] = useState(false);
-  const [userDetails, setUserDetails] = useState({
-    name: '',
-    email: '',
-    contact: '',
-  });
-
-  const [formErrors, setFormErrors] = useState({
-    name: false,
-    email: false,
-    contact: false,
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserDetails((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const validateForm = () => {
-    const errors = {
-      name: !userDetails.name,
-      email: !userDetails.email,
-      contact: !userDetails.contact,
-    };
-    setFormErrors(errors);
-    return !Object.values(errors).includes(true);
-  };
+const RazorpayPayment = ({ totalAmount, userDetails, setCartItems }) => {
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -48,8 +18,6 @@ const RazorpayPayment = ({ totalAmount, isTermsAccepted ,setCartItems}) => {
   };
 
   const handlePayment = async () => {
-    if (!validateForm()) return;
-
     const res = await loadRazorpayScript();
     if (!res) {
       alert('Failed to load Razorpay. Check your internet connection.');
@@ -57,21 +25,19 @@ const RazorpayPayment = ({ totalAmount, isTermsAccepted ,setCartItems}) => {
     }
 
     const options = {
-      key: 'rzp_test_Qdjyecln6X4M7k', // Replace with your test key
+      key: 'rzp_test_Qdjyecln6X4M7k', // Replace with your Razorpay test key
       amount: totalAmount * 100, // Convert to paise
       currency: 'INR',
       name: 'Akilesh Store',
       description: 'Purchase from Akilesh Store',
       handler: function (response) {
         alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
-        setShowForm(false);
-        setCartItems([]);
-        
+        setCartItems([]); 
       },
       prefill: {
         name: userDetails.name,
         email: userDetails.email,
-        contact: userDetails.contact,
+        contact: userDetails.mobile, // Use mobile number instead of contact
       },
       theme: {
         color: '#3399cc',
@@ -83,61 +49,16 @@ const RazorpayPayment = ({ totalAmount, isTermsAccepted ,setCartItems}) => {
   };
 
   return (
-    <>
-      {!showForm ? (
-        <button
-          className="checkout-btn"
-          disabled={!isTermsAccepted}
-          onClick={() => setShowForm(true)}
-        >
-          Proceed to Checkout
-        </button>
-      ) : (
-        <div className="checkout-form-container">
-          <h3 className='checkout-headig'>Enter your details</h3>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handlePayment();
-            }}
-          >
-            <input
-              type="text"
-              name="name"
-              value={userDetails.name}
-              onChange={handleInputChange}
-              placeholder="Name"
-              className="checkout-input"
-            />
-            {formErrors.name && <p className="error">Name is required</p>}
-            
-            <input
-              type="email"
-              name="email"
-              value={userDetails.email}
-              onChange={handleInputChange}
-              placeholder="Email"
-              className="checkout-input"
-            />
-            {formErrors.email && <p className="error">Email is required</p>}
-            
-            <input
-              type="text"
-              name="contact"
-              value={userDetails.contact}
-              onChange={handleInputChange}
-              placeholder="Contact Number"
-              className="checkout-input"
-            />
-            {formErrors.contact && <p className="error">Contact is required</p>}
-            
-            <button type="submit" className="checkout-submit-btn">
-             Submit
-            </button>
-          </form>
-        </div>
-      )}
-    </>
+    <div className="payment-container">
+      <h2>Review & Pay</h2>
+      <p><strong>Name:</strong> {userDetails.name}</p>
+      <p><strong>Email:</strong> {userDetails.email}</p>
+      <p><strong>Mobile:</strong> {userDetails.mobile}</p>
+      <p><strong>Total Amount:</strong>  &nbsp;  <b>Rs. {totalAmount}</b></p>
+      <button onClick={handlePayment} className="btn btn-success">
+        Pay Now
+      </button>
+    </div>
   );
 };
 
