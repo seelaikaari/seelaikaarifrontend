@@ -3,7 +3,7 @@ import {Link,NavLink} from "react-router-dom"
 import { useState } from "react";
 
 //Css
-import "./NavBar.css";
+import "../NavBar/Navbar.css";
 
 //icons
 import { FaRegUserCircle,FaRegHeart } from "react-icons/fa";
