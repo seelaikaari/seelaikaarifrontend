@@ -5,7 +5,9 @@ import "../Checkout/Checkout.css";
 
 function Checkout() {
   const location = useLocation();
-  const { cartItems, totalAmount } = location.state || { cartItems: [], totalAmount: 0 };
+  const { cartItems = [], totalAmount = 0 } = location.state || {}; // Ensuring default values
+  console.log(totalAmount);
+  
 
   const [showPayment, setShowPayment] = useState(false);
 
@@ -19,8 +21,6 @@ function Checkout() {
     city: "",
     pincode: "",
   });
-  console.log(cartItems);
-  
 
   const [formErrors, setFormErrors] = useState({});
 
@@ -48,76 +48,72 @@ function Checkout() {
     if (validateForm()) {
       setShowPayment(true);
       console.log(userDetails);
-      
     }
   };
 
   return (
-    <div className="container">
+    <div className="container chk-out">
       <h2>Enter Shipping Details</h2>
       {!showPayment ? (
-       <div className="row">
-        <div className="col-md-6">
-        <form onSubmit={handleSubmit} >
-          <div className="row">
-            {Object.keys(userDetails).map((field) => (
-              <div key={field} className="form-group col-md-6">
-                <label htmlFor={field}>
-                  {field.charAt(0).toUpperCase() + field.slice(1)}:
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id={field}
-                  name={field}
-                  value={userDetails[field]}
-                  onChange={handleInputChange}
-                  placeholder={`Enter ${field}`}
-                />
-                {formErrors[field] && <p className="error">{formErrors[field]}</p>}
+        <div className="row">
+          {/* Shipping Details Form */}
+          <div className="col-md-8 form-contains">
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                {Object.keys(userDetails).map((field) => (
+                  <div key={field} className="form-group col-md-6">
+                    <label htmlFor={field}>
+                      {field.charAt(0).toUpperCase() + field.slice(1)}:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id={field}
+                      name={field}
+                      value={userDetails[field]}
+                      onChange={handleInputChange}
+                      placeholder={`Enter ${field}`}
+                    />
+                    {formErrors[field] && <p className="error">{formErrors[field]}</p>}
+                  </div>
+                ))}
+                <div className="col-12 text-center">
+                  <button type="submit" className="w-100 btn btn-primary mt-2 mb-3">
+                    Continue
+                  </button>
+                </div>
               </div>
-            ))}
-            <div className="col-12 text-center">
-              <button type="submit" className="w-100 btn btn-primary">
-                Continue
-              </button>
-            </div>
+            </form>
           </div>
-        </form>
+
+          {/* Cart Items Display */}
+          <div className="col-md-4">
+            <div className="row">
+              {cartItems.map((item, index) => (
+                <div className="col-12 d-flex align-items-center mb-3" key={index}>
+                  <div className="col-2">
+                    <img src={item.image} alt={item.name} className="img-fluid" />
+                  </div>
+                  <div className="col-10  crt-details">
+                    <h3>{item.name}</h3>
+                    <p>Price: {item.price}</p>
+                    <p>Quantity: {item.quantity}</p>
+                  </div>
+                  
+
+                </div>
+              ))}
+              <div className="col-12 text-center final-price"><p> Total Rs: {totalAmount}</p></div>
+            </div>
+
+          </div>
         </div>
-        <div className="col-md-6">
-            {cartItems.map((item,index)=>{
-                
-                return(
-                    // <div key={item.id}>
-                    //     <h3>{item.name}</h3>
-                    //     <p>Price: {item.price}</p>
-                    //     <p>Quantity: {item.quantity}</p>
-                    // </div>
-                    <div className="row razorpay-items" key={index}>
-                        <div className="col-3 ">
-                            <img src={item.image} alt={item.name} className="w-100"/>
-                        </div>
-                        <div className="col-9" >
-                            <h3>{item.name}</h3>
-                            <p>Price: {item.price}</p>
-                            <p>Quantity: {item.quantity}</p>
-                        </div>
-                       
-
-
-                        </div>
-                )
-            })}
-        </div>
-
-       </div>
       ) : (
-        <RazorpayPayment 
-          totalAmount={totalAmount} 
-          isTermsAccepted={true} 
-          setCartItems={() => {}} 
-          userDetails={userDetails} 
+        <RazorpayPayment
+          totalAmount={totalAmount}
+          isTermsAccepted={true}
+          setCartItems={() => console.log("Clearing Cart...")} 
+          userDetails={userDetails}
         />
       )}
     </div>
