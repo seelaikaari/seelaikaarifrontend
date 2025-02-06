@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../api/fetchProduct";
 import ProductSideBar from "../../Components/productsidebar/ProductSidebar.jsx";
 import "./Product.css";
-import Items from "../../Components/items/items.jsx";
+import Items from "../../Components/items/Items.jsx";
 import { FaSearchMinus, FaFilter } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import WishlistNotification from '../../Components/wishlist/WishlistNotification.jsx';
