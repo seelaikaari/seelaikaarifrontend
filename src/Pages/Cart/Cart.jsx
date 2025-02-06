@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Cart.css';
-import { FaTrashAlt } from 'react-icons/fa';
-import RazorpayPayment from '../RazorpayPayment/RazorpayPayment';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Cart.css";
+import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from "../../Components/emptycart/Emptycart";
@@ -14,11 +14,15 @@ const DisclaimerModal = ({ showModal, handleClose }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <h3 className="modal-header">Terms & Conditions</h3>
-        <p>* By proceeding, you agree to our return, exchange, and product policies.</p>
-        <p>* No damage</p>
+        <p> * By proceeding, you agree to our return, exchange, and product policies.</p>
+        <p> * No damage</p>
         <div className="modal-footer">
-          <button className="modal-btn cancel" onClick={() => handleClose(false)}>Cancel</button>
-          <button className="modal-btn accept" onClick={() => handleClose(true)}>Agree</button>
+          <button className="modal-btn cancel" onClick={() => handleClose(false)}>
+            Cancel
+          </button>
+          <button className="modal-btn accept" onClick={() => handleClose(true)}>
+            Agree
+          </button>
         </div>
       </div>
     </div>
@@ -31,6 +35,7 @@ const Cart = () => {
   const addedcart = useSelector((state) => state.carts.carts);
 
   const [cartItems, setCartItems] = useState([]);
+
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -89,49 +94,61 @@ const Cart = () => {
       {cartItems.length > 0 ?  <> 
         <div className="cart-layout">
         <div className="cart-items">
-      
-           { cartItems.map((item) => (
-              <div key={item.id} className="cart-card">
-                <img src={item.image} alt={item.name} className="cart-img" />
-                <div className="cart-details">
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <p>
-                    <strong>Size:</strong> {item.size}
-                  </p>
-                  <div className="cart-actions">
-                    <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
-                    <div className="quantity-controls">
-                      <button onClick={() => updateQuantity(item.id, -1)} className="cart-decrease-btn">-</button>
-                      <span className="cart-quantity">{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, 1)} className="cart-increase-btn">+</button>
+          {cartItems.map((item) => (
+            <div key={item.id} className="cart-card">
+              <img src={item.image} alt={item.name} className="cart-img" />
+              <div className="cart-details">
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+                <p>
+                  <strong>Size:</strong> {item.size}
+                </p>
+                <div className="cart-actions">
+                  <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
+                  <br />
+                  <div className="quantity-controls">
+                    <div className="decrease-btn">
+                      <FaMinusCircle
+                        onClick={() => updateQuantity(item.id, -1)}
+                        className="cart-decrease-btn"
+                      />
                     </div>
-                    <button className="remove-btn" onClick={() => removeItem(item.id)}>
-                      <FaTrashAlt />
-                    </button>
+                    <span className="cart-quantity">{item.quantity}</span>
+                    <div className="increase-btn">
+                      <FaPlusCircle
+                        onClick={() => updateQuantity(item.id, 1)}
+                        className="cart-increase-btn"
+                      />
+                    </div>
                   </div>
+                  <button className="remove-btn" onClick={() => removeItem(item.id)}>
+                    <FaTrashAlt />
+                  </button>
                 </div>
               </div>
-            ))
-}
+            </div>
+          ))}
         </div>
 
         <div className="cart-summary">
           <h3 className="order-head">Order Summary</h3>
-          <p>
+          <p className="price">
             Subtotal: Rs. <strong>{getTotalPrice()}</strong>
           </p>
-          <div className="terms">
-            <label>
-              <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsCheckbox} /> I agree with Terms & Conditions
-            </label>
-          </div>
-          <RazorpayPayment totalAmount={getTotalPrice()} isTermsAccepted={isTermsAccepted} setCartItems={setCartItems} />
-          <button className="continue-shopping-btn" onClick={() => navigate('/Product')}>
+          <button 
+            className="checkout-btn"
+            onClick={() => navigate('/checkout', { state: { cartItems, totalAmount: getTotalPrice() } })}
+          >
+            Proceed to Checkout
+          </button>
+          <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
             Continue Shopping
           </button>
         </div>
-        
+      </div>
+
+   
+
       <DisclaimerModal showModal={showModal} handleClose={handleTermsClose} />
       </div></>  : 
             <EmptyCart />
