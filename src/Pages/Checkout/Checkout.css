@@ -1,4 +1,23 @@
-.razorpay-items{
-  
-    flex-direction: row;
+
+.final-price{
+    font-size: 20px;
+    font-weight: bold;
+}
+.chk-out{
+    padding: 20px;
+}
+.form-contains{
+    padding: 7px 32px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.form-group{
+    padding: 10px;
+}
+.crt-details{
+    padding-left: 26px;
+}
+.crt-details>h3{
+    font-size: 20px;
+   
 }
