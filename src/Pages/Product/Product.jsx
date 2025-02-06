@@ -1,6 +1,5 @@
-
 // export default Product;
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../api/fetchProduct";
 import ProductSideBar from "../../Components/productsidebar/ProductSidebar.jsx";
@@ -105,35 +104,48 @@ const Product = () => {
             isMobileFilterOpen ? "open" : ""
           }`}
         >
-          <h2 className="filter-heading " style={{justifyContent:isMobileFilterOpen ? "space-between":"normal"}}>
-            <span className="filter-icon">🔍</span> Filter
-            <span style={{display:isMobileFilterOpen?"block":"none"}}   onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}><MdClose /></span>
-          </h2>
-          <ProductSideBar
-            filopt={[maxPrice, minPrice]}
-            title={"price"}
-            handleChange={handlePriceFilter}
-          />
-          <ProductSideBar
-            filopt={getUniqueValues("category")}
-            title={"category"}
-            handleChange={handleChange}
-          />
-          <ProductSideBar
-            filopt={getUniqueValues("material")}
-            title={"material"}
-            handleChange={handleChange}
-          />
-          <ProductSideBar
-            filopt={getUniqueValues("color")}
-            title={"color"}
-            handleChange={handleChange}
-          />
-          <ProductSideBar
-            filopt={getUniqueValues("size")}
-            title={"size"}
-            handleChange={handleChange}
-          />
+          <div className="container-sticky">
+            {" "}
+            <h2
+              className="filter-heading "
+              style={{
+                justifyContent: isMobileFilterOpen ? "space-between" : "normal",
+              }}
+            >
+              <span className="filter-icon">🔍</span> Filter
+              <span
+                style={{ display: isMobileFilterOpen ? "block" : "none" }}
+                onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
+              >
+                <MdClose />
+              </span>
+            </h2>
+            <ProductSideBar
+              filopt={[maxPrice, minPrice]}
+              title={"price"}
+              handleChange={handlePriceFilter}
+            />
+            <ProductSideBar
+              filopt={getUniqueValues("category")}
+              title={"category"}
+              handleChange={handleChange}
+            />
+            <ProductSideBar
+              filopt={getUniqueValues("material")}
+              title={"material"}
+              handleChange={handleChange}
+            />
+            <ProductSideBar
+              filopt={getUniqueValues("color")}
+              title={"color"}
+              handleChange={handleChange}
+            />
+            <ProductSideBar
+              filopt={getUniqueValues("size")}
+              title={"size"}
+              handleChange={handleChange}
+            />
+          </div>
         </div>
 
         {/* Product List */}
@@ -141,7 +153,9 @@ const Product = () => {
           <div className="row">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((item, index) => (
-                <Items prdts={item} key={index} />
+                <div className="col-lg-3 col-md-4 col-6 pb-3" key={index}>
+                  <Items prdts={item} />
+                </div>
               ))
             ) : (
               <div className="search-not-found-container">

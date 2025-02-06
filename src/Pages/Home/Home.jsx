@@ -1,8 +1,10 @@
 import HomeCategory from "../../Components/homecategories/HomeCategory";
 //images
-import banner1 from "../../assets/images/banner/banner1.png"
-import banner2 from "../../assets/images/banner/banner1.png"
-import image1 from "../../assets/images/homepage/1.jpg"
+// import banner1 from "../../assets/images/banner/banner1.png"
+// import banner2 from "../../assets/images/banner/banner1.png"
+import banner1 from "../../assets/images/banner/1.webp"
+import banner2 from "../../assets/images/banner/2.webp"
+import image1 from "../../assets/images/homepage/11.jpg"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -20,8 +22,15 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 //Css
 import "./Home.css"
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const navigate =useNavigate();
+
+  const handleNavigate=()=>{
+    navigate("/Product")
+  }
   const homeBanner=[
     {
       img:banner1,
@@ -126,7 +135,7 @@ const Home = () => {
               <div className="col-md-4">
                 <h4 className="sec-2-h-Ct">Wedding Wardrobe Essentials!</h4>
                 <p className="sec-2-p-ct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia dolore ut harum.</p>
-                <button className="btn-Shop-t"><AiOutlineShoppingCart/> Shop Now </button>
+                <button className="btn-Shop-t" onClick={handleNavigate}><AiOutlineShoppingCart/> Shop Now </button>
               </div>
               <div className="col-md-8">
                 <Swiper
@@ -259,7 +268,7 @@ const Home = () => {
               <div className="col-md-4">
                 <h4 className="sec-2-h-Ct">Best Selling Products!</h4>
                 <p className="sec-2-p-ct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia dolore ut harum.</p>
-                <button className="btn-Shop-t"><AiOutlineShoppingCart/> Shop Now </button>
+                <button className="btn-Shop-t" onClick={handleNavigate}><AiOutlineShoppingCart/> Shop Now </button>
               </div>
             </div>
         </div>

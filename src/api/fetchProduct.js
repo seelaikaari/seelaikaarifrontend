@@ -1,6 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import img1 from "../assets/images/products/product-1.jpg";
 import img2 from '../assets/images/products/product-2.jpg'
+import img3 from "../assets/images/products/pr1.jpg";
+import img4 from "../assets/images/products/pr2.jpg";
+import img5 from "../assets/images/products/pr3.jpg";
+import img6 from "../assets/images/products/pr4.jpg";
+import img7 from "../assets/images/products/pr5.jpg";
 // import img2 from ''
 const products = [
   {
@@ -90,7 +95,7 @@ const products = [
       { name: "Turquoise" },
       { name: "Indigo" },
     ],
-    images: [{ url: img1 }],
+    images: [{ url: img3 }],
     stock: 76,
     reviews: [
       { customerName: "Roch Mangeney", rating: 4, reviewDate: "11/3/2023" },
@@ -115,7 +120,7 @@ const products = [
     brand: "Wikizz",
     material: "Linen",
     color: [{ name: "Crimson" }],
-    images: [{ url: img1 }],
+    images: [{ url: img4 }],
     stock: 20,
     reviews: [
       { customerName: "Cori Coverlyn", rating: 4, reviewDate: "3/15/2020" },
@@ -208,7 +213,7 @@ const products = [
     ],
     images: [
       {
-        url:img1
+        url:img5
       }
     ],
     stock: 37,
@@ -280,7 +285,7 @@ const products = [
       { name: "Pink" },
     ],
     images: [{
-      url:img1
+      url:img3
     }],
     stock: 47,
     reviews: [
@@ -339,7 +344,9 @@ const products = [
     brand: "Jabbertype",
     material: "Wool",
     color: [{ name: "Red" }],
-    images: [],
+    images: [{
+      url:img7
+    }],
     stock: 12,
     reviews: [
       { customerName: "Latia Kohn", rating: 5, reviewDate: "7/8/2020" },
@@ -374,7 +381,7 @@ const products = [
     ],
     images: [
       {
-        url:img1
+        url:img4
       }
     ],
     stock: 16,
@@ -442,7 +449,9 @@ const products = [
     brand: "Wikizz",
     material: "Chiffon",
     color: [{ name: "Teal" }],
-    images: [],
+    images: [{
+      url:img7
+    }],
     stock: 26,
     reviews: [
       { customerName: "Perry Hinge", rating: 0, reviewDate: "9/27/2020" },
@@ -855,7 +864,9 @@ const products = [
       { name: "Puce" },
       { name: "Goldenrod" },
     ],
-    images: [],
+    images: [{
+      url:img6
+    }],
     stock: 29,
     reviews: [
       { customerName: "Bibi Ramsdale", rating: 3, reviewDate: "12/21/2021" },
@@ -1372,7 +1383,9 @@ const products = [
       { name: "Khaki" },
       { name: "Purple" },
     ],
-    images: [],
+    images: [{
+      url:img5
+    }],
     stock: 37,
     reviews: [
       { customerName: "Alicia Hymers", rating: 0, reviewDate: "5/4/2024" },
@@ -1644,7 +1657,7 @@ const products = [
     color: [],
     images: [
       {
-        url: img1,
+        url: img6,
       },
       {
         url: img1,
@@ -1695,7 +1708,7 @@ const products = [
     ],
     images: [
       {
-        url: img1,
+        url: img7,
       },
       {
         url: img1,
@@ -1773,7 +1786,9 @@ const products = [
       { name: "Green" },
       { name: "Orange" },
     ],
-    images: [],
+    images: [{
+      url:img4
+    }],
     stock: 23,
     reviews: [
       { customerName: "Kory McKitterick", rating: 4, reviewDate: "5/14/2021" },
@@ -1814,7 +1829,7 @@ const products = [
     ],
     images: [
       {
-        url: img1,
+        url: img7,
       },
       {
         url: img1,
@@ -1865,7 +1880,7 @@ const products = [
     color: [{ name: "Yellow" }],
     images: [
       {
-        url: img1,
+        url: img6,
       },
     ],
     stock: 5,
@@ -1998,7 +2013,9 @@ const products = [
       { name: "Violet" },
       { name: "Orange" },
     ],
-    images: [],
+    images: [{
+      url:img3
+    }],
     stock: 31,
     reviews: [
       { customerName: "Goldy McMearty", rating: 3, reviewDate: "5/4/2023" },
@@ -3025,7 +3042,9 @@ const products = [
     brand: "Nlounge",
     material: "Wool",
     color: [{ name: "Blue" }, { name: "Aquamarine" }, { name: "Teal" }],
-    images: [],
+    images: [{
+      url:img4
+    }],
     stock: 49,
     reviews: [
       { customerName: "Carny Lillicrap", rating: 2, reviewDate: "4/28/2025" },
@@ -3271,7 +3290,9 @@ const products = [
       { name: "Blue" },
       { name: "Pink" },
     ],
-    images: [],
+    images: [{
+      url:img2
+    }],
     stock: 2,
     reviews: [
       { customerName: "Forester Haydn", rating: 2, reviewDate: "12/30/2025" },

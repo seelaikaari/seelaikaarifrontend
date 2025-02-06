@@ -1,86 +1,4 @@
-/* 
-.filter-heading {
-    display: flex;
-    align-items: center;
-    font-size: 1.5em;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
 
-  .filter-icon {
-    margin-right: 10px;
-    font-size: 1.2em;
-    color: #e91e63;
-    transition: transform 0.3s ease;
-  }
-  
-
-  .filter-heading:hover {
-    color: #e91e63;
-  }
-
-  .filter-heading:hover .filter-icon {
-    transform: scale(1.2);
-  }
-  
-
-
-.search-not-found-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f9f9f9;
-  color: #333;
-  font-family: 'Arial', sans-serif;
-}
-
-.search-not-found-container .not-found-icon {
-  font-size: 100px;
-  color: #ff6347;
-  margin-bottom: 20px;
-}
-
-.search-not-found-container h2 {
-  font-size: 2rem;
-  text-align: center;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.search-not-found-container p {
-  font-size: 1.1rem;
-  text-align: center;
-  color: #777;
-  max-width: 600px;
-  margin-bottom: 20px;
-}
-
-.search-not-found-container .back-home-btn {
-  padding: 10px 20px;
-  background-color: #ff6347;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.search-not-found-container .back-home-btn:hover {
-  background-color: #e5533d;
-}
-.not-found-icon {
-  font-size: 100px;
-  color: #ff6347;
-  margin-bottom: 20px;
-}
- */
 /* Mobile Filter Toggle Button */
 .mobile-filter-toggle {
   display: none; /* Hidden by default */
@@ -218,4 +136,9 @@
 }
 .product-pages{
   margin-top: 40px;
+}
+
+.container-sticky{
+  position: sticky;
+  top: 90px;
 }

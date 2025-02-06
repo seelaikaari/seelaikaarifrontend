@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import Images
-import Prodetail1 from "../../assets/images/ProductDetails/1.jpg"
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -14,7 +13,9 @@ import "./ProductDetailSlide.css"
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-const ProductDetailSlide = () => {
+const ProductDetailSlide = ({img}) => {
+    console.log(img);
+    
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <>
@@ -51,22 +52,22 @@ const ProductDetailSlide = () => {
                         }}
                     >
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pro-det-thumb-img' />
+                            <img src={img[0].url} className='pro-det-thumb-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pro-det-thumb-img' />
+                            <img src={img[0].url} className='pro-det-thumb-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pro-det-thumb-img' />
+                            <img src={img[0].url} className='pro-det-thumb-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pro-det-thumb-img' />
+                            <img src={img[0].url} className='pro-det-thumb-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pro-det-thumb-img' />
+                            <img src={img[0].url} className='pro-det-thumb-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pro-det-thumb-img' />
+                            <img src={img[0].url} className='pro-det-thumb-img' />
                         </SwiperSlide>
                     </Swiper>
                 </div>
@@ -79,22 +80,22 @@ const ProductDetailSlide = () => {
                         className="mySwiper2 prod-detail-slides"
                     >
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pd-s-img' />
+                            <img src={img[0].url} className='pd-s-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pd-s-img' />
+                            <img src={img[0].url} className='pd-s-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pd-s-img' />
+                            <img src={img[0].url} className='pd-s-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pd-s-img' />
+                            <img src={img[0].url} className='pd-s-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pd-s-img' />
+                            <img src={img[0].url} className='pd-s-img' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img src={Prodetail1} className='pd-s-img' />
+                            <img src={img[0].url} className='pd-s-img' />
                         </SwiperSlide>
 
                     </Swiper>

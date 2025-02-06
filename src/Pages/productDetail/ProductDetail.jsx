@@ -3,12 +3,24 @@ import SimilarProduct from "../../Components/similarproduct/SimilarProduct";
 import { IoCart } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import "./ProductDetail.css";
-import { useLocation } from "react-router-dom";
-
+import { useLocation,useNavigate } from "react-router-dom";
+import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
+import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
+import { useDispatch } from 'react-redux';
 const ProductDetail = () => {
   const location = useLocation();
   const productItem = location.state?.product;
-  
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
+
+  const handleAddtoWishList=()=>{
+    dispatch(addToWishlist(productItem));
+  }
+
+  const handleAddtoCard=()=>{
+    dispatch(addToCart(productItem));
+    navigate("/cart", { state: { product: productItem } }); 
+  }
   return (
     productItem && (
       <>
@@ -79,10 +91,10 @@ const ProductDetail = () => {
                 </div>
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
-                  <button className="btn-Shop-t">
-                    <IoCart /> Add to Cart
+                  <button className="btn-Shop-t" onClick={handleAddtoCard}>
+                    <IoCart />  Add to Cart
                   </button>
-                  <button className="btn-pr-dt-wishlist" >
+                  <button className="btn-pr-dt-wishlist" onClick={handleAddtoWishList}>
                     <FaHeart /> Add to WishList
                   </button>
                 </div>

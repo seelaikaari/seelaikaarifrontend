@@ -13,8 +13,7 @@ const Wishlist = () => {
   const dispatch = useDispatch();
 
   const handleRemoveClick = (id) => {
-    console.log(id);
-    
+  
     dispatch(removeFromWishlist(id));
   };
   return (

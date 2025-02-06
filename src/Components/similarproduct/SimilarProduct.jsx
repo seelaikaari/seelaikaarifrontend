@@ -28,12 +28,12 @@ const SimilarProduct = ({productItem}) => {
                     //     disableOnInteraction: false,
                     // }}
                     pagination={{
-                        clickable: true,
+                        clickable: false,
                     }}
-                    navigation={true}
+                    navigation={false}
                     breakpoints={{
                         380: {
-                            slidesPerView: 1,
+                            slidesPerView: 2,
                             spaceBetween: 20,
                         },
                         640: {
@@ -45,11 +45,11 @@ const SimilarProduct = ({productItem}) => {
                             spaceBetween: 40,
                         },
                         1024: {
-                            slidesPerView: 3,
+                            slidesPerView: 5,
                             spaceBetween: 50,
                         },
                     }}
-                    modules={[Autoplay, Pagination, Navigation]}
+                    modules={[Autoplay, Navigation]}
                     className="mySwiper similar-product-swiper"
                 >
                     {products.map((item,index)=>{
