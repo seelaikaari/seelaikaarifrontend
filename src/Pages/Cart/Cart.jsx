@@ -103,20 +103,21 @@ const Cart = () => {
                 </p>
                 <div className="cart-actions">
                   <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
+                  <br />
                   <div className="quantity-controls">
-                   <div className="decrease-btn">
-                   <FaMinusCircle
-                      onClick={() => updateQuantity(item.id, -1)}
-                      className="cart-decrease-btn"
-                    />
-                   </div>
+                    <div className="decrease-btn">
+                      <FaMinusCircle
+                        onClick={() => updateQuantity(item.id, -1)}
+                        className="cart-decrease-btn"
+                      />
+                    </div>
                     <span className="cart-quantity">{item.quantity}</span>
-                <div className="increase-btn">
-                <FaPlusCircle 
-                      onClick={() => updateQuantity(item.id, 1)}
-                      className="cart-increase-btn"
-                    />
-                </div>
+                    <div className="increase-btn">
+                      <FaPlusCircle
+                        onClick={() => updateQuantity(item.id, 1)}
+                        className="cart-increase-btn"
+                      />
+                    </div>
                   </div>
                   <button className="remove-btn" onClick={() => removeItem(item.id)}>
                     <FaTrashAlt />
