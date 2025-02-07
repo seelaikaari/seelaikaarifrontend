@@ -196,7 +196,6 @@ const Home = () => {
                     <HomeCategory items={items} />
                   </div>
                 )}
-                
               </div>
         </div>
       </section>
