@@ -9,3 +9,17 @@
   margin-top: 20px;
   margin-left: 50px;
 }
+
+@media(max-width:767px){
+  .payment-container{
+    text-align: center;
+}
+ .payment-container>p{
+  padding-top: 14px;
+ 
+}
+.checkoutButton{
+    margin-left: 0 !important;
+
+}
+}

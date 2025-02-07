@@ -1,4 +1,3 @@
-/* Cart Container */
 .cart-container {
   width: 80%;
   margin: auto;
@@ -10,6 +9,41 @@ h2 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
+}
+/* Floral Decorations (Only Visible When Items Exist) */
+.floral-decoration-top-left {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 120px;
+  height: auto;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.floral-decoration-bottom-right {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 120px;
+  height: auto;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.floral-summary-decoration {
+  display: block;
+  margin: 10px auto;
+  width: 80px;
+  height: auto;
+  opacity: 0.7;
+}
+
+/* Small Floral Icon for Product Names */
+.floral-icon {
+  width: 25px;
+  height: auto;
+  margin-right: 5px;
 }
 
 /* Cart Layout */
@@ -37,13 +71,14 @@ h2 {
   align-items: center;
 }
 
-.cart-img {
+.cart-card>img.cart-img {
   width: 200px;
   height: 260px;
   object-fit: contain;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   border-radius: 5px;
   padding: 5px;
+  border-radius: 114px;
 }
 
 .cart-details {
@@ -53,6 +88,10 @@ h2 {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
+}
+.cart-details>p{
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .price {
@@ -68,13 +107,13 @@ h2 {
   gap: 19px;
   border: 1px solid #dbdbdb;
   border-radius: 5px;
-  padding:5px 10px;
+  padding: 5px 10px;
 }
 
 .cart-quantity {
   font-size: 18px;
   /* font-weight: bold; */
- width: 32px;
+  width: 32px;
   text-align: center;
 }
 
@@ -227,15 +266,18 @@ h2 {
   .modal-footer {
     gap: 10px;
   }
-  .remove-btn{
+  .remove-btn {
     bottom: 45px !important;
   }
-
 }
-@media (min-width: 768px) and (max-width:1023px){
+@media (min-width: 768px) and (max-width: 1023px) {
   .cart-container {
     width: 96%;
-    }
+  }
+  .cart-details {
+    font-size: 13px;
+    line-height: 17px;
+  }
 }
 @media (max-width: 767px) {
   .cart-layout {
@@ -256,7 +298,6 @@ h2 {
   }
 
   .remove-btn {
-  
     bottom: 26px;
     right: unset;
     align-self: flex-end;
@@ -265,5 +306,10 @@ h2 {
 
   .cart-details {
     gap: 10px;
+  }
+  .floral-decoration-top-left {
+    left: -38px;
+    top: -9px;
+    width: 107px;
   }
 }

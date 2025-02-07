@@ -21,3 +21,20 @@
     font-size: 20px;
    
 }
+.img-fluid{
+    border-radius: 10px;
+}
+.chkout-summary{
+   padding-left: 23px;
+}
+
+@media (max-width: 767px) {
+    .chkout-summary{
+        padding-top: 25px;
+    }
+    .form-control{
+        padding: 7px;
+    }
+   
+
+}

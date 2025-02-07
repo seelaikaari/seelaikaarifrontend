@@ -55,7 +55,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, setCartItems }) => {
       <p><strong>Email:</strong> {userDetails.email}</p>
       <p><strong>Mobile:</strong> {userDetails.mobile}</p>
       <p><strong>Total Amount:</strong>  &nbsp;  <b>Rs. {totalAmount}</b></p>
-      <button onClick={handlePayment} className="btn btn-success">
+      <button onClick={handlePayment} className="btn btn-success checkoutButton">
         Pay Now
       </button>
     </div>

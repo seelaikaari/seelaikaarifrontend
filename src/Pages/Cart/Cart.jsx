@@ -1,10 +1,15 @@
 import React, { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "../Cart/Cart.css";
+import "./Cart.css";
 import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
+import emptyCartImg from "../../assets/images/wishlist/empty-cart.png"
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from "../../Components/emptycart/Emptycart";
+import flow1 from "../../../public/images-floral/f-1.jpg"
+import flow2 from "../../../public/images-floral/f-2.jpg"
+
 
 const DisclaimerModal = ({ showModal, handleClose }) => {
   if (!showModal) return null;
@@ -88,73 +93,97 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-container">
+    <div className="cart-container" style={{ position: "relative" }}>
+      {cartItems.length > 0 && (
+        <>
+        
+          <img src={flow1} alt="Floral Design" className="floral-decoration-top-left" />
+          {/* <img src={flow2} alt="Floral Design" className="floral-decoration-bottom-right" /> */}
+        </>
+      )}
+  
       <h2>Shopping Cart</h2>
-      {cartItems.length > 0 ?  <> 
-        <div className="cart-layout">
-        <div className="cart-items">
-          {cartItems.map((item) => (
-            <div key={item.id} className="cart-card">
-              <img src={item.image} alt={item.name} className="cart-img" />
-              <div className="cart-details">
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <p>
-                  <strong>Size:</strong> {item.size}
-                </p>
-                <div className="cart-actions">
-                  <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
-                  <br />
-                  <div className="quantity-controls">
-                    <div className="decrease-btn">
-                      <FaMinusCircle
-                        onClick={() => updateQuantity(item.id, -1)}
-                        className="cart-decrease-btn"
-                      />
-                    </div>
-                    <span className="cart-quantity">{item.quantity}</span>
-                    <div className="increase-btn">
-                      <FaPlusCircle
-                        onClick={() => updateQuantity(item.id, 1)}
-                        className="cart-increase-btn"
-                      />
+  
+      {cartItems.length > 0 ? (
+        <>
+          <div className="cart-layout">
+            <div className="cart-items">
+              {cartItems.map((item) => (
+                <div key={item.id} className="cart-card">
+                  <img src={item.image} alt={item.name} className="cart-img" />
+                  <div className="cart-details">
+                    <h3>
+                      <img src={flow1} alt="Floral Icon" className="floral-icon" />
+                      {item.name}
+                    </h3>
+                    <p>{item.description}</p>
+                    <p>
+                      <strong>Size:</strong> {item.size}
+                    </p>
+                    <div className="cart-actions">
+                      <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
+                      <br />
+                      <div className="quantity-controls">
+                        <div className="decrease-btn">
+                          <FaMinusCircle
+                            onClick={() => updateQuantity(item.id, -1)}
+                            className="cart-decrease-btn"
+                          />
+                        </div>
+                        <span className="cart-quantity">{item.quantity}</span>
+                        <div className="increase-btn">
+                          <FaPlusCircle
+                            onClick={() => updateQuantity(item.id, 1)}
+                            className="cart-increase-btn"
+                          />
+                        </div>
+                      </div>
+                      <button className="remove-btn" onClick={() => removeItem(item.id)}>
+                        <FaTrashAlt />
+                      </button>
                     </div>
                   </div>
-                  <button className="remove-btn" onClick={() => removeItem(item.id)}>
-                    <FaTrashAlt />
-                  </button>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-
-        <div className="cart-summary">
-          <h3 className="order-head">Order Summary</h3>
-          <p className="price">
-            Subtotal: Rs. <strong>{getTotalPrice()}</strong>
-          </p>
-          <button 
-            className="checkout-btn"
-            onClick={() => navigate('/checkout', { state: { cartItems, totalAmount: getTotalPrice() } })}
-          >
-            Proceed to Checkout
-          </button>
-          <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
-            Continue Shopping
-          </button>
-        </div>
-      
-
-   
-
-      <DisclaimerModal showModal={showModal} handleClose={handleTermsClose} />
-      </div></>  : 
-            <EmptyCart />
-          }
-
+  
+            <div className="cart-summary">
+              <h3 className="order-head">Order Summary</h3>
+              <img src={flow2} alt="Floral Design" className="floral-summary-decoration" />
+              <p className="price">
+                Subtotal: Rs. <strong>{getTotalPrice()}</strong>
+              </p>
+              <button
+                className="checkout-btn"
+                onClick={() => navigate('/checkout', { state: { cartItems, totalAmount: getTotalPrice() } })}
+              >
+                Proceed to Checkout
+              </button>
+              <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        // <EmptyCart />
+        <section className="wishList-empty">
+          <div className="container">
+            <div className="inner-empt-wlist">
+              <img src={emptyCartImg} width="200px" alt="" />
+              <h5 className="wish-empty-title text-center">
+              Oops! No items found. Browse and add some
+              </h5>
+              <Link to="/Product" className="empty-wishlist-btn">
+                Shop Now
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
+  
 };
 
 export default Cart;
