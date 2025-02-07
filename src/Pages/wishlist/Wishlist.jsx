@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 // Images
-import image1 from "../../assets/images/homepage/1.jpg"
 import emptyWishlist from "../../assets/images/wishlist/empty-wishlist.png"
 import "../wishlist/Wishlist.css";
 import { MdOutlineCurrencyRupee, MdOutlineDeleteOutline } from "react-icons/md";
