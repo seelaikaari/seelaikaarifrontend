@@ -147,7 +147,7 @@
 .hom-sec3-cat-bg {
     position: relative;
     width: 100%;
-    background: none; /* Remove direct background image */
+    background: #f8f5f2 ; /* Remove direct background image */
     padding: 140px 0;
 }
 
