@@ -1,7 +1,7 @@
 import React from 'react';
 import "../RazorpayPayment/RazorpayPayment.css";
 
-const RazorpayPayment = ({ totalAmount, userDetails, setCartItems }) => {
+const RazorpayPayment = ({ totalAmount, userDetails, setCartItems, setShowPayment }) => {
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -49,15 +49,30 @@ const RazorpayPayment = ({ totalAmount, userDetails, setCartItems }) => {
   };
 
   return (
-    <div className="payment-container">
+    <div className="payment-container text-center">
       <h2>Review & Pay</h2>
       <p><strong>Name:</strong> {userDetails.name}</p>
       <p><strong>Email:</strong> {userDetails.email}</p>
       <p><strong>Mobile:</strong> {userDetails.mobile}</p>
-      <p><strong>Total Amount:</strong>  &nbsp;  <b>Rs. {totalAmount}</b></p>
-      <button onClick={handlePayment} className="btn btn-success">
+      <p><strong>Total Amount:</strong> <b>Rs. {totalAmount}</b></p>
+
+      {/* Payment Button */}
+      <button onClick={handlePayment} className="btn btn-success checkoutButton">
         Pay Now
       </button>
+
+      {/* Edit Details Button */}
+      <button 
+        className="btn btn-warning mt-3 mx-2"
+        onClick={() => setShowPayment(false)}
+      >
+        Edit Details
+      </button>
+
+      {/* Help Text */}
+      <p className="help-text mt-2">
+        Need help? <a href="mailto:support@example.com">Contact us</a>
+      </p>
     </div>
   );
 };

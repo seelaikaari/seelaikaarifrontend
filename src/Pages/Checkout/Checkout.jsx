@@ -78,7 +78,7 @@ function Checkout() {
                   </div>
                 ))}
                 <div className="col-12 text-center">
-                  <button type="submit" className="w-100 btn btn-primary mt-2 mb-3">
+                  <button type="submit" className=" btn btn-primary mt-2 mb-3 ">
                     Continue
                   </button>
                 </div>
@@ -87,8 +87,9 @@ function Checkout() {
           </div>
 
           {/* Cart Items Display */}
-          <div className="col-md-4">
-            <div className="row">
+          <div className="col-md-4 chkout-summary">
+            <h3 className="chkout-head-summary">Order Summmary</h3>
+            <div className="row ">
               {cartItems.map((item, index) => (
                 <div className="col-12 d-flex align-items-center mb-3" key={index}>
                   <div className="col-2">
@@ -103,6 +104,7 @@ function Checkout() {
 
                 </div>
               ))}
+              <hr />
               <div className="col-12 text-center final-price"><p> Total Rs: {totalAmount}</p></div>
             </div>
 
@@ -110,11 +112,12 @@ function Checkout() {
         </div>
       ) : (
         <RazorpayPayment
-          totalAmount={totalAmount}
-          isTermsAccepted={true}
-          setCartItems={() => console.log("Clearing Cart...")} 
-          userDetails={userDetails}
-        />
+        totalAmount={totalAmount}
+        userDetails={userDetails}
+        setCartItems={() => console.log("Clearing Cart...")}
+        setShowPayment={setShowPayment} // Pass this prop to allow editing
+      />
+      
       )}
     </div>
   );
