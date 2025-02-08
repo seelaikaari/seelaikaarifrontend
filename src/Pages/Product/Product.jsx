@@ -10,8 +10,12 @@ import { MdClose } from "react-icons/md";
 import WishlistNotification from '../../Components/wishlist/WishlistNotification.jsx';
 const Product = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products, loading, error } = useSelector((state) => state.products);
 
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+console.log(products,loading,error)
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({
     category: [],
@@ -27,9 +31,6 @@ const Product = () => {
   const handleAddToWishlist = () => {
     setShowNotification(true);
   };
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
   useEffect(() => {
     setFilteredProducts(products);
@@ -110,8 +111,8 @@ const Product = () => {
           }`}
         >
           <div className="container-sticky">
-          <div >
-            {" "}
+          <div className="filterScroll" style={{height:`${window.innerHeight-50}px`,overflow:"scroll"}}>
+
             <h2
               className="filter-heading "
               style={{

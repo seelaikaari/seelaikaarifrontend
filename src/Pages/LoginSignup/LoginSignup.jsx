@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-
+import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //images
@@ -16,6 +16,7 @@ import { FcGoogle } from "react-icons/fc";
 import { IoMail } from "react-icons/io5";
 //Css
 import "../LoginSignup/LoginSignup.css";
+const API_URL = 'http://localhost:5000';
 
 const LoginSignup = () => {
     const [loginsignuotoggle, setLoginsignuotoggle] = useState(true)
@@ -23,7 +24,7 @@ const LoginSignup = () => {
         name: "",
         email: "",
         password: "",
-        phoneno: "",
+        phone: "",
     })
     const [signuperror, setSignupError] = useState({})
 
@@ -38,6 +39,7 @@ const LoginSignup = () => {
             return
         }
 
+  
         toast.success('Loged In successfully!')
         setLoginFormdata({
             email: "",
@@ -56,18 +58,30 @@ const LoginSignup = () => {
         return Object.keys(newErrors).length === 0;
     }
 
-    const handelSignupformsubmit = (e) => {
+    const handelSignupformsubmit =  async (e) => {
+        // console.log(response);
         e.preventDefault()
         if (!handelSignupformError()) {
             return
         }
-        toast.success('Log In successfully!')
-        setSignupformdata({
-            name: "",
-            email: "",
-            password: "",
-            phoneno: "",
-        })
+        try {
+            const response = await axios.post(`${API_URL}/api/users/register`, signupformdata);
+            toast.success('Signed up successfully!');
+            setSignupformdata({ name: "", email: "", password: "", phone: "" });
+          } catch (error) {
+            if (error.response) {
+              // Server responded with a status outside the 2xx range
+              console.error('Error:', error.response.data);
+              setSignupError({email:error.response.data.error});
+              toast.error(error.response.data.error || 'Registration failed');
+            } else if (error.request) {
+              console.error('No response received:', error.request);
+              toast.error('No server response');
+            } else {
+              console.error('Unexpected error:', error.message);
+              toast.error('An error occurred');
+            }
+          }
     }
     const handelSignupformError = () => {
         var newErrors = {}
@@ -79,10 +93,10 @@ const LoginSignup = () => {
             newErrors.email = "Invalid email format.";
         }
 
-        if (!signupformdata.phoneno) {
-            newErrors.phoneno = "Phone number is required.";
-        } else if (!/^\d{10}$/.test(signupformdata.phoneno)) {
-            newErrors.phoneno = "Phone number must be 10 digits.";
+        if (!signupformdata.phone) {
+            newErrors.phone = "Phone number is required.";
+        } else if (!/^\d{10}$/.test(signupformdata.phone)) {
+            newErrors.phone = "Phone number must be 10 digits.";
         }
         if (!signupformdata.password.length) {
             newErrors.password = "Password is required."
@@ -93,6 +107,7 @@ const LoginSignup = () => {
 
         return Object.keys(newErrors).length === 0;
     }
+
 
 
     return (
@@ -176,13 +191,13 @@ const LoginSignup = () => {
                                             </div>
                                             <div>
                                                 <div className="login-inp-pos">
-                                                    <input type="text" value={signupformdata.phoneno}
-                                                        onChange={(e) => setSignupformdata({ ...signupformdata, phoneno: e.target.value })}
+                                                    <input type="text" value={signupformdata.phone}
+                                                        onChange={(e) => setSignupformdata({ ...signupformdata, phone: e.target.value })}
                                                         className="login-input"
                                                         placeholder="Enter Your Phone" />
                                                     <FaPhone className="log-inp-icon" />
                                                 </div>
-                                                {signuperror.phoneno && <div className="log-err">{signuperror.phoneno}</div>}
+                                                {signuperror.phone && <div className="log-err">{signuperror.phone}</div>}
                                             </div>
                                             <div>
                                                 <div className="login-inp-pos">

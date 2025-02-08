@@ -144,3 +144,19 @@
   position: sticky;
   top: 90px;
 }
+
+
+.filterScroll {
+  -ms-overflow-style: scrollbar;
+   padding: 7px;
+}
+.filterScroll::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+.filterScroll::-webkit-scrollbar {
+  width: 4px;
+  background-color: #f5f5f5;
+}
+.filterScroll::-webkit-scrollbar-thumb {
+  background-color: #e80000;
+}

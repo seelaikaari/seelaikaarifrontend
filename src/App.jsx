@@ -15,10 +15,7 @@ import { Route,Routes } from "react-router-dom";
 
 //Css
 import './App.css'
-
 function App() {
-
-
 
   return (
     <>
