@@ -6,7 +6,6 @@ import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
 import emptyCartImg from "../../assets/images/wishlist/empty-cart.png"
 import { useDispatch, useSelector } from 'react-redux';
-import EmptyCart from "../../Components/emptycart/Emptycart";
 import flow1 from "../../assets/images/images-floral/f-1.jpg"
 import flow2 from "../../assets/images/images-floral/f-2.jpg"
 
@@ -166,7 +165,6 @@ const Cart = () => {
           </div>
         </>
       ) : (
-        // <EmptyCart />
         <section className="wishList-empty">
           <div className="container">
             <div className="inner-empt-wlist">
