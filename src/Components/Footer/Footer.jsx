@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom"
 //images
-import logo from "../../assets/images/logo-2.avif"
+import logo from "../../assets/images/logo-1.png"
 //icons
 import { IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -17,7 +17,7 @@ const Footer = () => {
                         <div className="row row-gap-4">
                             <div className="col-md-5">
                                 <Link to="/">
-                                    <img src={logo} alt="" />
+                                    <img src={logo} alt="" style={{width:"200px"}} />
                                 </Link>
                                 <ul className="footer-ul-l1">
                                     <li><IoLocationSharp/> Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
