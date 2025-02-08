@@ -22,7 +22,7 @@ const DisclaimerModal = ({ showModal, handleClose }) => {
           <button className="modal-btn accept" onClick={() => handleClose(true)}>
             Agree
           </button>
-        </div>
+        </div>  
       </div>
     </div>
   );
