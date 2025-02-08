@@ -2,6 +2,8 @@ import HomeCategory from "../../Components/homecategories/HomeCategory";
 //images
 // import banner1 from "../../assets/images/banner/banner1.png"
 // import banner2 from "../../assets/images/banner/banner1.png"
+// import image1 from "../../assets/images/homepage/1.jpg"
+
 import banner1 from "../../assets/images/banner/1.webp"
 import banner2 from "../../assets/images/banner/2.webp"
 import image1 from "../../assets/images/homepage/11.jpg"
@@ -129,7 +131,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="home-sec-2-wrapper">
+      <section className="home-sec-2-wrapper hom-sec2-bg">
         <div className="container">
             <div className="row row-gap-5">
               <div className="col-md-4">
@@ -185,7 +187,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="home-sec-2-wrapper">
+      <section className="home-sec-2-wrapper hom-sec3-cat-bg">
         <div className="container">
               <h2 className="title-home">Shop By Category</h2>
               <div className="row my-4 row-gap-4">
@@ -194,7 +196,6 @@ const Home = () => {
                     <HomeCategory items={items} />
                   </div>
                 )}
-                
               </div>
         </div>
       </section>
