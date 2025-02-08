@@ -6,8 +6,8 @@ import {
   removeFromWishlist,
 } from "../../features/products/WishlistSlice";
 import { useNavigate } from "react-router-dom";
-
-const Items = ({ prdts, handleAddToWishlist }) => {
+import {  toast } from 'react-toastify';
+const Items = ({ prdts}) => {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const navigate = useNavigate();
@@ -20,14 +20,16 @@ const Items = ({ prdts, handleAddToWishlist }) => {
   const toggleWishlist = () => {
     if (isWishlisted) {
       dispatch(removeFromWishlist(prdts.id));
+       toast.error("Removed to Wishlist ❤");
     } else {
       dispatch(addToWishlist(prdts));
-      handleAddToWishlist();
+       toast.success("Added to Wishlist ❤");
     }
   };
 
   return prdts ? (
     <>
+
       {" "}
       <div className="product-card">
         {/* Wishlist icon */}

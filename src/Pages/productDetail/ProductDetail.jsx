@@ -7,14 +7,26 @@ import { useLocation,useNavigate } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
 import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
 import { useDispatch } from 'react-redux';
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+
+
 const ProductDetail = () => {
   const location = useLocation();
   const productItem = location.state?.product;
   const navigate=useNavigate();
   const dispatch=useDispatch();
-
+  const wishlist = useSelector((state) => state.wishlist.wishlist);
+  const isWishlisted = wishlist.some((item) => item.id === productItem.id);
+  
   const handleAddtoWishList=()=>{
-    dispatch(addToWishlist(productItem));
+      if (isWishlisted) {
+        dispatch(removeFromWishlist( productItem.id));
+         toast.error("Removed from Wishlist ❤");
+      } else {
+        dispatch(addToWishlist( productItem));
+         toast.success("Added to Wishlist ❤");
+      }
   }
 
   const handleAddtoCard=()=>{
@@ -95,7 +107,7 @@ const ProductDetail = () => {
                     <IoCart />  Add to Cart
                   </button>
                   <button className="btn-pr-dt-wishlist" onClick={handleAddtoWishList}>
-                    <FaHeart /> Add to WishList
+                    <FaHeart /> {isWishlisted?"Remove from WishList":"Add to WishList"}
                   </button>
                 </div>
               </div>

@@ -3,8 +3,8 @@
 import { useState } from "react";
 
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
 //images
 import loginimg from "../../assets/images/login/login.png"
 //icons
@@ -97,17 +97,6 @@ const LoginSignup = () => {
 
     return (
         <>
-            <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
             <section className="d-flex align-items-center justify-content-center">
                 <div className="login-wrapper">
                     <div className="row align-items-center row-gap-5 login-rev">

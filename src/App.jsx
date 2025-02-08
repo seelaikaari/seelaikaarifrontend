@@ -12,7 +12,8 @@ import Wishlist from "./Pages/wishlist/Wishlist.jsx"
 import LoginSignup from "./Pages/LoginSignup/LoginSignup.jsx"
 import Checkout from "./Pages/Checkout/Checkout.jsx"
 import { Route,Routes } from "react-router-dom"; 
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //Css
 import './App.css'
 
@@ -22,6 +23,17 @@ function App() {
 
   return (
     <>
+       <ToastContainer
+                    position="top-center"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
       <NavBar/>
       <main>
           <Routes>
