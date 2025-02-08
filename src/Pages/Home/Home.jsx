@@ -1,12 +1,12 @@
 import HomeCategory from "../../Components/homecategories/HomeCategory";
 //images
-import banner1 from "../../assets/images/banner/banner1.png"
-import banner2 from "../../assets/images/banner/banner1.png"
-import image1 from "../../assets/images/homepage/1.jpg"
+// import banner1 from "../../assets/images/banner/banner1.png"
+// import banner2 from "../../assets/images/banner/banner1.png"
+// import image1 from "../../assets/images/homepage/1.jpg"
 
-// import banner1 from "../../assets/images/banner/1.webp"
-// import banner2 from "../../assets/images/banner/2.webp"
-// import image1 from "../../assets/images/homepage/11.jpg"
+import banner1 from "../../assets/images/banner/1.webp"
+import banner2 from "../../assets/images/banner/2.webp"
+import image1 from "../../assets/images/homepage/11.jpg"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
