@@ -33,18 +33,34 @@ const LoginSignup = () => {
         email: "",
         password: ""
     })
-    const handelLoginformsubmite = (e) => {
+    const handelLoginformsubmite =async (e) => {
         e.preventDefault()
         if (!loginhandelerror()) {
             return
         }
-
-  
-        toast.success('Loged In successfully!')
-        setLoginFormdata({
-            email: "",
-            password: ""
-        })
+        try {
+            const response = await axios.post(`${API_URL}/api/users/login`, loginFormdata);
+            console.log(response);
+            toast.success('Loged In successfully!')
+            setLoginFormdata({
+                email: "",
+                password: ""
+            })
+          } catch (error) {
+            if (error.response) {
+              // Server responded with a status outside the 2xx range
+              console.error('Error:', error.response.data);
+              setLoginError(error.response.data.error==="Invalid credentials"?{password:error.response.data.error}:{email:error.response.data.error});
+              toast.error(error.response.data.error || 'Login failed');
+            } else if (error.request) {
+              console.error('No response received:', error.request);
+              toast.error('No server response');
+            } else {
+              console.error('Unexpected error:', error.message);
+              toast.error('An error occurred');
+            }
+          }
+        
     }
     const loginhandelerror = () => {
         const newErrors = {};
@@ -66,6 +82,7 @@ const LoginSignup = () => {
         }
         try {
             const response = await axios.post(`${API_URL}/api/users/register`, signupformdata);
+             
             toast.success('Signed up successfully!');
             setSignupformdata({ name: "", email: "", password: "", phone: "" });
           } catch (error) {

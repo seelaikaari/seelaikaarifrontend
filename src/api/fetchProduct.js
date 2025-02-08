@@ -1,14 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const apiurl="http://localhost:5000/";
+const apiurl = "http://localhost:5000/";
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const response = await fetch(`${apiurl}api/products`); // Replace with your API endpoint
-    if (!response.ok) {
-      throw new Error('Failed to fetch products');
-    } 
-    const data = await response.json();
-    return data;
+    try {
+      const response = await axios.get(`${apiurl}api/products`);
+      return response.data;
+    } catch (error) {
+      throw new Error('Failed to fetch products: ' + error.message);
+    }
   }
 );

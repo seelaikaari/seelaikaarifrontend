@@ -11,11 +11,12 @@ import WishlistNotification from '../../Components/wishlist/WishlistNotification
 const Product = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
+console.log(products);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-console.log(products,loading,error)
+
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({
     category: [],
