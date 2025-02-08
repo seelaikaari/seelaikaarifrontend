@@ -49,13 +49,13 @@ const ProductDetail = () => {
                           <div className="pro-det-rat-wrap-in-size" key={index}>
                             <input
                               type="radio"
-                              value="options1"
-                              id="options1"
+                              value={sizes.name}
+                              id={sizes.name}
                               className="pro-detail-ratio-inp-siz"
                               name="size"
                             />
                             <label
-                              htmlFor="options1"
+                              htmlFor={sizes.name}
                               className="pro-detail-ratio-label-siz"
                             >
                              {sizes.name}
@@ -72,13 +72,13 @@ const ProductDetail = () => {
                         return(<div className="pro-det-rat-wrap-in" key={index}>
                             <input
                               type="radio"
-                              value="option1"
-                              id="option1"
+                              value={colrs.name}
+                              id={colrs.name}
                               className="pro-detail-ratio-inp"
                               name="Color"
                             />
                             <label
-                              htmlFor="option1"
+                              htmlFor={colrs.name}
                               className="pro-detail-ratio-label"
                             >
                               <span style={{backgroundColor:colrs.name}}></span>

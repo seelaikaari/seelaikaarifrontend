@@ -11,10 +11,12 @@
 .prod-detail-thumb {
     overflow-y: scroll;
 }
-
+.prod-detail-slides .swiper-wrapper .swiper-slide{
+    text-align: center;
+}
 .prod-detail-slides .swiper-wrapper .swiper-slide .pd-s-img {
     height: 100%;
-    width: 100%;
+    width: auto;
 }
 .prod-detail-thumb .swiper-wrapper .swiper-slide{
     text-align: center;
