@@ -7,8 +7,8 @@ import { removeFromCart } from "../../features/products/AddtoCardSlice";
 import emptyCartImg from "../../assets/images/wishlist/empty-cart.png"
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from "../../Components/emptycart/Emptycart";
-import flow1 from "../../../public/images-floral/f-1.jpg"
-import flow2 from "../../../public/images-floral/f-2.jpg"
+import flow1 from "../../assets/images/images-floral/f-1.jpg"
+import flow2 from "../../assets/images/images-floral/f-2.jpg"
 
 
 const DisclaimerModal = ({ showModal, handleClose }) => {

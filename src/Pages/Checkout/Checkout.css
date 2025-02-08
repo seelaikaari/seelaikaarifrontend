@@ -27,6 +27,13 @@
 .chkout-summary{
    padding-left: 23px;
 }
+.chkout-summary .chkout-head-summary{
+    line-height: 32px;
+    margin-bottom: 1rem;
+    color: #000000;
+    font-size: 24px;
+    font-weight: 400;
+}
 
 @media (max-width: 767px) {
     .chkout-summary{
