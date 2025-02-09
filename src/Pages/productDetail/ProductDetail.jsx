@@ -9,24 +9,48 @@ import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
-
+const api="http://localhost:5000"
 const ProductDetail = () => {
   const location = useLocation();
   const productItem = location.state?.product;
   const navigate=useNavigate();
   const dispatch=useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
-  const isWishlisted = wishlist.some((item) => item.id === productItem.id);
-  
-  const handleAddtoWishList=()=>{
+  const isWishlisted = wishlist.some((item) => item.product_id === productItem.id);
+  const { isLogin, user } = useSelector((state) => state.auth);
+  const handleAddtoWishList=async ()=>{
+
+    try {
       if (isWishlisted) {
-        dispatch(removeFromWishlist( productItem.id));
+        dispatch(removeFromWishlist({product_id:productItem.id}));
+        if(isLogin) {
+          await axios.delete(`${api}/api/wishlist/remove`, {
+            data: {
+              userId: user,
+              productId:productItem.id,
+            },
+          });
+        }
          toast.error("Removed from Wishlist ❤");
       } else {
-        dispatch(addToWishlist( productItem));
+        dispatch(addToWishlist({product_id:productItem.id}));
+        if(isLogin){
+          await axios.post(api+"/api/wishlist/add", {
+            userId: user,
+            productId: productItem.id,
+          });
+        }
          toast.success("Added to Wishlist ❤");
+
       }
+     
+    } catch (error) {
+     
+      toast.error("An error occurred. Please try again.");
+    }
+     
   }
 
   const handleAddtoCard=()=>{
