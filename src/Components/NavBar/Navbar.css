@@ -13,6 +13,7 @@ ul.nav-ul-wrapper .nav-item .nav-link{
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    text-transform: uppercase;
 }
 ul.nav-ul-wrapper .nav-item .nav-link svg{
     font-size: 17px;
