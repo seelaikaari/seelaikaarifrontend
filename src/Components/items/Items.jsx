@@ -41,7 +41,8 @@ const Items = ({ prdts}) => {
       } else {
         // Dispatch action to add product to wishlist in the Redux store
         dispatch(addToWishlist({product_id:prdts.id}));
-  
+         console.log(user,prdts.id);
+         
         // Send a request to add the product to the user's wishlist on the server
         if(isLogin){
         await axios.post(api+"/api/wishlist/add", {

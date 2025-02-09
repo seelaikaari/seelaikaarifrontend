@@ -97,8 +97,9 @@ const LoginSignup = () => {
       if (token) {
         rememberMe ? localStorage.setItem("rememberedEmail", formData.email) : sessionStorage.setItem("token", token.rememberedEmail);
       }
-
-      navigate("/");
+      console.log(response.data);
+      
+      // navigate("/");
       toast.success(isLogintype ? "Logged in successfully!" : "Signed up successfully!");
       dispatch(setUser(response.data.user));
       setFormData({ name: "", email: "", password: "", phone: "" });

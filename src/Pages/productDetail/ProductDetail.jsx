@@ -74,7 +74,7 @@ const ProductDetail = () => {
                   <p className="prd-off">20% OFF</p>
                 </div>
                 <p className="pro-detail-p">{productItem.description}</p>
-                <div className="d-flex gap-5">
+                <div className="d-flex gap-5 prd-dir-mob">
                   <div>
                     <h4 className="prd-dtc">size</h4>
 
@@ -139,8 +139,9 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        <section>
+        <section className="prod-detail-sec-2">
           <div className="container">
+            <h2 className="pd-similar-title"> Similar Products</h2>
             <SimilarProduct productItem={productItem}/>
           </div>
         </section>

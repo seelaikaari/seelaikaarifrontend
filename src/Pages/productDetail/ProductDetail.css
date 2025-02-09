@@ -54,10 +54,20 @@
 .pro-det-rat-wrapper{
     gap: 30px;
     margin: 49px 0 30px;
+    row-gap: 60px;
+    flex-wrap: wrap;
 }
 
 .pro-detail-ratio-inp {
     display: none;
+}
+.pd-similar-title{
+    font-size: 25px;
+    font-weight: 800;
+    margin: 40px 0;
+}
+.prod-detail-sec-2{
+    padding: 60px 0;
 }
 
 /* Custom radio button design */
@@ -141,4 +151,10 @@
 .prd-dtc{
     font-size: 18px;
     font-weight: 700;
+}
+@media only screen and (max-width:767px){
+    .prd-dir-mob{
+        flex-direction: column;
+        gap: 0 !important;
+    }
 }
