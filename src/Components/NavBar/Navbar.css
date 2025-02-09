@@ -10,8 +10,9 @@
     gap: 20px;
 }
 ul.nav-ul-wrapper .nav-item .nav-link{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
+    cursor: pointer;
 }
 ul.nav-ul-wrapper .nav-item .nav-link svg{
     font-size: 17px;
@@ -71,6 +72,95 @@ ul.nav-ul-wrapper .nav-item .nav-link svg{
 .mob-nav-close-btn svg{
     font-size: 30px;
 }
+.nav-r2-wraper{
+    padding: 20px 0 0;
+    text-align: center;
+}
+.nav-r2-wraper .mon-nav-ul{
+    justify-content: center;
+    border-top: 1px solid #ededed;
+    padding-top: 12px;
+}
+.nav-drop-parent{
+    position: relative;
+}
+.nav-dropdown-ul{
+    
+    background: #fff;
+    list-style: none;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+    text-align: start ;
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: start;
+}
+.pos-nav-drop{
+    position: absolute;
+    z-index: 7;
+    min-width: 240px;
+    top: 88%;
+    left: 0;
+    padding: 16px 0;
+    display: none;
+}
+.nav-drop-parent:hover .pos-nav-drop{
+    display: block;
+}
+.logo-nav{
+    width: 200px;
+}
+.nav-search-title{
+    font-weight: 600;
+    margin-bottom: 17px;
+    font-size: 26px;
+}
+.search-nav{
+    padding: 30px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    left: 0;
+    height: 167px;
+    z-index: 9;
+}
+.nav-search{
+    width: 60%;
+    border: 1px solid #dfdfdf;
+    padding:10px 20px;
+    border-radius: 40px;
+}
+.nav-ser-pro-pos{
+    position: relative;
+    display: inline;
+}
+.inp-search-p-btn{
+    position: absolute;
+    top: -5px;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    right: 2%;
+    font-size: 20px;
+    cursor: pointer;
+}
+.nav-search:focus{
+    outline: none;
+}
+.pos-ser-btn-p{
+    position: relative;
+}
+.nav-search-close-btn{
+    border: 0;
+    background: transparent;
+    font-size: 40px;
+    position: absolute;
+    top: -12%;
+    right: 2%;
+
+}
 @media only screen and (max-width:767px){
     .nav-c-icon{
         gap: 20px;
@@ -95,10 +185,34 @@ ul.nav-ul-wrapper .nav-item .nav-link svg{
     }
     ul.nav-ul-wrapper .nav-item .nav-link{
         font-size: 16px;
+        text-align: left;
     }
     .mob-toggles-show{
         left: 11%;
         transition: 1s;
+    }
+    .nav-r2-wraper .mon-nav-ul{
+        justify-content:flex-start;
+    }
+    .pos-nav-drop{
+        position: static;
+    }
+    .nav-dropdown-ul {
+        padding: 10px 0;
+        border: 0;
+    }
+    .logo-nav{
+        width: 140px;
+    }
+    .nav-search{
+        width: 90%;
+    }
+    .nav-search-title{
+        font-size: 20px;
+    }
+    .nav-search-close-btn{
+        font-size: 30px;
+        top: -38%;
     }
 }
 .bg-mask{
@@ -109,3 +223,4 @@ ul.nav-ul-wrapper .nav-item .nav-link svg{
     top: 0;
     left: 0;
 }
+

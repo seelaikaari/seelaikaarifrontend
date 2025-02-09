@@ -37,9 +37,9 @@ const Footer = () => {
                             <div className="col-md-3">
                                 <h4 className="title-ft">Customer Service</h4>
                                 <ul className="ft-ul-wrapper">
-                                    <li><Link to="/" className="ft-nav-link">Contact Us</Link></li>
-                                    <li><Link to="/About" className="ft-nav-link">Terms of use</Link></li>
-                                    <li><Link to="/Contact" className="ft-nav-link">Privacy Policy</Link></li>
+                                    <li><Link to="/Contact" className="ft-nav-link">Contact Us</Link></li>
+                                    <li><Link to="/Termsandconditions" className="ft-nav-link">Terms of use</Link></li>
+                                    <li><Link to="/Policy" className="ft-nav-link">Privacy Policy</Link></li>
                                 </ul>
                             </div>
                         </div>
