@@ -5,17 +5,20 @@ import { toast } from "react-toastify";
 
 const Accout = () => {
     const [edittoggle,setEdittoggle]=useState(false)
-    const [userdetail,setUserdetail]=useState({
-        name:"",
-        email:"",
-        phoneno:""
+    const [defaultuserdetail,setDefaultUserdetail]=useState({
+        name:"john",
+        email:"john@gmail.com",
+        phoneno:"1231231231"
     })
+    const [userdetail,setUserdetail]=useState(defaultuserdetail)
     const [userdetailerror,setUserdetailerror]=useState({})
     const handeleditpersonalinfo=(e)=>{
         e.preventDefault()
         if(!handelEditError()){
             return
         }
+        console.log(userdetail,defaultuserdetail);
+        
         setUserdetail({
             name:"",
             email:"",
@@ -73,15 +76,15 @@ const Accout = () => {
                                   <tbody>
                                   <tr>
                                         <td>Name:</td>
-                                        <td>Userfsdf</td>
+                                        <td>{defaultuserdetail.name}</td>
                                     </tr>
                                     <tr>
                                         <td>Email:</td>
-                                        <td>example@gmail.com</td>
+                                        <td>{defaultuserdetail.email}</td>
                                     </tr>
                                     <tr>
                                         <td>Phone no:</td>
-                                        <td>+91 000-000-0000</td>
+                                        <td>{defaultuserdetail.phoneno}</td>
                                     </tr>
                                   </tbody>
                                 </table>
