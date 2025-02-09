@@ -14,6 +14,10 @@ import Checkout from "./Pages/Checkout/Checkout.jsx"
 import { Route,Routes } from "react-router-dom"; 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Termsandconditions from "./Pages/terms/Termsandconditions.jsx"
+import Policy from "./Pages/policies/Policy.jsx"
+import Account from "./Pages/account/Account.jsx"
+import Stories from "./Pages/stories/Stories.jsx"
 //Css
 import './App.css'
 function App() {
@@ -43,6 +47,10 @@ function App() {
             <Route path="/ProductDetail" element={<ProductDetail/>} />
             <Route path="/login" element={<LoginSignup />} />
             <Route path="/Checkout" element={<Checkout />} />
+            <Route path="/Termsandconditions" element={<Termsandconditions />} />
+            <Route path="/Policy" element={<Policy />} />
+            <Route path="/Account" element={<Account />} />
+            <Route path="/Stories" element={<Stories />} />
           </Routes>
       </main>
       <Footer/>
