@@ -7,7 +7,7 @@ import "../Product/Product.css";
 import Items from "../../Components/items/Items.jsx";
 import { FaSearchMinus, FaFilter } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import WishlistNotification from '../../Components/wishlist/WishlistNotification.jsx';
+import 'react-toastify/dist/ReactToastify.css';
 const Product = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
@@ -27,11 +27,11 @@ console.log(products);
 
   const [priceRange, setPriceRange] = useState([0, 0]);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false); // State for mobile filter menu
-  const [showNotification, setShowNotification] = useState(false);
 
-  const handleAddToWishlist = () => {
-    setShowNotification(true);
-  };
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   useEffect(() => {
     setFilteredProducts(products);
@@ -96,6 +96,7 @@ console.log(products);
 
   return (
     <div className="product-pages container">
+     
       {/* Mobile Filter Toggle Button */}
       <button
         className="mobile-filter-toggle"
@@ -159,18 +160,13 @@ console.log(products);
 
         {/* Product List */}
         <div className="col-lg-9">
-        <WishlistNotification
-        message="Added to Wishlist!"
-        show={showNotification}
-        duration={3000}
-        onClose={() => setShowNotification(false)}
-      />
+      
   
           <div className="row">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((item, index) => (
                 <div className="col-lg-3 col-md-4 col-6 pb-3" key={index}>
-                  <Items prdts={item} handleAddToWishlist={handleAddToWishlist}/>
+                  <Items prdts={item} />
                 </div>
               ))
             ) : (

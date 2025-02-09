@@ -6,8 +6,8 @@ const HomeCategory = ({items}) => {
             <div className="hm-cat-wrapper">
                 <img src={items.img} alt={items.imgCaption} className="w-100" />
                 <div className="hm-cat-h-wrapper-body">
-                    <p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit.</strong></p>
-                    <p> Voluptas sapiente ullam corrupti! Iure similique sint</p>
+                    <p><strong>Lehengas</strong></p>
+                   <button className="cat-cat-btn">Shop Now</button>
                 </div>
             </div>
         </>

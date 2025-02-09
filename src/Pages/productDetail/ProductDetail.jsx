@@ -7,14 +7,26 @@ import { useLocation,useNavigate } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
 import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
 import { useDispatch } from 'react-redux';
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+
+
 const ProductDetail = () => {
   const location = useLocation();
   const productItem = location.state?.product;
   const navigate=useNavigate();
   const dispatch=useDispatch();
-
+  const wishlist = useSelector((state) => state.wishlist.wishlist);
+  const isWishlisted = wishlist.some((item) => item.id === productItem.id);
+  
   const handleAddtoWishList=()=>{
-    dispatch(addToWishlist(productItem));
+      if (isWishlisted) {
+        dispatch(removeFromWishlist( productItem.id));
+         toast.error("Removed from Wishlist ❤");
+      } else {
+        dispatch(addToWishlist( productItem));
+         toast.success("Added to Wishlist ❤");
+      }
   }
 
   const handleAddtoCard=()=>{
@@ -49,13 +61,13 @@ const ProductDetail = () => {
                           <div className="pro-det-rat-wrap-in-size" key={index}>
                             <input
                               type="radio"
-                              value="options1"
-                              id="options1"
+                              value={sizes.name}
+                              id={sizes.name}
                               className="pro-detail-ratio-inp-siz"
                               name="size"
                             />
                             <label
-                              htmlFor="options1"
+                              htmlFor={sizes.name}
                               className="pro-detail-ratio-label-siz"
                             >
                              {sizes.name}
@@ -72,13 +84,13 @@ const ProductDetail = () => {
                         return(<div className="pro-det-rat-wrap-in" key={index}>
                             <input
                               type="radio"
-                              value="option1"
-                              id="option1"
+                              value={colrs.name}
+                              id={colrs.name}
                               className="pro-detail-ratio-inp"
                               name="Color"
                             />
                             <label
-                              htmlFor="option1"
+                              htmlFor={colrs.name}
                               className="pro-detail-ratio-label"
                             >
                               <span style={{backgroundColor:colrs.name}}></span>
@@ -95,7 +107,7 @@ const ProductDetail = () => {
                     <IoCart />  Add to Cart
                   </button>
                   <button className="btn-pr-dt-wishlist" onClick={handleAddtoWishList}>
-                    <FaHeart /> Add to WishList
+                    <FaHeart /> {isWishlisted?"Remove from WishList":"Add to WishList"}
                   </button>
                 </div>
               </div>
