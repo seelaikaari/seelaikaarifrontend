@@ -9,24 +9,48 @@ import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
-
+const api="http://localhost:5000"
 const ProductDetail = () => {
   const location = useLocation();
   const productItem = location.state?.product;
   const navigate=useNavigate();
   const dispatch=useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
-  const isWishlisted = wishlist.some((item) => item.id === productItem.id);
-  
-  const handleAddtoWishList=()=>{
+  const isWishlisted = wishlist.some((item) => item.product_id === productItem.id);
+  const { isLogin, user } = useSelector((state) => state.auth);
+  const handleAddtoWishList=async ()=>{
+
+    try {
       if (isWishlisted) {
-        dispatch(removeFromWishlist( productItem.id));
+        dispatch(removeFromWishlist({product_id:productItem.id}));
+        if(isLogin) {
+          await axios.delete(`${api}/api/wishlist/remove`, {
+            data: {
+              userId: user,
+              productId:productItem.id,
+            },
+          });
+        }
          toast.error("Removed from Wishlist ❤");
       } else {
-        dispatch(addToWishlist( productItem));
+        dispatch(addToWishlist({product_id:productItem.id}));
+        if(isLogin){
+          await axios.post(api+"/api/wishlist/add", {
+            userId: user,
+            productId: productItem.id,
+          });
+        }
          toast.success("Added to Wishlist ❤");
+
       }
+     
+    } catch (error) {
+     
+      toast.error("An error occurred. Please try again.");
+    }
+     
   }
 
   const handleAddtoCard=()=>{
@@ -50,7 +74,7 @@ const ProductDetail = () => {
                   <p className="prd-off">20% OFF</p>
                 </div>
                 <p className="pro-detail-p">{productItem.description}</p>
-                <div className="d-flex gap-5">
+                <div className="d-flex gap-5 prd-dir-mob">
                   <div>
                     <h4 className="prd-dtc">size</h4>
 
@@ -115,8 +139,9 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        <section>
+        <section className="prod-detail-sec-2">
           <div className="container">
+            <h2 className="pd-similar-title"> Similar Products</h2>
             <SimilarProduct productItem={productItem}/>
           </div>
         </section>

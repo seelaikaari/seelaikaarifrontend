@@ -1,53 +1,45 @@
+// src/redux/wishlist/wishlistSlice.js
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchWishlist } from '../../api/fetchwishlist';
 
-// Initial state for the cart
 const initialState = {
-  wishlist: [],  // Stores products in the cart
+  wishlist: [],
   loading: false,
   error: null,
 };
 
-const wishlistReducer = createSlice({
+const wishlistSlice = createSlice({
   name: 'wishlist',
   initialState,
   reducers: {
-    // Action to add product to the cart
     addToWishlist: (state, action) => {
-      const product = action.payload;  // The product data passed from the action
-
-      // Check if the product is already in the cart
-      const existingProduct = state.wishlist.find(item => item.id === product.id);
+      const product = action.payload;
+      const existingProduct = state.wishlist.find(item => item.product_id === product.product_id);
       if (!existingProduct) {
-        // If the product is not already in the cart, add it as a new item
-        state.wishlist.push({
-          ...product,  // Include all product details
-        });
+        state.wishlist.push(product);
       }
     },
-    // Action to remove product from the cart
     removeFromWishlist: (state, action) => {
       const productId = action.payload;
-      state.wishlist = state.wishlist.filter(item => item.id !== productId);  // Remove product by ID
+      state.wishlist = state.wishlist.filter(item => item.product_id !== productId.product_id);
     },
   },
-  // Handling asynchronous operations (if needed for fetching cart data)
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(fetchwishlist.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = null;
-  //     })
-  //     .addCase(fetchwishlist.fulfilled, (state, action) => {
-  //       state.loading = false;
-  //       state.wishlist = action.payload;
-  //     })
-  //     .addCase(fetchwishlist.rejected, (state, action) => {
-  //       state.loading = false;
-  //       state.error = action.error.message;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchWishlist.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchWishlist.fulfilled, (state, action) => {
+        state.loading = false;
+        state.wishlist = action.payload;
+      })
+      .addCase(fetchWishlist.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to fetch wishlist';
+      });
+  },
 });
 
-// Export actions to be used in components
-export const { addToWishlist, removeFromWishlist } = wishlistReducer.actions;
-export default wishlistReducer.reducer;
+export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
+export default wishlistSlice.reducer;

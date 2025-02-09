@@ -6,15 +6,49 @@ import { MdOutlineCurrencyRupee, MdOutlineDeleteOutline } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromWishlist } from "../../features/products/WishlistSlice";
-
+import { useEffect } from "react";
+import { fetchWishlist } from "../../api/fetchwishlist";
+import { fetchProducts } from "../../api/fetchProduct";
+import { toast } from "react-toastify";
+import axios from "axios";
+const api ="http://localhost:5000"
 const Wishlist = () => {
-  const wishlist = useSelector((state) => state.wishlist.wishlist);
   const dispatch = useDispatch();
+  const { wishlist, loading, error } = useSelector((state) => state.wishlist);
+  const { products } = useSelector((state) => state.products);
+  const { isLogin, user } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchWishlist(user));
+    }
+  }, [dispatch, user]);
 
-  const handleRemoveClick = (id) => {
-  
-    dispatch(removeFromWishlist(id));
+   useEffect(() => {
+      dispatch(fetchProducts());
+    }, [dispatch]);
+
+  const handleRemoveClick = async (id) => {
+     try{
+      dispatch(removeFromWishlist({product_id:id}));
+      if(isLogin) {
+        await axios.delete(`${api}/api/wishlist/remove`, {
+          data: {
+            userId: user,
+            productId:id,
+          },
+        });
+      }
+       toast.error("Removed from Wishlist ❤");
+    
+    }catch (error) {
+    toast.error("An error occurred. Please try again.");
+  }
   };
+
+  const wishlistProducts = products.filter((product) =>
+    wishlist.some((item) => item.product_id === product.id)
+  );
+ 
   return (
     <>
       {wishlist && wishlist.length > 0 ? (
@@ -22,7 +56,7 @@ const Wishlist = () => {
           <div className="container">
             <h2 className="wlist-ht">Wishlist Products ({wishlist.length})</h2>
             <div className="row wishlist-inner-wrap">
-              {wishlist.map((item, index) => (
+              {wishlistProducts.map((item, index) => (
                 <div className="col-md-3" key={index}>
                   <div className="wishlist-wrap-cont">
                     <img src={item.images[0]?.url} alt={item.name} className="w-100" />
