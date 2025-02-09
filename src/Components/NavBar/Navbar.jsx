@@ -106,7 +106,7 @@ const Navbar = () => {
                             <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
                                         <li className="nav-item"><Link to="/About" className="nav-link">About Seelaikaari</Link></li>
-                                        <li className="nav-item"><p className="nav-link">The Seelaikaari Story</p></li>
+                                        <li className="nav-item"><Link to="/Stories" className="nav-link">The Seelaikaari Story</Link></li>
                                     </ul>
                                 </div></li>
                         </ul>
