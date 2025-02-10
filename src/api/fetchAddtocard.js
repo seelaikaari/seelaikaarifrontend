@@ -7,7 +7,8 @@ export const fetchaddtoCard = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${api}/api/addtocart/${userId}`);
- 
+     console.log(response);
+     
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);

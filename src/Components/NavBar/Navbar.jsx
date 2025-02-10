@@ -21,10 +21,9 @@ import logo from "../../assets/images/logo-1.png"
 const Navbar = () => {
     const [searchbox, setSearchbox] = useState("")
     const navigate = useNavigate();
-    const { wishlist, addedcart } = useSelector((state) => ({
-        wishlist: state.wishlist.wishlist.length,
-        addedcart: state.carts.carts.length,
-    }));
+    const wishlist = useSelector((state) => state.wishlist.wishlist.length);
+    const addedcart = useSelector((state) => state.carts.carts.length);
+
     const [searchtoggle, setSearchtoggle] = useState(false)
     const [toggle, setToggle] = useState(false)
     const handelnavclose = () => { setToggle(!toggle) }

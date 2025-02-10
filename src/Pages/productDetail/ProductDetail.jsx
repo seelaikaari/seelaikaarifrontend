@@ -5,7 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import "../productDetail/ProductDetail.css";
 import { useLocation,useNavigate } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
-// import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
+import {addToCart} from '../../features/products/AddtoCardSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -58,17 +58,17 @@ const ProductDetail = () => {
     try{
       if(isLogin) {
         await axios.post(`${api}/api/addtocart/add`, {
-          data: {
+          
             userId: user.id,
             productId:productItem.id,
-          },
+          
         });
       }
       toast.success("Added to cart ❤");
       navigate("/cart", { state: { product: productItem } }); 
     }
     catch(error){
-      console.log("err :",error);
+      console.log("err :",error); 
     }
   
   }
