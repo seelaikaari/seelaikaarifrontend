@@ -93,7 +93,7 @@ const Navbar = () => {
                               <div className="pos-nav-drop">
                                 <ul className="nav-dropdown-ul nav-ul-wrapper ">
                                     <li className="nav-item"><p onClick={()=>handelNavigation("Bridal")} className="nav-link">Bridal Sarees</p></li>
-                                    <li className="nav-item"><p onClick={()=>handelNavigation("Designer")} className="nav-link">Designer Sarees</p></li>
+                                    <li className="nav-item"><p onClick={()=>handelNavigation("Chanderi")} className="nav-link">Designer Sarees</p></li>
                                 </ul>
                               </div>
                             </li>

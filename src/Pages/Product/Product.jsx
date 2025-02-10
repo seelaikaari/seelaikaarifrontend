@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from "react-router-dom";
 const Product = () => {
   const location = useLocation();
-  const category = location.state?.category;
+  const category = location.state?.category||""
   console.log(category);
   
   const dispatch = useDispatch();
@@ -39,8 +39,21 @@ console.log(products);
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredProducts(products);
+    if(category.length===0){
+      setFilteredProducts(products);
+    }else{
+      handelcategoryfilter()
+    }
   }, [products]);
+  const handelcategoryfilter=()=>{
+    var filtercategoryproduct=products.filter(item=>item.category.includes(category))
+      // const filtercategoryproduct = products.filter(item => 
+      //   Array.isArray(item.category) 
+      //     ? item.category.some(cat => category.includes(cat)) 
+      //     : category.includes(item.category)
+      // );
+      setFilteredProducts(filtercategoryproduct);
+  }
 
   const getUniqueValues = (key) => {
     if (key === "color" || key === "size") {
