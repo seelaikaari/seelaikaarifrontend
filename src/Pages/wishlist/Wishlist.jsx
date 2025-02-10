@@ -10,9 +10,14 @@ import { useEffect } from "react";
 import { fetchWishlist } from "../../api/fetchwishlist";
 import { fetchProducts } from "../../api/fetchProduct";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const api ="http://localhost:5000"
 const Wishlist = () => {
+  const navigate = useNavigate();
+  const handleClick = (item) => {
+    navigate("/ProductDetail", { state: { product: item } });
+  };
   const dispatch = useDispatch();
   const { wishlist, loading, error } = useSelector((state) => state.wishlist);
   const { products } = useSelector((state) => state.products);
@@ -61,7 +66,7 @@ const Wishlist = () => {
               {wishlistProducts.map((item, index) => (
                 <div className="col-md-3" key={index}>
                   <div className="wishlist-wrap-cont">
-                    <img src={item.images[0]?.url} alt={item.name} className="w-100" />
+                    <img src={item.images[0]?.url} alt={item.name} className="w-100" style={{"cursor":"pointer"}} onClick={()=>handleClick(item)} />
                     <p className="wishlist-text">{item.description}</p>
                     <div className="wlist-price-wrapper d-flex align-items-center">
                       <p className="price-wl-d">

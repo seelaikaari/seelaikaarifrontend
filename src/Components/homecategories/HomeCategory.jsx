@@ -6,7 +6,7 @@ const HomeCategory = ({items,handleNavigate}) => {
             <div className="hm-cat-wrapper" onClick={()=>handleNavigate("catprod")}>
                 <img src={items.img} alt={items.imgCaption} className="w-100" />
                 <div className="hm-cat-h-wrapper-body">
-                    <p><strong>Lehengas</strong></p>
+                    {/* <p><strong>Lehengas</strong></p> */}
                    <button className="cat-cat-btn">Shop Now</button>
                 </div>
             </div>

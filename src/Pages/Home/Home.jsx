@@ -1,12 +1,38 @@
 import HomeCategory from "../../Components/homecategories/HomeCategory";
 //images
-// import banner1 from "../../assets/images/banner/banner1.png"
-// import banner2 from "../../assets/images/banner/banner1.png"
-// import image1 from "../../assets/images/homepage/1.jpg"
 
-import banner1 from "../../assets/images/banner/1.webp"
-import banner2 from "../../assets/images/banner/2.webp"
-import image1 from "../../assets/images/homepage/11.jpg"
+
+import banner1 from "../../assets/images/banner-images/home-banner-1.jpg"
+import product1 from "../../assets/images/pose-1/prod-1.jpg"
+import product2 from "../../assets/images/pose-1/prod-2.jpg"
+import product3 from "../../assets/images/pose-1/prod-3.jpg"
+import product4 from "../../assets/images/pose-1/prod-4.jpg"
+import product5 from "../../assets/images/pose-1/prod-5.jpg"
+import product31 from "../../assets/images/pose-2/prod-31.jpg"
+import product32 from "../../assets/images/pose-2/prod-32.jpg"
+import product33 from "../../assets/images/pose-2/prod-33.jpg"
+import product34 from "../../assets/images/pose-2/prod-34.jpg"
+import product35 from "../../assets/images/pose-2/prod-35.jpg"
+import product61 from "../../assets/images/pose-3/prod-61.jpg"
+import product62 from "../../assets/images/pose-3/prod-62.jpg"
+
+import product63 from "../../assets/images/pose-3/prod-63.jpg"
+import product64 from "../../assets/images/pose-3/prod-64.jpg"
+import product65 from "../../assets/images/pose-3/prod-65.jpg"
+import product66 from "../../assets/images/pose-3/prod-66.jpg"
+import product67 from "../../assets/images/pose-3/prod-67.jpg"
+import product68 from "../../assets/images/pose-3/prod-68.jpg"
+import product69 from "../../assets/images/pose-3/prod-69.jpg"
+
+import product36 from "../../assets/images/pose-2/prod-36.jpg"
+import product37 from "../../assets/images/pose-2/prod-37.jpg"
+import product38 from "../../assets/images/pose-2/prod-38.jpg"
+import product39 from "../../assets/images/pose-2/prod-39.jpg"
+import product40 from "../../assets/images/pose-2/prod-40.jpg"
+import product41 from "../../assets/images/pose-2/prod-41.jpg"
+import product42 from "../../assets/images/pose-2/prod-42.jpg"
+import product43 from "../../assets/images/pose-2/prod-43.jpg"
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -38,77 +64,103 @@ const Home = () => {
       img:banner1,
       imgCaption:"Banner1"
     },
-    {
-      img:banner2,
-      imgCaption:"Banner2"
-    },
   ]
   const EssentialSlider=[
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product1,
+      imgCaption:"product1"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product2,
+      imgCaption:"product2"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product3,
+      imgCaption:"product3"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product4,
+      imgCaption:"product4"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product5,
+      imgCaption:"product5"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product31,
+      imgCaption:"product31"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product32,
+      imgCaption:"product32"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product33,
+      imgCaption:"product33"
+    },
+  ]
+  const bestSelling=[
+    {
+      img:product36,
+      imgCaption:"product36"
+    },
+    {
+      img:product37,
+      imgCaption:"product37"
+    },
+    {
+      img:product38,
+      imgCaption:"product38"
+    },
+    {
+      img:product39,
+      imgCaption:"product39"
+    },
+    {
+      img:product40,
+      imgCaption:"product40"
+    },
+    {
+      img:product41,
+      imgCaption:"product42"
+    },
+    {
+      img:product43,
+      imgCaption:"product43"
     },
   ]
   const Category=[
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product61,
+      imgCaption:"product61"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product62,
+      imgCaption:"product62"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product63,
+      imgCaption:"product63"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product64,
+      imgCaption:"product64"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product65,
+      imgCaption:"product65"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product66,
+      imgCaption:"product66"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product67,
+      imgCaption:"product67"
     },
     {
-      img:image1,
-      imgCaption:"image1"
+      img:product68,
+      imgCaption:"product68"
     },
   ]
   return (
@@ -238,31 +290,15 @@ const Home = () => {
                   modules={[Autoplay, Pagination, Navigation]}
                   className="mySwiper"
                 >
-                  <SwiperSlide>
-                    <div>
-                      <img src={image1} className="w-100" alt="" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div>
-                      <img src={image1} className="w-100" alt="" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div>
-                      <img src={image1} className="w-100" alt="" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div>
-                      <img src={image1} className="w-100" alt="" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div>
-                      <img src={image1} className="w-100" alt="" />
-                    </div>
-                  </SwiperSlide>
+                  {bestSelling.map((item,index)=>
+                     <SwiperSlide>
+                      <div>
+                        <img src={item.img} className="w-100" alt={item.imgCaption} />
+                      </div>
+                    </SwiperSlide>
+                  )}
+                 
+                  
                   
                 </Swiper>
               </div>
