@@ -30,8 +30,8 @@ const Home = () => {
 
   const navigate =useNavigate();
 
-  const handleNavigate=()=>{
-    navigate("/Product")
+  const handleNavigate=(itemcategory)=>{
+    navigate("/Product", { state: { category: itemcategory } });
   }
   const homeBanner=[
     {
@@ -137,7 +137,7 @@ const Home = () => {
               <div className="col-md-4">
                 <h4 className="sec-2-h-Ct">Wedding Wardrobe Essentials!</h4>
                 <p className="sec-2-p-ct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia dolore ut harum.</p>
-                <button className="btn-Shop-t" onClick={handleNavigate}><AiOutlineShoppingCart/> Shop Now </button>
+                <button className="btn-Shop-t" onClick={()=>handleNavigate("WeddingEssentials")}><AiOutlineShoppingCart/> Shop Now </button>
               </div>
               <div className="col-md-8">
                 <Swiper
@@ -193,7 +193,7 @@ const Home = () => {
               <div className="row my-4 row-gap-4">
                 {Category.map((items,index)=>
                   <div className="col-md-3 col-6" key={index}>
-                    <HomeCategory items={items} />
+                    <HomeCategory items={items} handleNavigate={handleNavigate} />
                   </div>
                 )}
               </div>
@@ -269,7 +269,7 @@ const Home = () => {
               <div className="col-md-4">
                 <h4 className="sec-2-h-Ct">Best Selling Products!</h4>
                 <p className="sec-2-p-ct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia dolore ut harum.</p>
-                <button className="btn-Shop-t" onClick={handleNavigate}><AiOutlineShoppingCart/> Shop Now </button>
+                <button className="btn-Shop-t" onClick={()=>handleNavigate("BestSelling")}><AiOutlineShoppingCart/> Shop Now </button>
               </div>
             </div>
         </div>

@@ -8,7 +8,12 @@ import Items from "../../Components/items/Items.jsx";
 import { FaSearchMinus, FaFilter } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation } from "react-router-dom";
 const Product = () => {
+  const location = useLocation();
+  const category = location.state?.category;
+  console.log(category);
+  
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
 console.log(products);

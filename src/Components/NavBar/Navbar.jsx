@@ -14,10 +14,12 @@ import { BsInstagram } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 //images
 import logo from "../../assets/images/logo-1.png"
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const { wishlist, addedcart } = useSelector((state) => ({
         wishlist: state.wishlist.wishlist.length,
         addedcart: state.carts.carts.length,
@@ -25,6 +27,12 @@ const Navbar = () => {
     const [searchtoggle,setSearchtoggle]=useState(false)
     const [toggle,setToggle]=useState(false)
     const handelnavclose=()=>{setToggle(!toggle)}
+
+    const handelNavigation=(itemcategory)=>{
+        navigate("/Product", { state: { category: itemcategory } });
+        handelnavclose()
+    }
+    
   return (
     <header>
         <nav className='nav-wrapper'>
@@ -84,20 +92,20 @@ const Navbar = () => {
                             <li className='nav-item nav-drop-parent'><p className='nav-link'>Sarees <IoIosArrowDown/></p>
                               <div className="pos-nav-drop">
                                 <ul className="nav-dropdown-ul nav-ul-wrapper ">
-                                    <li className="nav-item"><p className="nav-link">Bridal Sarees</p></li>
-                                    <li className="nav-item"><p className="nav-link">Designer Sarees</p></li>
+                                    <li className="nav-item"><p onClick={()=>handelNavigation("Bridal")} className="nav-link">Bridal Sarees</p></li>
+                                    <li className="nav-item"><p onClick={()=>handelNavigation("Designer")} className="nav-link">Designer Sarees</p></li>
                                 </ul>
                               </div>
                             </li>
                             <li className='nav-item nav-drop-parent'><p  className='nav-link'>Shop by occasion <IoIosArrowDown/></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
-                                        <li className="nav-item"><p className="nav-link">Wedding / Reception</p></li>
-                                        <li className="nav-item"><p className="nav-link">Engagement</p></li>
-                                        <li className="nav-item"><p className="nav-link">
+                                        <li className="nav-item"><p onClick={()=>handelNavigation("Wedding")} className="nav-link">Wedding / Reception</p></li>
+                                        <li className="nav-item"><p onClick={()=>handelNavigation("Engagement")} className="nav-link">Engagement</p></li>
+                                        <li className="nav-item"><p onClick={()=>handelNavigation("Haldi")} className="nav-link">
                                         Haldi / Mehendi</p></li>
-                                        <li className="nav-item"><p className="nav-link">Sangeet and Cocktail</p></li>
-                                        <li className="nav-item"><p className="nav-link">Wedding Guest</p></li>
+                                        <li className="nav-item"><p onClick={()=>handelNavigation("Sangeet")} className="nav-link">Sangeet and Cocktail</p></li>
+                                        <li className="nav-item"><p onClick={()=>handelNavigation("Wedding")} className="nav-link">Wedding Guest</p></li>
                                     </ul>
                                 </div>
                             </li>
