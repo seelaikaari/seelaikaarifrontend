@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import ReactImageMagnify from 'react-image-magnify';
 // import Images
 // Import Swiper styles
 import 'swiper/css';
@@ -51,24 +51,12 @@ const ProductDetailSlide = ({img}) => {
                             },
                         }}
                     >
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pro-det-thumb-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pro-det-thumb-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pro-det-thumb-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pro-det-thumb-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pro-det-thumb-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pro-det-thumb-img' />
-                        </SwiperSlide>
+                        {img.map((item,index)=>
+                             <SwiperSlide key={index}>
+                                <img src={item.url} className='pro-det-thumb-img' />
+                            </SwiperSlide>
+                        )}
+                       
                     </Swiper>
                 </div>
                 <div className="col-md-9">
@@ -79,24 +67,27 @@ const ProductDetailSlide = ({img}) => {
                         modules={[FreeMode, Navigation, Thumbs]}
                         className="mySwiper2 prod-detail-slides"
                     >
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pd-s-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pd-s-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pd-s-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pd-s-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pd-s-img' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={img[0].url} className='pd-s-img' />
-                        </SwiperSlide>
+                        {img.map((item, index) => (
+    <SwiperSlide key={index}>
+        <ReactImageMagnify
+            {...{
+                smallImage: {
+                    alt: `product${index}`,  // ✅ Fixed string interpolation
+                    isFluidWidth: true,
+                    src: item.url
+                },
+                largeImage: {
+                    src: item.url,
+                    width: 900,
+                    height: 1000
+                },
+                enlargedImageContainerClassName: "custom-large-image" // Add custom class
+            }}
+        />
+    </SwiperSlide>
+))}
+
+                        
 
                     </Swiper>
                 </div>

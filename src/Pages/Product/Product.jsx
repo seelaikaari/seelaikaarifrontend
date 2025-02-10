@@ -8,7 +8,12 @@ import Items from "../../Components/items/Items.jsx";
 import { FaSearchMinus, FaFilter } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation } from "react-router-dom";
 const Product = () => {
+  const location = useLocation();
+  const category = location.state?.category||""
+  console.log(category);
+  
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
 
@@ -33,8 +38,21 @@ const Product = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
+    if(category.length===0){
+      setFilteredProducts(products);
+    }else{
+      handelcategoryfilter()
+    }
+  }, [products,category]);
+  const handelcategoryfilter=()=>{
+    // var filtercategoryproduct=products.filter(item=>item.category.includes(category))
+      var filtercategoryproduct = products.filter(item => 
+        Array.isArray(item.category) 
+          ? item.category.some(cat => category.includes(cat)) 
+          : category.includes(item.category)
+      );
+      setFilteredProducts(filtercategoryproduct);
+  }
 
   const getUniqueValues = (key) => {
     if (key === "color" || key === "size") {

@@ -5,7 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import "../productDetail/ProductDetail.css";
 import { useLocation,useNavigate } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
-import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
+// import {addToCart,removeFromCart} from '../../features/products/AddtoCardSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
