@@ -8,23 +8,29 @@ import { jwtDecode } from "jwt-decode";
 import "../LoginSignup/LoginSignup.css";
 import axios from "axios";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import { setUser } from "../../features/users/authSlice";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser,setLoading } from "../../features/users/authSlice";
 
 const API_URL = "http://localhost:5000";
 
 const GoogleLoginButton = ({ btntext }) => {
   const navigate = useNavigate();
-  const dispatch =useDispatch();
+  const dispatch = useDispatch();
   const handleSuccess = async (response) => {
     const decoded = jwtDecode(response.credential);
     const sigindata = { name: decoded.name, email: decoded.email, isgauth: decoded.email_verified };
 
     try {
       const res = await axios.post(`${API_URL}/api/users/register`, sigindata);
-       navigate("/"); 
-      dispatch(setUser(res.data.data));
+      const token = res.data.token;
+    
+      if (token) {
+        localStorage.setItem("token", token);
+        dispatch(setUser(res.data.data));
+        navigate("/");
+      }
+
       toast.success(res.data.error === "Email already registered" ? "Login successfully" : "Signed up successfully!");
     } catch (error) {
       toast.error(error.response?.data?.error || "An error occurred");
@@ -56,13 +62,22 @@ const LoginSignup = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", phone: "" });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const dispatch= useDispatch();
-
-  
+  const dispatch = useDispatch();
+  const { isLogin,loading} = useSelector((state) => state.auth);
   useEffect(() => {
+    const token = localStorage.getItem("token");
+     dispatch(setLoading(true)); 
+    if (token) {
+      axios.post(`${API_URL}/api/users/validate-token`, {}, { headers: { Authorization: `Bearer ${token}` } })
+        .then((res) => dispatch(setUser(res.data.user)))
+        .catch(() => localStorage.removeItem("token")).finally(() => {
+            dispatch(setLoading(false));
+          });;
+    }
+
     const storedEmail = localStorage.getItem("rememberedEmail");
     if (storedEmail) setFormData((prev) => ({ ...prev, email: storedEmail }));
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (field, value) => setFormData((prev) => ({ ...prev, [field]: value }));
 
@@ -85,7 +100,6 @@ const LoginSignup = () => {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -95,13 +109,12 @@ const LoginSignup = () => {
       const token = response.data.token;
 
       if (token) {
-        rememberMe ? localStorage.setItem("rememberedEmail", formData.email) : sessionStorage.setItem("token", token.rememberedEmail);
+        rememberMe ? localStorage.setItem("token", token) : localStorage.setItem("token", token);
+        dispatch(setUser(response.data.user));
+        navigate("/");
       }
-      console.log(response.data);
-      
-      // navigate("/");
+
       toast.success(isLogintype ? "Logged in successfully!" : "Signed up successfully!");
-      dispatch(setUser(response.data.user));
       setFormData({ name: "", email: "", password: "", phone: "" });
     } catch (error) {
       toast.error(error.response?.data?.error || "An error occurred");
@@ -110,7 +123,7 @@ const LoginSignup = () => {
   };
 
   return (
-    <section className="d-flex align-items-center justify-content-center">
+    !isLogin ? <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
         <div className="row align-items-center row-gap-5 login-rev">
           <div className="col-lg-6 col-md-5 login-img-wrap">
@@ -149,7 +162,7 @@ const LoginSignup = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section>:<Navigate to={"/Account"} />
   );
 };
 

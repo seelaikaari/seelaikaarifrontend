@@ -17,11 +17,13 @@ const Wishlist = () => {
   const { wishlist, loading, error } = useSelector((state) => state.wishlist);
   const { products } = useSelector((state) => state.products);
   const { isLogin, user } = useSelector((state) => state.auth);
+
   useEffect(() => {
     if (user) {
-      dispatch(fetchWishlist(user));
+      dispatch(fetchWishlist(user.id));
     }
   }, [dispatch, user]);
+  console.log(loading,wishlist,user);
 
    useEffect(() => {
       dispatch(fetchProducts());
@@ -33,7 +35,7 @@ const Wishlist = () => {
       if(isLogin) {
         await axios.delete(`${api}/api/wishlist/remove`, {
           data: {
-            userId: user,
+            userId: user.id,
             productId:id,
           },
         });

@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Product = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
-console.log(products);
 
   useEffect(() => {
     dispatch(fetchProducts());

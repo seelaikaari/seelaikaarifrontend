@@ -28,7 +28,7 @@ const ProductDetail = () => {
         if(isLogin) {
           await axios.delete(`${api}/api/wishlist/remove`, {
             data: {
-              userId: user,
+              userId: user.id,
               productId:productItem.id,
             },
           });
@@ -38,7 +38,7 @@ const ProductDetail = () => {
         dispatch(addToWishlist({product_id:productItem.id}));
         if(isLogin){
           await axios.post(api+"/api/wishlist/add", {
-            userId: user,
+            userId: user.id,
             productId: productItem.id,
           });
         }
@@ -53,9 +53,24 @@ const ProductDetail = () => {
      
   }
 
-  const handleAddtoCard=()=>{
+  const handleAddtoCard=async ()=>{
     dispatch(addToCart(productItem));
-    navigate("/cart", { state: { product: productItem } }); 
+    try{
+      if(isLogin) {
+        await axios.post(`${api}/api/addtocart/add`, {
+          data: {
+            userId: user.id,
+            productId:productItem.id,
+          },
+        });
+      }
+      toast.success("Added to cart ❤");
+      navigate("/cart", { state: { product: productItem } }); 
+    }
+    catch(error){
+      console.log("err :",error);
+    }
+  
   }
   return (
     productItem && (

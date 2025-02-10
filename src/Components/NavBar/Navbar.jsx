@@ -25,6 +25,7 @@ const Navbar = () => {
     const [searchtoggle,setSearchtoggle]=useState(false)
     const [toggle,setToggle]=useState(false)
     const handelnavclose=()=>{setToggle(!toggle)}
+    const { isLogin } = useSelector((state) => state.auth);
   return (
     <header>
         <nav className='nav-wrapper'>
@@ -65,8 +66,8 @@ const Navbar = () => {
                     <div className='col-md-4 col-5 text-end'>
                         <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
                             <li className='nav-item'><p className='nav-link' onClick={()=>setSearchtoggle(!searchtoggle)}><FaSearch/></p></li>
-                            <li className='nav-item'><Link to="/login" className='nav-link '><FaRegUserCircle/></Link></li>
-                            <li className='nav-item'><Link to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">{addedcart}</span></Link></li>
+                            <li className='nav-item'><Link to={!isLogin?"/login":"/Account"} className='nav-link '><FaRegUserCircle/></Link></li> 
+                            <li className='nav-item'><Link  to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart/> <span className="prod-count-num">{addedcart}</span></Link></li>
                             <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart/> <span className="prod-count-num">{wishlist}</span></Link></li>
                         </ul>
                     </div>

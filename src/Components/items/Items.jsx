@@ -8,57 +8,55 @@ import {
 import { useNavigate } from "react-router-dom";
 import {  toast } from 'react-toastify';
 import axios from "axios";
+import { useEffect } from "react";
+import { fetchWishlist } from "../../api/fetchwishlist";
  
 const Items = ({ prdts}) => {
   const api="http://localhost:5000"
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const navigate = useNavigate();
- const { isLogin, user } = useSelector((state) => state.auth);
- 
+  const { isLogin, user } = useSelector((state) => state.auth);
+  const isWishlisted = wishlist.some((item) => item.product_id === prdts.id);
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchWishlist(user.id));
+    }
+  }, [dispatch, user]);
+  
   const handleClick = () => {
     navigate("/ProductDetail", { state: { product: prdts } });
   };
-  const isWishlisted = wishlist.some((item) => item.product_id === prdts.id);
-
   const toggleWishlist = async () => {
     try {
       if (isWishlisted) {
-        // Dispatch action to remove product from wishlist in the Redux store
         dispatch(removeFromWishlist({product_id:prdts.id}));
-      
-        // Send loga request to remove the product from the user's wishlist on the server
        if(isLogin) {
         await axios.delete(`${api}/api/wishlist/remove`, {
           data: {
-            userId: user,
+            userId: user.id,
             productId: prdts.id,
           },
         });
       }
-        // Show success notification
+
         toast.success("Removed from Wishlist ❤");
-      } else {
-        // Dispatch action to add product to wishlist in the Redux store
+      } else {    
         dispatch(addToWishlist({product_id:prdts.id}));
-         console.log(user,prdts.id);
-         
-        // Send a request to add the product to the user's wishlist on the server
         if(isLogin){
         await axios.post(api+"/api/wishlist/add", {
-          userId: user,
+          userId: user.id,
           productId: prdts.id,
         });
       }
-        // Show success notification
         toast.success("Added to Wishlist ❤");
       }
     } catch (error) {
-      // Show error notification if the request fails
+     
       toast.error("An error occurred. Please try again.");
     }
   };
-
+ 
   return prdts ? (
     <>
 
