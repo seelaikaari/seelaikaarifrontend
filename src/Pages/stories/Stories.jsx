@@ -1,6 +1,7 @@
 import React from 'react'
 import abtimg from '../../assets/images/homepage/about-image.webp'
 import abtimgbg from '../../assets/images/bg-2.png'
+import bannerimg from "../../assets/images/banner-images/home-banner-1.jpg"
 import "./Stories.css"
 const Stories = () => {
   return (
@@ -18,7 +19,7 @@ const Stories = () => {
                         <p className='abt-cont'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit laboriosam quas dignissimos ipsa cumque? Illum veniam, iusto optio, tempora sapiente minus libero eos nulla neque illo voluptatibus, numquam at magnam!</p>
                     </div>
                     <div className="col-md-6">
-                        <img src={abtimg} alt="" className='w-100' />
+                        <img src={bannerimg} alt="" className='w-100' />
                     </div>
                 </div>
             </div>
@@ -28,7 +29,8 @@ const Stories = () => {
                 <div className="row row-gap-5">
                    
                     <div className="col-md-6">
-                        <img src={abtimg} alt="" className='w-100' />
+                        <img src={bannerimg} alt="" className='w-100' />
+                       
                     </div>
                     <div className="col-md-6">
                         <h3 className='abt-str-title'>The Seelaikaari Story</h3>
