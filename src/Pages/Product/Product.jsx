@@ -44,14 +44,14 @@ console.log(products);
     }else{
       handelcategoryfilter()
     }
-  }, [products]);
+  }, [products,category]);
   const handelcategoryfilter=()=>{
-    var filtercategoryproduct=products.filter(item=>item.category.includes(category))
-      // const filtercategoryproduct = products.filter(item => 
-      //   Array.isArray(item.category) 
-      //     ? item.category.some(cat => category.includes(cat)) 
-      //     : category.includes(item.category)
-      // );
+    // var filtercategoryproduct=products.filter(item=>item.category.includes(category))
+      var filtercategoryproduct = products.filter(item => 
+        Array.isArray(item.category) 
+          ? item.category.some(cat => category.includes(cat)) 
+          : category.includes(item.category)
+      );
       setFilteredProducts(filtercategoryproduct);
   }
 
