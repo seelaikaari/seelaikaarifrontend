@@ -22,10 +22,8 @@ const Cartslice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      const productId = action.payload;
-      console.log(productId);
-      
-      state.carts = state.carts.filter(item => item.product_id !== productId.product_id);
+      const productId = action.payload;  
+      state.carts = state.carts.filter(item => item.product_id !== productId);
     },
   },
   extraReducers: (builder) => {

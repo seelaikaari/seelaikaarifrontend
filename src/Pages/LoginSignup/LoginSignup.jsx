@@ -11,9 +11,11 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
+import {dotenv} from "dotenv";
+console.log(dotenv);
 
 const API_URL = "http://localhost:5000";
-
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const GoogleLoginButton = ({ btntext }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const GoogleLoginButton = ({ btntext }) => {
   };
 
   return (
-    <GoogleOAuthProvider clientId={process.env.clientId}>
+    <GoogleOAuthProvider clientId={clientId }>
       <div className="flex justify-center mt-4">
         <GoogleLogin onSuccess={handleSuccess} onError={() => toast.error("Google Login Failed")} text="continue_with" />
       </div>

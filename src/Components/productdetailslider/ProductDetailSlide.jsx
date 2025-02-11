@@ -14,8 +14,7 @@ import "../productdetailslider/ProductDetailSlide.css";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 const ProductDetailSlide = ({img}) => {
-    console.log(img);
-    
+
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <>
@@ -81,7 +80,8 @@ const ProductDetailSlide = ({img}) => {
                     width: 900,
                     height: 1000
                 },
-                enlargedImageContainerClassName: "custom-large-image" // Add custom class
+                enlargedImageContainerClassName: "custom-large-image", // Add custom class
+                ensmallImageContainerClassName: "custom-small-image" // Add custom class
             }}
         />
     </SwiperSlide>

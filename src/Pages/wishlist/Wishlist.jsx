@@ -28,7 +28,7 @@ const Wishlist = () => {
       dispatch(fetchWishlist(user.id));
     }
   }, [dispatch, user]);
-  console.log(loading,wishlist,user);
+
 
    useEffect(() => {
       dispatch(fetchProducts());

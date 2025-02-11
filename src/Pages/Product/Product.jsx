@@ -12,8 +12,6 @@ import { useLocation } from "react-router-dom";
 const Product = () => {
   const location = useLocation();
   const category = location.state?.category||""
-  console.log(category);
-  
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
 

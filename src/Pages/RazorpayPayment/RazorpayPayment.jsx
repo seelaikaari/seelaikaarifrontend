@@ -25,7 +25,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, setCartItems, setShowPaymen
     }
 
     const options = {
-      key: 'rzp_test_Qdjyecln6X4M7k', // Replace with your Razorpay test key
+      key: process.env.Rkey, // Replace with your Razorpay test key
       amount: totalAmount * 100, // Convert to paise
       currency: 'INR',
       name: 'Akilesh Store',

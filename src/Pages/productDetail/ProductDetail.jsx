@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useEffect } from "react";
+import { fetchaddtoCard } from "../../api/fetchAddtocard";
 
 const api="http://localhost:5000"
 const ProductDetail = () => {
@@ -20,9 +22,18 @@ const ProductDetail = () => {
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const isWishlisted = wishlist.some((item) => item.product_id === productItem.id);
   const { isLogin, user } = useSelector((state) => state.auth);
-  const handleAddtoWishList=async ()=>{
+  const addedcart = useSelector((state) => state.carts.carts);
 
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchaddtoCard(user.id));
+    }
+  }, [dispatch, user]);
+
+  const handleAddtoWishList=async ()=>{
+   
     try {
+
       if (isWishlisted) {
         dispatch(removeFromWishlist({product_id:productItem.id}));
         if(isLogin) {
@@ -43,29 +54,38 @@ const ProductDetail = () => {
           });
         }
          toast.success("Added to Wishlist ❤");
-
       }
      
     } catch (error) {
-     
       toast.error("An error occurred. Please try again.");
     }
      
   }
 
+  const updatedcart = addedcart.filter(cart => { 
+   return cart.product_id === productItem.id   
+  });
+ console.log(addedcart);
+ console.log(updatedcart);
   const handleAddtoCard=async ()=>{
-    dispatch(addToCart(productItem));
+    dispatch(addToCart({product_id:productItem.id}));
     try{
-      if(isLogin) {
+ 
+      
+      if(isLogin && updatedcart.length === 0) {
         await axios.post(`${api}/api/addtocart/add`, {
           
             userId: user.id,
             productId:productItem.id,
           
         });
+        toast.success("Added to cart ❤");
+        navigate("/cart", { state: { product: productItem } }); 
+      }else{
+        // toast.success("Added to cart ❤");
+       navigate("/cart", { state: { product: productItem } }); 
       }
-      toast.success("Added to cart ❤");
-      navigate("/cart", { state: { product: productItem } }); 
+      
     }
     catch(error){
       console.log("err :",error); 
@@ -143,7 +163,7 @@ const ProductDetail = () => {
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
                   <button className="btn-Shop-t" onClick={handleAddtoCard}>
-                    <IoCart />  Add to Cart
+                    <IoCart /> {updatedcart.length !== 0 ? "Go to Cart" : "Add to Cart" }  
                   </button>
                   <button className="btn-pr-dt-wishlist" onClick={handleAddtoWishList}>
                     <FaHeart /> {isWishlisted?"Remove from WishList":"Add to WishList"}
