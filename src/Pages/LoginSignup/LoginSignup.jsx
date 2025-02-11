@@ -38,7 +38,7 @@ const GoogleLoginButton = ({ btntext }) => {
   };
 
   return (
-    <GoogleOAuthProvider clientId="498241484142-90guse0fmn72senci02m639as366jfh1.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={process.env.clientId}>
       <div className="flex justify-center mt-4">
         <GoogleLogin onSuccess={handleSuccess} onError={() => toast.error("Google Login Failed")} text="continue_with" />
       </div>
