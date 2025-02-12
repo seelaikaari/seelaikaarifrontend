@@ -113,7 +113,7 @@ const Navbar = () => {
                                 </div>
                             </li>
                             <li className='nav-item'><NavLink to="/Contact" onClick={handelnavclose} className='nav-link'>Contact</NavLink></li>
-                            <li className='nav-item nav-drop-parent'><NavLink onClick={handelnavclose} className='nav-link'>About<IoIosArrowDown /></NavLink>
+                            <li className='nav-item nav-drop-parent'><p  className='nav-link'>About<IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
                                         <li className="nav-item"><Link to="/About" className="nav-link">About Seelaikaari</Link></li>

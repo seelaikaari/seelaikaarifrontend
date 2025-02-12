@@ -12,7 +12,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
 import {dotenv} from "dotenv";
-
+import Modal from "react-modal";
 const API_URL = "http://localhost:5000";
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const GoogleLoginButton = ({ btntext }) => {
@@ -65,7 +65,13 @@ const LoginSignup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin,loading} = useSelector((state) => state.auth);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [verificationLoading, setVerificationLoading] = useState(false);
   const [isemailverify,setIsemailverify]=useState(false);
+  useEffect(() => {
+    Modal.setAppElement("#root"); // Ensures accessibility
+  }, []);
   useEffect(() => {
     const token = localStorage.getItem("token");
      dispatch(setLoading(true)); 
@@ -126,12 +132,51 @@ const LoginSignup = () => {
       setErrors({ email: error.response?.data?.error });
     }
   };
- const handleEmailverification= async()=>{
-   const response=await axios.post(`${API_URL}/api/users/sendverification`)
-   toast.success(response.message);
-  }
+
+
+  // Step 1: Send Verification Code
+  const handleEmailVerification = async () => {
+    try {
+      // const response = await axios.post(`${API_URL}/api/users/sendverification`,{
+      // email:formData.email,
+      // name:formData.name ||""
+      // });
+       setIsModalOpen(true);
+      toast.success("Verification code sent to your email.");
+      // Open the popup for code input
+    } catch (error) {
+      toast.error("Failed to send verification code.");
+    }
+  };
+console.log(isModalOpen);
+
+  // Step 2: Verify the Entered Code
+  const handleVerifyCode = async () => {
+    if (!verificationCode) {
+      toast.error("Please enter the verification code.");
+      return;
+    }
+
+    setVerificationLoading(true);
+    try {
+      const response = await axios.post(`${API_URL}/api/users/verify`, {
+        code: verificationCode,
+      });
+
+      if (response.data.success) {
+        toast.success("Email verified successfully!");
+        setIsModalOpen(false); // Close the modal on success
+      } else {
+        toast.error(response.data.message || "Invalid verification code.");
+      }
+    } catch (error) {
+      toast.error("Verification failed. Try again.");
+    }
+    setVerificationLoading(false);
+  };
   return (
-    !isLogin ? <section className="d-flex align-items-center justify-content-center">
+    !isLogin ? <>
+    <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
         <div className="row align-items-center row-gap-5 login-rev">
           <div className="col-lg-6 col-md-5 login-img-wrap">
@@ -143,7 +188,7 @@ const LoginSignup = () => {
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Name" value={formData.name} onChange={(val) => handleChange("name", val)} error={errors.name} icon={<FaUserCircle className="log-inp-icon" />} />
               )}
-              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button className="verify" onClick={handleEmailverification}>verify</button></>:<IoMail className="log-inp-icon" /> } />
+              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button className="verify" onClick={handleEmailVerification}>verify</button></>:<IoMail className="log-inp-icon" /> } />
               
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Phone" value={formData.phone} onChange={(val) => handleChange("phone", val)} error={errors.phone} icon={<FaPhone className="log-inp-icon" /> } />
@@ -171,7 +216,8 @@ const LoginSignup = () => {
           </div>
         </div>
       </div>
-    </section>:<Navigate to={"/Account"} />
+     
+    </section></>:<Navigate to={"/Account"} />
   );
 };
 
