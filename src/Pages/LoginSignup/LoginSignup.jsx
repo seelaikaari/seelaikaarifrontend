@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
 import {dotenv} from "dotenv";
 import Modal from "react-modal";
+import { TiTick } from "react-icons/ti";
+import Popup from "../../Components/popupemailverify/Popup"
 const API_URL = "http://localhost:5000";
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const GoogleLoginButton = ({ btntext }) => {
@@ -174,8 +176,10 @@ console.log(isModalOpen);
     }
     setVerificationLoading(false);
   };
+  const [popuptoggle,setPopuptoggle]=useState(false)
   return (
     !isLogin ? <>
+    {popuptoggle&& <Popup setPopuptoggle={setPopuptoggle}/>}
     <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
         <div className="row align-items-center row-gap-5 login-rev">
@@ -188,7 +192,7 @@ console.log(isModalOpen);
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Name" value={formData.name} onChange={(val) => handleChange("name", val)} error={errors.name} icon={<FaUserCircle className="log-inp-icon" />} />
               )}
-              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button className="verify" onClick={handleEmailVerification}>verify</button></>:<IoMail className="log-inp-icon" /> } />
+              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button className="verify" onClick={()=>{handleEmailVerification ;setPopuptoggle(true)}}><TiTick/>verify</button></>:<IoMail className="log-inp-icon" /> } />
               
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Phone" value={formData.phone} onChange={(val) => handleChange("phone", val)} error={errors.phone} icon={<FaPhone className="log-inp-icon" /> } />
@@ -218,6 +222,7 @@ console.log(isModalOpen);
       </div>
      
     </section></>:<Navigate to={"/Account"} />
+    
   );
 };
 

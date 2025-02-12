@@ -30,6 +30,7 @@ const Stories = () => {
                    
                     <div className="col-md-6">
                         <img src={bannerimg} alt="" className='w-100' />
+                        
                        
                     </div>
                     <div className="col-md-6">
