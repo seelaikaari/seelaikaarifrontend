@@ -61,7 +61,7 @@ const About = () => {
 
           <h2 className="section-heading">Meet Our Founder</h2>
           <p>
-            <strong>Akilesh A</strong>, the visionary behind Seelaikari, has
+            <strong>Amrutha</strong>, the visionary behind Seelaikari, has
             always been captivated by the grace of sarees. With a deep-rooted
             love for heritage textiles, Akilesh embarked on a journey to create
             a brand that uplifts weavers and makes handloom sarees accessible to

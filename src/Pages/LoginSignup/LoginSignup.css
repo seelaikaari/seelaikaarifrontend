@@ -135,3 +135,8 @@
     margin-top: 5px; 
     outline: none;
 }
+.verify{
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+}

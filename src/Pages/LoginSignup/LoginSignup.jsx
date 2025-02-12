@@ -12,7 +12,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
 import {dotenv} from "dotenv";
-console.log(dotenv);
 
 const API_URL = "http://localhost:5000";
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
@@ -48,7 +47,7 @@ const GoogleLoginButton = ({ btntext }) => {
   );
 };
 
-const InputField = ({ type, placeholder, value, onChange, error, icon }) => (
+const InputField = ({ type, placeholder, value, onChange, error, icon, isLogin }) => (
   <div>
     <div className="login-inp-pos">
       <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className="login-input" placeholder={placeholder} />
@@ -66,6 +65,7 @@ const LoginSignup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin,loading} = useSelector((state) => state.auth);
+  const [isemailverify,setIsemailverify]=useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
      dispatch(setLoading(true)); 
@@ -87,6 +87,7 @@ const LoginSignup = () => {
     const newErrors = {};
     if (!formData.email) newErrors.email = "Email is required.";
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Invalid email format.";
+    else if(!isemailverify) newErrors.email = "Click Verify to verify your Email";
 
     if (!isLogintype) {
       if (!formData.name) newErrors.name = "Name is required.";
@@ -119,11 +120,16 @@ const LoginSignup = () => {
       toast.success(isLogintype ? "Logged in successfully!" : "Signed up successfully!");
       setFormData({ name: "", email: "", password: "", phone: "" });
     } catch (error) {
+      console.log(error);
+      
       toast.error(error.response?.data?.error || "An error occurred");
       setErrors({ email: error.response?.data?.error });
     }
   };
-
+ const handleEmailverification= async()=>{
+   const response=await axios.post(`${API_URL}/api/users/sendverification`)
+   toast.success(response.message);
+  }
   return (
     !isLogin ? <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
@@ -137,9 +143,10 @@ const LoginSignup = () => {
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Name" value={formData.name} onChange={(val) => handleChange("name", val)} error={errors.name} icon={<FaUserCircle className="log-inp-icon" />} />
               )}
-              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={<IoMail className="log-inp-icon" />} />
+              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button className="verify" onClick={handleEmailverification}>verify</button></>:<IoMail className="log-inp-icon" /> } />
+              
               {!isLogintype && (
-                <InputField type="text" placeholder="Enter Your Phone" value={formData.phone} onChange={(val) => handleChange("phone", val)} error={errors.phone} icon={<FaPhone className="log-inp-icon" />} />
+                <InputField type="text" placeholder="Enter Your Phone" value={formData.phone} onChange={(val) => handleChange("phone", val)} error={errors.phone} icon={<FaPhone className="log-inp-icon" /> } />
               )}
               <InputField type="password" placeholder="Enter Your Password" value={formData.password} onChange={(val) => handleChange("password", val)} error={errors.password} icon={<RiLockPasswordLine className="log-inp-icon" />} />
 
