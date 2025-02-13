@@ -15,6 +15,10 @@ const Popup = ({setPopuptoggle}) => {
     
     const handleChange = (e, index) => {
         const value = e.target.value;
+        setVerifyotp({
+            ...verifyotp,
+            [e.target.name]: e.target.value,
+          });
         // Handle backspace: if the input is empty, focus the previous input field
         if (value.length === 0 && index > 0) {
             inputRefs[index - 1].current.focus();
@@ -58,10 +62,11 @@ const Popup = ({setPopuptoggle}) => {
                             type="number" className="popupinp"
                             min="0"
                             max="9"
+                            name="otpnum1"
                             ref={inputRefs[0]}
                              maxLength="1"
                              value={verifyotp.otpnum1}
-                            onChange={(e) => {handleChange(e, 0); setVerifyotp({...verifyotp,otpnum1:e.target.value})}}
+                            onChange={(e) => {handleChange(e, 0);}}
                         />
                         <input
                             type="number"
@@ -69,19 +74,23 @@ const Popup = ({setPopuptoggle}) => {
                             min="0"
                              maxLength="1"
                             max="9"
+                            name="otpnum2"
+
                             ref={inputRefs[1]}
                             value={verifyotp.otpnum2}
-                            onChange={(e) =>{ handleChange(e, 1); setVerifyotp({...verifyotp,otpnum2:e.target.value})}}
+                            onChange={(e) =>{ handleChange(e, 1); }}
                         />
                         <input
                             type="number"
                             className="popupinp"
                             min="0"
                             max="9"
+                            name="otpnum3"
+
                              maxLength="1"
                             ref={inputRefs[2]}
                             value={verifyotp.otpnum3}
-                            onChange={(e) =>{ handleChange(e, 2); setVerifyotp({...verifyotp,otpnum3:e.target.value})}}
+                            onChange={(e) =>{ handleChange(e, 2);}}
                         />
                         <input
                             type="number"
@@ -89,9 +98,10 @@ const Popup = ({setPopuptoggle}) => {
                             min="0"
                              maxLength="1"
                             max="9"
+                            name="otpnum4"
                             ref={inputRefs[3]}
                             value={verifyotp.otpnum4}
-                            onChange={(e) => {handleChange(e, 3); setVerifyotp({...verifyotp,otpnum4:e.target.value})}}
+                            onChange={(e) => {handleChange(e, 3);}}
                         />
                     </div>
                     <button className="verifypopup" onClick={handelverifyotp}>Verify</button><br />
