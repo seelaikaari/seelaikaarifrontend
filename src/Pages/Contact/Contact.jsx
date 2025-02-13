@@ -12,7 +12,7 @@ const Contact = () => {
     comment: '',
     subject: ""
   });
-
+  
   const [errors, setErrors] = useState({
     name: '',
     mobile: '',

@@ -1,5 +1,5 @@
-// export default Product;
-import { useEffect, useState } from "react";
+// Fixed handleChange ReferenceError
+import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../api/fetchProduct";
 import ProductSideBar from "../../Components/productsidebar/ProductSidebar.jsx";
@@ -9,190 +9,55 @@ import { FaSearchMinus, FaFilter } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from "react-router-dom";
+
 const Product = () => {
   const location = useLocation();
-  const category = location.state?.category||""
+  const category = location.state?.category || "";
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  const { products } = useSelector((state) => state.products);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedFilters, setSelectedFilters] = useState({
-    category: [],
-    material: [],
-    color: [],
-    size: [],
-  });
-
+  const [selectedFilters, setSelectedFilters] = useState({ category: [], material: [], color: [], size: [] });
   const [priceRange, setPriceRange] = useState([0, 0]);
-  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false); // State for mobile filter menu
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
+  useEffect(() => { dispatch(fetchProducts()); }, [dispatch]);
+  useEffect(() => { category ? handleCategoryFilter() : setFilteredProducts(products); }, [products, category]);
+  const handleCategoryFilter = () => setFilteredProducts(products.filter(item => Array.isArray(item.category) ? item.category.some(cat => category.includes(cat)) : category.includes(item.category)));
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if(category.length===0){
-      setFilteredProducts(products);
-    }else{
-      handelcategoryfilter()
-    }
-  }, [products,category]);
-  const handelcategoryfilter=()=>{
-    // var filtercategoryproduct=products.filter(item=>item.category.includes(category))
-      var filtercategoryproduct = products.filter(item => 
-        Array.isArray(item.category) 
-          ? item.category.some(cat => category.includes(cat)) 
-          : category.includes(item.category)
-      );
-      setFilteredProducts(filtercategoryproduct);
-  }
-
-  const getUniqueValues = (key) => {
-    if (key === "color" || key === "size") {
-      return [
-        ...new Set(products.flatMap((p) => p[key]?.map((c) => c.name) || [])),
-      ];
-    }
-    return [...new Set(products.map((p) => p[key]))];
-  };
-
-  const handlePriceFilter = (range) => {
-    if (range[0] !== priceRange[0] || range[1] !== priceRange[1]) {
-      setPriceRange(range);
-    }
-  };
+  const getUniqueValues = useMemo(() => (key) => key === "color" || key === "size" ? [...new Set(products.flatMap((p) => p[key]?.map((c) => c.name) || []))] : [...new Set(products.map((p) => p[key]))], [products]);
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-
-    setSelectedFilters((prevFilters) => {
-      const updatedFilters = checked
-        ? [...prevFilters[name], value]
-        : prevFilters[name].filter((filterValue) => filterValue !== value);
-
-      return { ...prevFilters, [name]: updatedFilters };
-    });
+    setSelectedFilters((prev) => ({ ...prev, [name]: checked ? [...prev[name], value] : prev[name].filter((v) => v !== value) }));
   };
 
   useEffect(() => {
-    let filtered = products;
-
-    Object.entries(selectedFilters).forEach(([key, values]) => {
-      if (values.length > 0) {
-        filtered = filtered.filter((product) => {
-          if (Array.isArray(product[key])) {
-            return product[key].some((item) => values.includes(item.name));
-          }
-          return values.includes(product[key]);
-        });
-      }
-    });
-
-    filtered = filtered.filter(
-      (product) =>
-        Number(product.price) >= priceRange[0] &&
-        Number(product.price) <= priceRange[1]
-    );
-
+    let filtered = products.filter(product => (Number(product.price) >= priceRange[0] && Number(product.price) <= priceRange[1]));
+    Object.entries(selectedFilters).forEach(([key, values]) => { if (values.length) filtered = filtered.filter(product => Array.isArray(product[key]) ? product[key].some((item) => values.includes(item.name)) : values.includes(product[key])); });
     setFilteredProducts(filtered);
   }, [selectedFilters, products, priceRange]);
 
-  const prices = products
-    .map((prd) => Number(prd.price))
-    .filter((price) => !isNaN(price) && price > 0);
-
-  const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
-  const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+  const prices = useMemo(() => products.map(prd => Number(prd.price)).filter(price => !isNaN(price) && price > 0), [products]);
+  const maxPrice = Math.max(...prices, 0);
+  const minPrice = Math.min(...prices, Infinity);
 
   return (
     <div className="product-pages container">
-     
-      {/* Mobile Filter Toggle Button */}
-      <button
-        className="mobile-filter-toggle"
-        onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
-      >
-        <FaFilter /> Filters
-      </button>
-
+      <button className="mobile-filter-toggle" onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}><FaFilter /> Filters</button>
       <div className="row">
-        {/* Filter Sidebar */}
-        <div
-          className={`col-lg-3 mobile-filter-menu ${
-            isMobileFilterOpen ? "open" : ""
-          }`}
-        >
-          <div className="container-sticky">
-          <div className="filterScroll" style={{height:`${window.innerHeight-50}px`,overflow:"scroll"}}>
-
-            <h2
-              className="filter-heading "
-              style={{
-                justifyContent: isMobileFilterOpen ? "space-between" : "normal",
-              }}
-            >
-              <span className="filter-icon">🔍</span> Filter
-              <span
-                style={{ display: isMobileFilterOpen ? "block" : "none" }}
-                onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
-              >
-                <MdClose />
-              </span>
-            </h2>
-            <ProductSideBar
-              filopt={[maxPrice, minPrice]}
-              title={"price"}
-              handleChange={handlePriceFilter}
-            />
-            <ProductSideBar
-              filopt={getUniqueValues("category")}
-              title={"category"}
-              handleChange={handleChange}
-            />
-            <ProductSideBar
-              filopt={getUniqueValues("material")}
-              title={"material"}
-              handleChange={handleChange}
-            />
-            <ProductSideBar
-              filopt={getUniqueValues("color")}
-              title={"color"}
-              handleChange={handleChange}
-            />
-            <ProductSideBar
-              filopt={getUniqueValues("size")}
-              title={"size"}
-              handleChange={handleChange}
-            />
-          </div>
+        <div className={`col-lg-3 mobile-filter-menu ${isMobileFilterOpen ? "open" : ""}`}>
+          <div className="container-sticky filterScroll" style={{ height: `${window.innerHeight - 50}px`, overflow: "scroll" }}>
+            <h2 className="filter-heading"><span>🔍</span> Filter<MdClose onClick={() => setIsMobileFilterOpen(false)} /></h2>
+            {['price', 'category', 'material', 'color', 'size'].map((title) => (
+              <ProductSideBar key={title} filopt={title === 'price' ? [maxPrice, minPrice] : getUniqueValues(title)} title={title} handleChange={title === 'price' ? setPriceRange : handleChange} />
+            ))}
           </div>
         </div>
-
-        {/* Product List */}
         <div className="col-lg-9">
-      
-  
           <div className="row">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((item, index) => (
-                <div className="col-lg-3 col-md-4 col-6 pb-3" key={index}>
-                  <Items prdts={item} />
-                </div>
-              ))
-            ) : (
-              <div className="search-not-found-container">
-                <FaSearchMinus className="not-found-icon" />
-                <h2>Oops! No Sarees Found</h2>
-                <p>
-                  We couldnt find any sarees based on your search. Please try
-                  again with different keywords or filters.
-                </p>
-              </div>
+            {filteredProducts.length ? filteredProducts.map((item, index) => (<div className="col-lg-3 col-md-4 col-6 pb-3" key={index}><Items prdts={item} /></div>)) : (
+              <div className="search-not-found-container"><FaSearchMinus className="not-found-icon" /><h2>Oops! No Sarees Found</h2><p>We couldn't find any sarees based on your search. Please try again with different keywords or filters.</p></div>
             )}
           </div>
         </div>

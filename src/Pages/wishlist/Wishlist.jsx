@@ -64,7 +64,7 @@ const Wishlist = () => {
             <h2 className="wlist-ht">Wishlist Products ({wishlist.length})</h2>
             <div className="row wishlist-inner-wrap">
               {wishlistProducts.map((item, index) => (
-                <div className="col-md-3" key={index}>
+                <div className="col-lg-3 col-md-4 col-6" key={index}>
                   <div className="wishlist-wrap-cont">
                     <img src={item.images[0]?.url} alt={item.name} className="w-100" style={{"cursor":"pointer"}} onClick={()=>handleClick(item)} />
                     <p className="wishlist-text">{item.description}</p>
