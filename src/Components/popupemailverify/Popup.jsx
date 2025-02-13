@@ -1,13 +1,15 @@
+import { toast } from "react-toastify";
 import "./Popup.css"
 import React, { useRef, useState } from 'react';
 import email from "../../assets/images/icons/email.png"
+import { IoClose } from "react-icons/io5";
 const Popup = ({setPopuptoggle}) => {
     const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
     const [verifyotp,setVerifyotp]=useState({
-        imp1:"",
-        imp2:"",
-        imp3:"",
-        imp4:"",
+        otpnum1:"",
+        otpnum2:"",
+        otpnum3:"",
+        otpnum4:"",
     })
     
     
@@ -29,10 +31,25 @@ const Popup = ({setPopuptoggle}) => {
     
         
       };
+
+      const handelverifyotp=()=>{
+        if (verifyotp.otpnum1==""||verifyotp.otpnum2==""||verifyotp.otpnum3==""||verifyotp.otpnum4==""){
+            toast.error("Invalid OTP");
+            return 
+        }
+        console.log("verified");
+        setVerifyotp({
+        otpnum1:"",
+        otpnum2:"",
+        otpnum3:"",
+        otpnum4:"",
+    })
+      }
     return (
         <>
             <div className="popup-wrapper">
                 <div className="popup-inner-email">
+                    <button className="pop-close-btn" onClick={()=>setPopuptoggle(false)}><IoClose/></button>
                     <img src={email} alt="" width="70px" />
                     <h2 className="popupad">Verify Your Email Address</h2>
 
@@ -43,7 +60,8 @@ const Popup = ({setPopuptoggle}) => {
                             max="9"
                             ref={inputRefs[0]}
                              maxLength="1"
-                            onChange={(e) => {handleChange(e, 0); setVerifyotp({...verifyotp,imp1:e.target.value})}}
+                             value={verifyotp.otpnum1}
+                            onChange={(e) => {handleChange(e, 0); setVerifyotp({...verifyotp,otpnum1:e.target.value})}}
                         />
                         <input
                             type="number"
@@ -52,7 +70,8 @@ const Popup = ({setPopuptoggle}) => {
                              maxLength="1"
                             max="9"
                             ref={inputRefs[1]}
-                            onChange={(e) =>{ handleChange(e, 1); setVerifyotp({...verifyotp,imp2:e.target.value})}}
+                            value={verifyotp.otpnum2}
+                            onChange={(e) =>{ handleChange(e, 1); setVerifyotp({...verifyotp,otpnum2:e.target.value})}}
                         />
                         <input
                             type="number"
@@ -61,7 +80,8 @@ const Popup = ({setPopuptoggle}) => {
                             max="9"
                              maxLength="1"
                             ref={inputRefs[2]}
-                            onChange={(e) =>{ handleChange(e, 2); setVerifyotp({...verifyotp,imp3:e.target.value})}}
+                            value={verifyotp.otpnum3}
+                            onChange={(e) =>{ handleChange(e, 2); setVerifyotp({...verifyotp,otpnum3:e.target.value})}}
                         />
                         <input
                             type="number"
@@ -70,10 +90,11 @@ const Popup = ({setPopuptoggle}) => {
                              maxLength="1"
                             max="9"
                             ref={inputRefs[3]}
-                            onChange={(e) => {handleChange(e, 3); setVerifyotp({...verifyotp,imp4:e.target.value})}}
+                            value={verifyotp.otpnum4}
+                            onChange={(e) => {handleChange(e, 3); setVerifyotp({...verifyotp,otpnum4:e.target.value})}}
                         />
                     </div>
-                    <button className="verifypopup">Verify</button><br />
+                    <button className="verifypopup" onClick={handelverifyotp}>Verify</button><br />
                     <button className="resend-code">Resend Code </button>
                 </div>
             </div>
