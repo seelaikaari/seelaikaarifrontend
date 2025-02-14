@@ -1,7 +1,7 @@
 import "./Popup.css"
 import React, { useRef, useState } from 'react';
 import email from "../../assets/images/icons/email.png"
-const Popup = ({setPopuptoggle}) => {
+const Popup = ({handleVerifyCode,handleEmailVerification,setVerificationCode}) => {
     const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
     const [verifyotp,setVerifyotp]=useState({
         imp1:"",
@@ -9,8 +9,9 @@ const Popup = ({setPopuptoggle}) => {
         imp3:"",
         imp4:"",
     })
-    
-    
+   if(verifyotp.imp1 && verifyotp.imp2 && verifyotp.imp3 && verifyotp.imp4){
+    setVerificationCode(verifyotp.imp1+verifyotp.imp2+verifyotp.imp3+verifyotp.imp4)
+   }
     const handleChange = (e, index) => {
         const value = e.target.value;
         // Handle backspace: if the input is empty, focus the previous input field
@@ -73,8 +74,8 @@ const Popup = ({setPopuptoggle}) => {
                             onChange={(e) => {handleChange(e, 3); setVerifyotp({...verifyotp,imp4:e.target.value})}}
                         />
                     </div>
-                    <button className="verifypopup">Verify</button><br />
-                    <button className="resend-code">Resend Code </button>
+                    <button className="verifypopup" onClick={handleVerifyCode} disabled={verifyotp.imp1=="" ||verifyotp.imp2==""||verifyotp.imp3==""||verifyotp.imp4==""}>Verify</button><br />
+                    <button className="resend-code" onClick={handleEmailVerification} >Resend Code </button>
                 </div>
             </div>
 

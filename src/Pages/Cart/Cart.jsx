@@ -5,7 +5,6 @@ import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
-import { fetchProducts } from "../../api/fetchProduct";
 import { fetchaddtoCard } from "../../api/fetchAddtocard";
 import flow1 from "../../assets/images/images-floral/f-1.jpg";
 import flow2 from "../../assets/images/images-floral/f-2.jpg";
@@ -46,16 +45,6 @@ const Cart = () => {
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  // Fetch user cart and product details
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchaddtoCard(user.id));
-    }
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
   
   // Filter and map cart items with product details
   useEffect(() => {
@@ -100,12 +89,9 @@ const Cart = () => {
     if (accepted) setIsTermsAccepted(true);
   };
 
-  // Remove item from cart
-  console.log(addedcart);
-  
+ 
   const handleRemoveCart = async (itemId) => {
-    console.log(itemId);
-    
+
     dispatch(removeFromCart(itemId));
     try {
       if (isLogin) {

@@ -10,8 +10,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { useEffect } from "react";
-import { fetchaddtoCard } from "../../api/fetchAddtocard";
+import React, { useCallback, useMemo } from "react";
 
 const api="http://localhost:5000"
 const ProductDetail = () => {
@@ -20,78 +19,65 @@ const ProductDetail = () => {
   const navigate=useNavigate();
   const dispatch=useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
-  const isWishlisted = wishlist.some((item) => item.product_id === productItem.id);
-  const { isLogin, user } = useSelector((state) => state.auth);
+  const { isLogin, user,loading } = useSelector((state) => state.auth);
   const addedcart = useSelector((state) => state.carts.carts);
 
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchaddtoCard(user.id));
-    }
-  }, [dispatch, user]);
+  const isWishlisted = useMemo(() => {
+    return wishlist.some(item => item.product_id === productItem?.id);
+  }, [wishlist, productItem?.id]);
 
-  const handleAddtoWishList=async ()=>{
-   
+  const updatedcart = useMemo(() => {
+    return addedcart.filter(cart => cart.product_id === productItem?.id);
+  }, [addedcart, productItem?.id]);
+
+  const handleAddtoWishList = useCallback(async () => {
     try {
-
       if (isWishlisted) {
-        dispatch(removeFromWishlist({product_id:productItem.id}));
-        if(isLogin) {
+        dispatch(removeFromWishlist({ product_id: productItem?.id }));
+        if (isLogin) {
           await axios.delete(`${api}/api/wishlist/remove`, {
             data: {
-              userId: user.id,
-              productId:productItem.id,
+              userId: user?.id,
+              productId: productItem?.id,
             },
           });
         }
-         toast.error("Removed from Wishlist ❤");
+        toast.error("Removed from Wishlist ❤");
       } else {
-        dispatch(addToWishlist({product_id:productItem.id}));
-        if(isLogin){
-          await axios.post(api+"/api/wishlist/add", {
-            userId: user.id,
-            productId: productItem.id,
+        dispatch(addToWishlist({ product_id: productItem.id }));
+        if (isLogin) {
+          await axios.post(api + "/api/wishlist/add", {
+            userId: user?.id,
+            productId: productItem?.id,
           });
         }
-         toast.success("Added to Wishlist ❤");
+        toast.success("Added to Wishlist ❤");
       }
-     
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     }
-     
-  }
+  }, [isWishlisted, isLogin, dispatch, productItem.id, user?.id]);
 
-  const updatedcart = addedcart.filter(cart => { 
-   return cart.product_id === productItem.id   
-  });
- console.log(addedcart);
- console.log(updatedcart);
-  const handleAddtoCard=async ()=>{
-    dispatch(addToCart({product_id:productItem.id}));
-    try{
- 
-      
-      if(isLogin && updatedcart.length === 0) {
+  const handleAddtoCard = useCallback(async () => {
+  
+    try {
+      if (isLogin && updatedcart.length === 0) {
+        dispatch(addToCart({ product_id: productItem?.id }));
         await axios.post(`${api}/api/addtocart/add`, {
-          
-            userId: user.id,
-            productId:productItem.id,
-          
+          userId: user?.id,
+          productId: productItem?.id,
         });
         toast.success("Added to cart ❤");
-        navigate("/cart", { state: { product: productItem } }); 
-      }else{
-        // toast.success("Added to cart ❤");
-       navigate("/cart", { state: { product: productItem } }); 
+        navigate("/cart", { state: { product: productItem } });
+      } else {
+        navigate("/cart", { state: { product: productItem } });
       }
-      
+    } catch (error) {
+      console.log("err :", error);
     }
-    catch(error){
-      console.log("err :",error); 
-    }
-  
-  }
+  }, [isLogin, updatedcart, dispatch, productItem?.id, user?.id, navigate]);
+
+
   return (
     productItem && (
       <>
@@ -185,4 +171,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default React.memo(ProductDetail);;

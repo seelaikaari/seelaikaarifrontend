@@ -7,8 +7,6 @@ export const fetchWishlist = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${api}/api/wishlist/${userId}`);
-      console.log(response);
-      
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);

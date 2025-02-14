@@ -6,12 +6,11 @@ import { MdOutlineCurrencyRupee, MdOutlineDeleteOutline } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromWishlist } from "../../features/products/WishlistSlice";
-import { useEffect } from "react";
-import { fetchWishlist } from "../../api/fetchwishlist";
-import { fetchProducts } from "../../api/fetchProduct";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useCallback } from "react";
+import { addToCart } from "../../features/products/AddtoCardSlice";
 const api ="http://localhost:5000"
 const Wishlist = () => {
   const navigate = useNavigate();
@@ -22,17 +21,7 @@ const Wishlist = () => {
   const { wishlist, loading, error } = useSelector((state) => state.wishlist);
   const { products } = useSelector((state) => state.products);
   const { isLogin, user } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchWishlist(user.id));
-    }
-  }, [dispatch, user]);
-
-
-   useEffect(() => {
-      dispatch(fetchProducts());
-    }, [dispatch]);
+  const addedcart = useSelector((state) => state.carts.carts);
 
   const handleRemoveClick = async (id) => {
      try{
@@ -55,7 +44,30 @@ const Wishlist = () => {
   const wishlistProducts = products.filter((product) =>
     wishlist.some((item) => item.product_id === product.id)
   );
+  const isCartItem = (item) => {
+    return addedcart.some(cart => cart.product_id === item?.id);
+  };
+  console.log(wishlist);
+  
+  const handleAddtoCard = async (item) => {
  
+    try {
+      if (isLogin && !isCartItem(item)) {
+        dispatch(addToCart({ product_id: item?.id }));
+        await axios.post(`${api}/api/addtocart/add`, {
+          userId: user?.id,
+          productId: item?.id,
+        });
+ 
+        toast.success("Added to cart ❤");
+        navigate("/cart", { state: { product: item } });
+      } else {
+        navigate("/cart", { state: { product: item } });
+      }
+    } catch (error) {
+      console.log("err :", error);
+    }
+  };
   return (
     <>
       {wishlist && wishlist.length > 0 ? (
@@ -86,8 +98,8 @@ const Wishlist = () => {
                       >
                         <MdOutlineDeleteOutline /> Remove
                       </button>
-                      <button className="add-Cart-btn">
-                        Add to Cart <AiOutlineShoppingCart />
+                      <button className="add-Cart-btn" onClick={()=>handleAddtoCard(item)}>
+                        {isCartItem(item)?"Go to Cart":"Add to Cart"}  <AiOutlineShoppingCart />
                       </button>
                     </div>
                   </div>

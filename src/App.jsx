@@ -24,6 +24,9 @@ import { useSelector ,useDispatch} from "react-redux";
 import { setLoading, setUser } from "./features/users/authSlice.js";
 import { useEffect } from "react";
 import axios from "axios";
+import { fetchaddtoCard } from "./api/fetchAddtocard.js";
+import { fetchProducts } from "./api/fetchProduct.js";
+import { fetchWishlist } from "./api/fetchwishlist.js";
 
 
 
@@ -32,21 +35,42 @@ const ProtectedRoute = ({ isLogin, children}) => {
 };
 const api="http://localhost:5000"
 function App() {
-  const { isLogin,loading} = useSelector((state) => state.auth);
-
+  const { isLogin,user} = useSelector((state) => state.auth);
   const dispatch=useDispatch();
   const token = localStorage.getItem("token");
+
   useEffect(() => {
      dispatch(setLoading(true)); 
     if (token) {
       axios.post(`${api}/api/users/validate-token`, {}, { headers: { Authorization: `Bearer ${token}` } })
-        .then((res) =>{dispatch(setUser(res.data.user))}
+        .then((res) =>{
+          console.log(res);
+          
+          dispatch(setUser(res.data.user))}
       )
         .catch(() => localStorage.removeItem("token")).finally(() => {
             dispatch(setLoading(false));
           });;
     }
   }, [token]);
+
+  useEffect(() => {
+      if (user) {
+        dispatch(fetchaddtoCard(user.id));
+      }
+    }, [dispatch, user]);
+    
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchWishlist(user.id));
+    }
+  }, [dispatch, user]);
+
+
+   useEffect(() => {
+      dispatch(fetchProducts());
+    }, [dispatch]);
+    
   return (
     <>
       <ToastContainer

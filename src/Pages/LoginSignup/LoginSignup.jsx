@@ -11,8 +11,6 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
-import {dotenv} from "dotenv";
-import Modal from "react-modal";
 import { TiTick } from "react-icons/ti";
 import Popup from "../../Components/popupemailverify/Popup"
 const API_URL = "http://localhost:5000";
@@ -67,13 +65,11 @@ const LoginSignup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin,loading} = useSelector((state) => state.auth);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [popuptoggle,setPopuptoggle]=useState(false)
   const [verificationCode, setVerificationCode] = useState("");
   const [verificationLoading, setVerificationLoading] = useState(false);
   const [isemailverify,setIsemailverify]=useState(false);
-  useEffect(() => {
-    Modal.setAppElement("#root"); // Ensures accessibility
-  }, []);
+ 
   useEffect(() => {
     const token = localStorage.getItem("token");
      dispatch(setLoading(true)); 
@@ -95,7 +91,7 @@ const LoginSignup = () => {
     const newErrors = {};
     if (!formData.email) newErrors.email = "Email is required.";
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Invalid email format.";
-    else if(!isemailverify) newErrors.email = "Click Verify to verify your Email";
+    else if(!isemailverify && !isLogintype) newErrors.email = "Click Verify to verify your Email";
 
     if (!isLogintype) {
       if (!formData.name) newErrors.name = "Name is required.";
@@ -105,12 +101,14 @@ const LoginSignup = () => {
 
     if (!formData.password) newErrors.password = "Password is required.";
     else if (formData.password.length < 8) newErrors.password = "Password should be at least 8 characters.";
-
+  
     setErrors(newErrors);
+    
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
+ 
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -138,19 +136,26 @@ const LoginSignup = () => {
 
   // Step 1: Send Verification Code
   const handleEmailVerification = async () => {
+   console.log("calling");
+   
+    setIsemailverify(true);
     try {
-      // const response = await axios.post(`${API_URL}/api/users/sendverification`,{
-      // email:formData.email,
-      // name:formData.name ||""
-      // });
-       setIsModalOpen(true);
+      if (!formData.email) setErrors({email : "Email is required."});
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) setErrors({email : "Invalid email format."});
+      else{
+const response = await axios.post(`${API_URL}/api/users/sendverification`,{
+      email:formData.email,
+      name:formData.name ||""
+      })
       toast.success("Verification code sent to your email.");
-      // Open the popup for code input
+      setPopuptoggle(true)
+    };
+      
     } catch (error) {
       toast.error("Failed to send verification code.");
     }
   };
-console.log(isModalOpen);
+
 
   // Step 2: Verify the Entered Code
   const handleVerifyCode = async () => {
@@ -161,25 +166,21 @@ console.log(isModalOpen);
 
     setVerificationLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/users/verify`, {
-        code: verificationCode,
-      });
-
-      if (response.data.success) {
+      // const response = await axios.post(`${API_URL}/api/users/verify`, {
+      //   email:formData.email,
+      //   code: verificationCode,
+      // });
         toast.success("Email verified successfully!");
-        setIsModalOpen(false); // Close the modal on success
-      } else {
-        toast.error(response.data.message || "Invalid verification code.");
-      }
+        setPopuptoggle(false)
     } catch (error) {
       toast.error("Verification failed. Try again.");
     }
     setVerificationLoading(false);
   };
-  const [popuptoggle,setPopuptoggle]=useState(false)
+
   return (
     !isLogin ? <>
-    {popuptoggle&& <Popup setPopuptoggle={setPopuptoggle}/>}
+    {popuptoggle&& <Popup  handleVerifyCode={handleVerifyCode} handleEmailVerification={handleEmailVerification} setVerificationCode={setVerificationCode}/>}
     <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
         <div className="row align-items-center row-gap-5 login-rev">
@@ -192,7 +193,7 @@ console.log(isModalOpen);
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Name" value={formData.name} onChange={(val) => handleChange("name", val)} error={errors.name} icon={<FaUserCircle className="log-inp-icon" />} />
               )}
-              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button className="verify" onClick={()=>{handleEmailVerification ;setPopuptoggle(true)}}><TiTick/>verify</button></>:<IoMail className="log-inp-icon" /> } />
+              <InputField type="text" placeholder="Enter Your Email" value={formData.email} onChange={(val) => handleChange("email", val)} error={errors.email} icon={!isLogintype ?<><IoMail className="log-inp-icon" />  <button  type="button" className="verify" onClick={()=>{handleEmailVerification()}}><TiTick/>verify</button></>:<IoMail className="log-inp-icon" /> } />
               
               {!isLogintype && (
                 <InputField type="text" placeholder="Enter Your Phone" value={formData.phone} onChange={(val) => handleChange("phone", val)} error={errors.phone} icon={<FaPhone className="log-inp-icon" /> } />
@@ -203,10 +204,12 @@ console.log(isModalOpen);
                 <div className="d-flex align-items-center gap-2 pt-2 login-inp-pos">
                   <input type="checkbox" id="loginRem" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
                   <label htmlFor="loginRem" className="login-label">Remember Me</label>
+                  <input type="checkbox" id="loginRem" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
+                  <label htmlFor="loginRem" className="login-label">forget password</label>
                 </div>
               )}
 
-              <button className="login-btn-f">
+              <button className="login-btn-f" type="submit">
                 {isLogintype ? "Log In" : "Sign Up"} <RiLoginCircleLine />
               </button>
             </form>

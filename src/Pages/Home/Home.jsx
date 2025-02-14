@@ -291,7 +291,7 @@ const Home = () => {
                   className="mySwiper"
                 >
                   {bestSelling.map((item,index)=>
-                     <SwiperSlide>
+                     <SwiperSlide key={index}>
                       <div>
                         <img src={item.img} className="w-100" alt={item.imgCaption} />
                       </div>
