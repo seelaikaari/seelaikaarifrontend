@@ -6,8 +6,6 @@ import "../Checkout/Checkout.css";
 function Checkout() {
   const location = useLocation();
   const { cartItems = [], totalAmount = 0 } = location.state || {}; // Ensuring default values
-  console.log(totalAmount);
-  
 
   const [showPayment, setShowPayment] = useState(false);
 

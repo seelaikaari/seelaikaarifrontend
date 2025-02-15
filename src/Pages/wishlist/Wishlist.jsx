@@ -50,10 +50,10 @@ const Wishlist = () => {
   console.log(wishlist);
   
   const handleAddtoCard = async (item) => {
- 
+    dispatch(addToCart({ product_id: item?.id }));
     try {
       if (isLogin && !isCartItem(item)) {
-        dispatch(addToCart({ product_id: item?.id }));
+      
         await axios.post(`${api}/api/addtocart/add`, {
           userId: user?.id,
           productId: item?.id,

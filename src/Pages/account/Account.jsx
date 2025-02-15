@@ -37,7 +37,7 @@ const Account = () => {
     token && isLogin ? [`${api}/api/users/user-details`, token] : null,
     ([url, token]) => fetcher(url, token)
   );
-  console.log(user);
+  
   useEffect(() => {
     if(data){
     const fetchUserDetails = async () => {

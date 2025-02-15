@@ -59,10 +59,10 @@ const ProductDetail = () => {
   }, [isWishlisted, isLogin, dispatch, productItem.id, user?.id]);
 
   const handleAddtoCard = useCallback(async () => {
-  
+    dispatch(addToCart({ product_id: productItem?.id }));
     try {
       if (isLogin && updatedcart.length === 0) {
-        dispatch(addToCart({ product_id: productItem?.id }));
+       
         await axios.post(`${api}/api/addtocart/add`, {
           userId: user?.id,
           productId: productItem?.id,

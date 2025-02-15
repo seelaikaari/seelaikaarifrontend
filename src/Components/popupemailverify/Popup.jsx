@@ -10,8 +10,8 @@ const Popup = ({handleVerifyCode,handleEmailVerification,setVerificationCode}) =
         otpnum3:"",
         otpnum4:"",
     })
-   if(verifyotp.imp1 && verifyotp.imp2 && verifyotp.imp3 && verifyotp.imp4){
-    setVerificationCode(verifyotp.imp1+verifyotp.imp2+verifyotp.imp3+verifyotp.imp4)
+   if(verifyotp.otpnum1 && verifyotp.otpnum2 && verifyotp.otpnum3 && verifyotp.otpnum4){
+    setVerificationCode(verifyotp.otpnum1+verifyotp.otpnum2+verifyotp.otpnum3+verifyotp.otpnum4)
    }
     const handleChange = (e, index) => {
         const value = e.target.value;
@@ -53,7 +53,7 @@ const Popup = ({handleVerifyCode,handleEmailVerification,setVerificationCode}) =
         <>
             <div className="popup-wrapper">
                 <div className="popup-inner-email">
-                    <button className="pop-close-btn" onClick={()=>setPopuptoggle(false)}><IoClose/></button>
+                    <button className="pop-close-btn" onClick={()=>setPopuptoggle(false)}></button>
                     <img src={email} alt="" width="70px" />
                     <h2 className="popupad">Verify Your Email Address</h2>
 
@@ -104,7 +104,7 @@ const Popup = ({handleVerifyCode,handleEmailVerification,setVerificationCode}) =
                             onChange={(e) => {handleChange(e, 3);}}
                         />
                     </div>
-                    <button className="verifypopup" onClick={handleVerifyCode} disabled={verifyotp.imp1=="" ||verifyotp.imp2==""||verifyotp.imp3==""||verifyotp.imp4==""}>Verify</button><br />
+                    <button className="verifypopup" onClick={handleVerifyCode} disabled={verifyotp.otpnum1=="" ||verifyotp.otpnum2==""||verifyotp.otpnum3==""||verifyotp.otpnum4==""}>Verify</button><br />
                     <button className="resend-code" onClick={handleEmailVerification} >Resend Code </button>
                 </div>
             </div>
