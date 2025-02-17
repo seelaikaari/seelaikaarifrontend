@@ -29,7 +29,6 @@ import { fetchProducts } from "./api/fetchProduct.js";
 import { fetchWishlist } from "./api/fetchwishlist.js";
 
 
-
 const ProtectedRoute = ({ isLogin, children}) => {
   return isLogin ? children : <Navigate to="/login" />;
 };

@@ -2,6 +2,7 @@
 import { Link, NavLink } from "react-router-dom"
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Mobilenav from "../mobilenav/Mobilenav";
 //Css
 import "../NavBar/Navbar.css";
 
@@ -15,6 +16,7 @@ import { MdEmail } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+
 //images
 import logo from "../../assets/images/logo-1.png"
 
@@ -30,7 +32,8 @@ const Navbar = () => {
     const { isLogin } = useSelector((state) => state.auth);
     const handelNavigation = (itemcategory) => {
         navigate("/Product", { state: { category: itemcategory } });
-        handelnavclose()
+        // handelnavclose()
+        setToggle(false)
     }
 
     return (
@@ -75,8 +78,8 @@ const Navbar = () => {
                         </div>
                         <div className='col-md-4 col-5 text-end'>
                             <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
-                                <li className='nav-item'><p className='nav-link' onClick={() => setSearchtoggle(!searchtoggle)}><FaSearch /></p></li>
-                                <li className='nav-item'><Link to={!isLogin?"/login":"/Account"} className='nav-link '><FaRegUserCircle /></Link></li>
+                                <li className='nav-item d-md-block d-none'><p className='nav-link' onClick={() => setSearchtoggle(!searchtoggle)}><FaSearch /></p></li>
+                                <li className='nav-item d-md-block d-none'><Link to={!isLogin?"/login":"/Account"} className='nav-link '><FaRegUserCircle /></Link></li>
                                 <li className='nav-item'><Link to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart /> <span className="prod-count-num">{addedcart}</span></Link></li>
                                 <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart /> <span className="prod-count-num">{wishlist}</span></Link></li>
                             </ul>
@@ -125,7 +128,7 @@ const Navbar = () => {
                 </div>
 
             </nav>
-
+                    <Mobilenav isLogin={isLogin} setSearchtoggle={setSearchtoggle} searchtoggle={searchtoggle} />
         </header>
 
     )

@@ -164,8 +164,17 @@ ul.nav-ul-wrapper .nav-item .nav-link svg{
 }
 @media only screen and (max-width:767px){
     .nav-c-icon{
-        gap: 20px;
+        gap: 30px;
         justify-content: center !important;
+    }
+    ul.nav-ul-wrapper .nav-item .nav-link svg{
+        font-size: 23px;
+    }
+    .Toastify__toast-container{
+        top: 3% !important;
+    }
+    .Toastify__toast{
+        width: 90%;
     }
     .mon-nav-ul{
         position: fixed;
