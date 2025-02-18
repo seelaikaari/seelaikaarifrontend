@@ -127,7 +127,6 @@ const LoginSignup = () => {
       setFormData({ name: "", email: "", password: "", phone: "" });
     } catch (error) {
       console.log(error);
-      
       toast.error(error.response?.data?.error || "An error occurred");
       setErrors({ email: error.response?.data?.error });
     }

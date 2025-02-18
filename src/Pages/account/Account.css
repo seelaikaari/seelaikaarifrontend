@@ -4,7 +4,8 @@
 .accnt-ul-wrap{
     list-style: none;
     border: 1px solid #ededed;
-    border-radius: 10px
+    border-radius: 10px;
+    overflow: hidden;
 }
 .accnt-ul-wrap li{
     padding: 15px 20px;

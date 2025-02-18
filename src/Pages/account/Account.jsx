@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { clearUser } from '../../features/users/authSlice';
 import useSWR from 'swr';
+import Orderdetail from '../../Components/orderdetail/Orderdetail';
 
 const fetcher =async (url, token) =>
  await axios
@@ -24,6 +25,7 @@ const fetcher =async (url, token) =>
     });
 const Account = () => {
   const api = 'http://localhost:5000';
+  const [orderinfotoggle,setOrderinfotoggle]=useState(false);
   const [edittoggle, setEdittoggle] = useState(false);
   const { isLogin, user } = useSelector((state) => state.auth);
   const [defaultuserdetail, setDefaultUserdetail] = useState({
@@ -65,7 +67,6 @@ const Account = () => {
 
   const [userdetail, setUserdetail] = useState(defaultuserdetail);
   const [userdetailerror, setUserdetailerror] = useState({});
-
   const handeleditpersonalinfo = async (e) => {
     e.preventDefault();
     if (!handelEditError()) {
@@ -116,11 +117,12 @@ const Account = () => {
       <section className='account-wrap-sec'>
         <div className='container'>
           <h2>My Account</h2>
-          <div className='row'>
+          <div className='row acc-mob-fld'>
             <div className='col-md-3'>
               <div className='accnt-l-wrap'>
                 <ul className='accnt-ul-wrap'>
-                  <li>Dashboard</li>
+                  <li onClick={()=>setOrderinfotoggle(false)}>Dashboard</li>
+                  <li onClick={()=>setOrderinfotoggle(true)}>Order Info</li>
                   <li>
                     <Link to='/Wishlist' className='nav-link'>
                       Your Wishlist
@@ -131,12 +133,14 @@ const Account = () => {
                       Your Cart
                     </Link>
                   </li>
-                  <li onClick={handlelogOut}>Log Out</li>
+                  <li onClick={handlelogOut} className='log-ot-ac' style={{"color": "#e61c1c"}}>Log Out</li>
                 </ul>
               </div>
             </div>
             <div className='col-md-9'>
-              <div className='accnt-r-wrap'>
+              {
+                !orderinfotoggle?
+                <div className='accnt-r-wrap'>
                 <h4 className='acct-r-t'>Personal Information</h4>
                 {!edittoggle ? (
                   <div>
@@ -148,7 +152,7 @@ const Account = () => {
                         </tr>
                         <tr>
                           <td>Email:</td>
-                          <td>{defaultuserdetail.email}</td>
+                          <td><span>{defaultuserdetail.email}</span></td>
                         </tr>
                         <tr>
                           <td>Phone no:</td>
@@ -239,6 +243,12 @@ const Account = () => {
                   </div>
                 )}
               </div>
+              :
+                <div className='accnt-r-wrap'>
+                  <h4 className='acct-r-t'>Order Information</h4>
+                    <Orderdetail/>
+                </div>
+              }
             </div>
           </div>
         </div>

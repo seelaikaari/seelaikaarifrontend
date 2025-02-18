@@ -39,7 +39,7 @@ const Popup = ({handleVerifyCode,handleEmailVerification,setVerificationCode}) =
       const handelverifyotp=()=>{
         if (verifyotp.otpnum1==""||verifyotp.otpnum2==""||verifyotp.otpnum3==""||verifyotp.otpnum4==""){
             toast.error("Invalid OTP");
-            return 
+            return  
         }
         console.log("verified");
         setVerifyotp({
