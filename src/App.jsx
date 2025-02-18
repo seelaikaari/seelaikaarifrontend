@@ -82,7 +82,7 @@ function App() {
         draggable
         pauseOnHover
       />
-      {/* <NavBar /> */}
+      <NavBar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -107,7 +107,7 @@ function App() {
           <Route path="/Stories" element={<Stories />} />
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
