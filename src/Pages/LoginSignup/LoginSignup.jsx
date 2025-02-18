@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
 import { TiTick } from "react-icons/ti";
 import Popup from "../../Components/popupemailverify/Popup"
+import Popupforgetpassword from "../../Components/popupemailverify/popupforgetpassword";
 const API_URL = "http://localhost:5000";
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const GoogleLoginButton = ({ btntext }) => {
@@ -69,7 +70,7 @@ const LoginSignup = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const [verificationLoading, setVerificationLoading] = useState(false);
   const [isemailverify,setIsemailverify]=useState(false);
- 
+  const [fpemail,setfpemail]=useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
      dispatch(setLoading(true)); 
@@ -179,7 +180,8 @@ const response = await axios.post(`${API_URL}/api/users/sendverification`,{
 
   return (
     !isLogin ? <>
-    {popuptoggle&& <Popup  handleVerifyCode={handleVerifyCode} handleEmailVerification={handleEmailVerification} setVerificationCode={setVerificationCode}/>}
+    {popuptoggle && <Popup  handleVerifyCode={handleVerifyCode} handleEmailVerification={handleEmailVerification} setVerificationCode={setVerificationCode}/>}
+    {fpemail && <Popupforgetpassword />}
     <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
         <div className="row align-items-center row-gap-5 login-rev">
@@ -199,11 +201,11 @@ const response = await axios.post(`${API_URL}/api/users/sendverification`,{
               )}
               <InputField type="password" placeholder="Enter Your Password" value={formData.password} onChange={(val) => handleChange("password", val)} error={errors.password} icon={<RiLockPasswordLine className="log-inp-icon" />} />
 
-              {isLogintype && (
+              { isLogintype && (
                 <div className="d-flex align-items-center gap-2 pt-2 login-inp-pos">
                   <input type="checkbox" id="loginRem" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
                   <label htmlFor="loginRem" className="login-label">Remember Me</label>
-                  <input type="checkbox" id="loginRem" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
+                  <input type="checkbox" id="loginRem" checked={fpemail} onChange={(e) => setfpemail(e.target.checked)} />
                   <label htmlFor="loginRem" className="login-label">forget password</label>
                 </div>
               )}
