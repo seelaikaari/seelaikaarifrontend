@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
 import { TiTick } from "react-icons/ti";
 import Popup from "../../Components/popupemailverify/Popup"
+import Popupforgetpassword from "../../Components/popupemailverify/popupforgetpassword";
 const API_URL = "http://localhost:5000";
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const GoogleLoginButton = ({ btntext }) => {
@@ -69,7 +70,7 @@ const LoginSignup = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const [verificationLoading, setVerificationLoading] = useState(false);
   const [isemailverify,setIsemailverify]=useState(false);
- 
+  const [fpemail,setfpemail]=useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
      dispatch(setLoading(true)); 
@@ -136,13 +137,13 @@ const LoginSignup = () => {
   // Step 1: Send Verification Code
   const handleEmailVerification = async () => {
    console.log("calling");
-   
+   let response ;
     setIsemailverify(true);
     try {
       if (!formData.email) setErrors({email : "Email is required."});
     else if (!/\S+@\S+\.\S+/.test(formData.email)) setErrors({email : "Invalid email format."});
       else{
-const response = await axios.post(`${API_URL}/api/users/sendverification`,{
+    response = await axios.post(`${API_URL}/api/users/sendverification`,{
       email:formData.email,
       name:formData.name ||""
       })
@@ -151,7 +152,7 @@ const response = await axios.post(`${API_URL}/api/users/sendverification`,{
     };
       
     } catch (error) {
-      toast.error("Failed to send verification code.");
+      toast.error(error.response.data.message);
     }
   };
 
@@ -179,7 +180,8 @@ const response = await axios.post(`${API_URL}/api/users/sendverification`,{
 
   return (
     !isLogin ? <>
-    {popuptoggle&& <Popup  handleVerifyCode={handleVerifyCode} handleEmailVerification={handleEmailVerification} setVerificationCode={setVerificationCode}/>}
+    {popuptoggle && <Popup  handleVerifyCode={handleVerifyCode} handleEmailVerification={handleEmailVerification} setVerificationCode={setVerificationCode}/>}
+    {fpemail && <Popupforgetpassword setPopuptoggle={setfpemail}/>}
     <section className="d-flex align-items-center justify-content-center">
       <div className="login-wrapper">
         <div className="row align-items-center row-gap-5 login-rev">
@@ -199,12 +201,12 @@ const response = await axios.post(`${API_URL}/api/users/sendverification`,{
               )}
               <InputField type="password" placeholder="Enter Your Password" value={formData.password} onChange={(val) => handleChange("password", val)} error={errors.password} icon={<RiLockPasswordLine className="log-inp-icon" />} />
 
-              {isLogintype && (
+              { isLogintype && (
                 <div className="d-flex align-items-center gap-2 pt-2 login-inp-pos">
                   <input type="checkbox" id="loginRem" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
                   <label htmlFor="loginRem" className="login-label">Remember Me</label>
-                  <input type="checkbox" id="loginRem" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
-                  <label htmlFor="loginRem" className="login-label">forget password</label>
+                  <input type="checkbox" id="loginfp" checked={fpemail} onChange={(e) => setfpemail(e.target.checked)} />
+                  <label htmlFor="loginfp" className="login-labelfp">forget password</label>
                 </div>
               )}
 
