@@ -45,6 +45,8 @@ function App() {
   const { isLogin, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+  const { products,prod_loading } = useSelector((state) => state.products);
+
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -104,7 +106,7 @@ function App() {
           <Route path="/Product" element={<Product />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Wishlist" element={<Wishlist />} />
-          <Route path="/ProductDetail" element={<ProductDetail />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route
             path="/Checkout"

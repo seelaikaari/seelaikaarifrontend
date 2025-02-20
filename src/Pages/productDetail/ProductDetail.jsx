@@ -10,17 +10,26 @@ import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import React, { useCallback, useMemo } from "react";
-
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useParams } from "react-router-dom";
 const api="http://localhost:5000"
 const ProductDetail = () => {
-  const location = useLocation();
-  const productItem = location.state?.product;
+  const { id } = useParams();
+  const [productItem,setProductItem]=useState(null);
   const navigate=useNavigate();
   const dispatch=useDispatch();
+  const { products } = useSelector((state) => state.products);
   const wishlist = useSelector((state) => state.wishlist.wishlist);
-  const { isLogin, user,loading } = useSelector((state) => state.auth);
+  const { isLogin, user } = useSelector((state) => state.auth);
   const addedcart = useSelector((state) => state.carts.carts);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const productId = Number(id);
+      const selectedProduct = products.find((item) => item.id === productId);
+      setProductItem(selectedProduct || null);
+    }
+  }, [id, products]);
 
   const isWishlisted = useMemo(() => {
     return wishlist.some(item => item.product_id === productItem?.id);
@@ -30,6 +39,7 @@ const ProductDetail = () => {
     return addedcart.filter(cart => cart.product_id === productItem?.id);
   }, [addedcart, productItem?.id]);
 
+  
   const handleAddtoWishList = useCallback(async () => {
     try {
       if (isWishlisted) {
@@ -56,7 +66,7 @@ const ProductDetail = () => {
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     }
-  }, [isWishlisted, isLogin, dispatch, productItem.id, user?.id]);
+  }, [isWishlisted, isLogin, dispatch, productItem?.id, user?.id]);
 
   const handleAddtoCard = useCallback(async () => {
     dispatch(addToCart({ product_id: productItem?.id }));
@@ -125,7 +135,7 @@ const ProductDetail = () => {
                   <div>
                     <h4 className="prd-dtc">Color</h4>
                     <div className="pro-det-rat-wrapper d-flex">
-                      {productItem.color.map((colrs,index)=>{
+                      {productItem?.color?.map((colrs,index)=>{
                         return(<div className="pro-det-rat-wrap-in" key={index}>
                             <input
                               type="radio"

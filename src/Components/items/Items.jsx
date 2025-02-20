@@ -25,7 +25,7 @@ const Items = ({ prdts}) => {
   }, [dispatch, user]);
   
   const handleClick = () => {
-    navigate("/ProductDetail", { state: { product: prdts } });
+    navigate(`/ProductDetail/${prdts.id}`);
   };
   const toggleWishlist = async () => {
     try {
