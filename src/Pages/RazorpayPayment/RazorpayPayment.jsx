@@ -6,7 +6,6 @@ const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
 
 const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }) => {
   const navigate = useNavigate();
-  totalAmount = 10;
 
   const handlePayment = async () => {
     console.log("User Details:", userDetails);
@@ -63,7 +62,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
 
           if (paymentData.success) {
             alert("Order stored successfully!");
-            navigate(`/order-confirmation`, {
+            navigate(`/Account`, {
               state: {
                 payment_id: response.razorpay_payment_id,
                 orderId: orderData.order.id,
