@@ -58,7 +58,6 @@ function App() {
           { headers: { Authorization: `Bearer ${token}` } }
         )
         .then((res) => {
-          console.log(res);
           dispatch(setUser(res.data.user));
         })
         .catch(() => localStorage.removeItem("token"))

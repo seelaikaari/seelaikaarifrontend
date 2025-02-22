@@ -1,12 +1,15 @@
 import React from "react";
 import "../RazorpayPayment/RazorpayPayment.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
 
 const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }) => {
   const navigate = useNavigate();
-
+  const { isLogin,loading,user} = useSelector((state) => state.auth);
+  console.log(user.id);
+  
   const handlePayment = async () => {
     console.log("User Details:", userDetails);
 
@@ -54,6 +57,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
               userDetails,
               cartItems,
               totalAmount,
+              user:user.id
             }),
           });
 
