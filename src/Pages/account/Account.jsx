@@ -26,6 +26,7 @@ const fetcher =async (url, token) =>
 const Account = () => {
   const api = 'http://localhost:5000';
   const [orderinfotoggle,setOrderinfotoggle]=useState(false);
+  const [yourOrders,setYourOrders]=useState();
   const [edittoggle, setEdittoggle] = useState(false);
   const { isLogin, user } = useSelector((state) => state.auth);
   const [defaultuserdetail, setDefaultUserdetail] = useState({
@@ -111,6 +112,19 @@ const Account = () => {
     setUserdetailerror(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await axios.post(`${api}/api/order/getorders`, { userId: user.id });
+        const data = res.data; // Axios automatically parses the JSON response
+        setYourOrders(data.data)
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, [user.id]); 
 
   return (
     <>
@@ -203,16 +217,16 @@ const Account = () => {
                             placeholder='Your Email'
                             className='acnt-form-inp'
                           />
-                          {userdetailerror.email && (
+                          { userdetailerror.email && (
                             <div className='err-acted'>
                               {userdetailerror.email}
                             </div>
-                          )}
+                          ) }
                         </div>
                         <div className='col-md-6'>
                           <input
                             type='number'
-                            value={userdetail.phone || ''}
+                            value={ userdetail.phone || '' }
                             onChange={(e) =>
                               setUserdetail({
                                 ...userdetail,
@@ -246,7 +260,7 @@ const Account = () => {
               :
                 <div className='accnt-r-wrap'>
                   <h4 className='acct-r-t'>Order Information</h4>
-                    <Orderdetail/>
+                    <Orderdetail  yourOrders={yourOrders}/>
                 </div>
               }
             </div>
