@@ -44,9 +44,6 @@ const Items = ({ prdts}) => {
         toast.success("Removed from Wishlist ❤");
       } else {    
         dispatch(addToWishlist({product_id:prdts.id}));
-        console.log("comming",isWishlisted,prdts.id);
-      console.log(isLogin);
-    
         if(isLogin){
         await axios.post(`${API_URL}/api/wishlist/add`, {
           userId: user.id,
@@ -56,8 +53,7 @@ const Items = ({ prdts}) => {
         toast.success("Added to Wishlist ❤");
       }
     } catch (error) {
-     console.log(error);
-     
+
       toast.error("An error occurred. Please try again.");
     }
   };

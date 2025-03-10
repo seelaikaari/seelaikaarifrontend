@@ -10,11 +10,9 @@ const API_URL = import.meta.env.VITE_BACKENDURL;
 const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }) => {
   const navigate = useNavigate();
   const { isLogin,loading,user} = useSelector((state) => state.auth);
-  console.log(user.id);
-  
+ 
   const handlePayment = async () => {
-    console.log("User Details:", userDetails);
-
+ 
     try {
       // Create Razorpay Order
       const orderResponse = await fetch(`${API_URL}/api/order/create-razorpay-order`, {

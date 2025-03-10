@@ -3,7 +3,7 @@
     height: unset !important;
 }
 
-.prod-detail-slides,
+
 .prod-detail-thumb {
     height: 450px;
 }
@@ -73,7 +73,7 @@
     }
 }
 @media only screen and (min-width:768px) and (max-width:1024px) {
-    .prod-detail-slides, .prod-detail-thumb{
+     .prod-detail-thumb{
         height: 268px;
     }
     .prod-detail-thumb .swiper-wrapper .swiper-slide{
