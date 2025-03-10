@@ -12,7 +12,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-const api="http://localhost:5000"
+const API_URL=import.meta.env.VITE_BACKENDURL;
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [productItem,setProductItem]=useState(null);
@@ -25,7 +26,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     if (products.length > 0) {
-      const productId = Number(id);
+      const productId = id;
       const selectedProduct = products.find((item) => item.id === productId);
       setProductItem(selectedProduct || null);
     }
@@ -45,7 +46,7 @@ const ProductDetail = () => {
       if (isWishlisted) {
         dispatch(removeFromWishlist({ product_id: productItem?.id }));
         if (isLogin) {
-          await axios.delete(`${api}/api/wishlist/remove`, {
+          await axios.delete(`${API_URL}/api/wishlist/remove`, {
             data: {
               userId: user?.id,
               productId: productItem?.id,
@@ -56,7 +57,7 @@ const ProductDetail = () => {
       } else {
         dispatch(addToWishlist({ product_id: productItem.id }));
         if (isLogin) {
-          await axios.post(api + "/api/wishlist/add", {
+          await axios.post(API_URL + "/api/wishlist/add", {
             userId: user?.id,
             productId: productItem?.id,
           });
@@ -73,7 +74,7 @@ const ProductDetail = () => {
     try {
       if (isLogin && updatedcart.length === 0) {
        
-        await axios.post(`${api}/api/addtocart/add`, {
+        await axios.post(`${API_URL}/api/addtocart/add`, {
           userId: user?.id,
           productId: productItem?.id,
         });

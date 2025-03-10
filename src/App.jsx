@@ -29,7 +29,9 @@ import { fetchProducts } from "./api/fetchProduct.js";
 import { fetchWishlist } from "./api/fetchwishlist.js";
 import ResetPassword from "./Pages/resetpassword/ResetPassword.jsx";
 import ProtectedResetRoute from "./Pages/resetpassword/ProtectedResetRoute.jsx";
-const api = "http://localhost:5000";
+import { Navigation } from "swiper/modules";
+
+const api =import.meta.env.VITE_BACKENDURL;
 
 const ProtectedRoute = ({ isLogin, routeName, children }) => {
     useEffect(() => {

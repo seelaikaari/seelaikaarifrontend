@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
+const API_URL = import.meta.env.VITE_BACKENDURL;
+
 
 const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }) => {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
 
     try {
       // Create Razorpay Order
-      const orderResponse = await fetch("http://localhost:5000/api/order/create-razorpay-order", {
+      const orderResponse = await fetch(`${API_URL}/api/order/create-razorpay-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: totalAmount }),
@@ -47,7 +49,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
           }
 
           // Verify Payment with Backend
-          const paymentResponse = await fetch("http://localhost:5000/api/order/verify-payment", {
+          const paymentResponse = await fetch(`${API_URL}/api/order/verify-payment`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

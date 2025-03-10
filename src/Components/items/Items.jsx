@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { fetchWishlist } from "../../api/fetchwishlist";
  
 const Items = ({ prdts}) => {
-  const api="http://localhost:5000"
+  const api=import.meta.env.VITE_BACKENDURL;
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Items = ({ prdts}) => {
       if (isWishlisted) {
         dispatch(removeFromWishlist({product_id:prdts.id}));
        if(isLogin) {
-        await axios.delete(`${api}/api/wishlist/remove`, {
+        await axios.delete(`${API_URL}/api/wishlist/remove`, {
           data: {
             userId: user.id,
             productId: prdts.id,
@@ -44,7 +44,7 @@ const Items = ({ prdts}) => {
       } else {    
         dispatch(addToWishlist({product_id:prdts.id}));
         if(isLogin){
-        await axios.post(api+"/api/wishlist/add", {
+        await axios.post(API_URL+"/api/wishlist/add", {
           userId: user.id,
           productId: prdts.id,
         });

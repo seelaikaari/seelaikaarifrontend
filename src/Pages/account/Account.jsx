@@ -24,7 +24,8 @@ const fetcher =async (url, token) =>
       
     });
 const Account = () => {
-  const api = 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_BACKENDURL;
+
   const [orderinfotoggle,setOrderinfotoggle]=useState(false);
   const [yourOrders,setYourOrders]=useState();
   const [edittoggle, setEdittoggle] = useState(false);
@@ -37,7 +38,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
  const { data, error } = useSWR(
-    token && isLogin ? [`${api}/api/users/user-details`, token] : null,
+    token && isLogin ? [`${API_URL}/api/users/user-details`, token] : null,
     ([url, token]) => fetcher(url, token)
   );
   
@@ -75,7 +76,7 @@ const Account = () => {
     }
 
     axios
-      .put(`${api}/api/users/update-user`, userdetail, {
+      .put(`${API_URL}/api/users/update-user`, userdetail, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -115,7 +116,7 @@ const Account = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.post(`${api}/api/order/getorders`, { userId: user.id });
+        const res = await axios.post(`${API_URL}/api/order/getorders`, { userId: user.id });
         const data = res.data; // Axios automatically parses the JSON response
         setYourOrders(data.data)
       } catch (error) {

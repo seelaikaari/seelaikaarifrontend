@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const apiurl = "http://localhost:5000/";
+const apiurl = import.meta.env.VITE_BACKENDURL;
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",

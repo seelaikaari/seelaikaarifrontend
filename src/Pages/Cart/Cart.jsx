@@ -11,7 +11,8 @@ import flow2 from "../../assets/images/images-floral/f-2.jpg";
 import emptyCartImg from "../../assets/images/wishlist/empty-cart.png";
 import "./Cart.css";
 
-const api = "http://localhost:5000";
+
+const API_URL = import.meta.env.VITE_BACKENDURL;
 
 // Disclaimer Modal Component
 const DisclaimerModal = ({ showModal, handleClose }) => {
@@ -95,7 +96,7 @@ const Cart = () => {
     dispatch(removeFromCart(itemId));
     try {
       if (isLogin) {
-        await axios.delete(`${api}/api/addtocart/remove`, {
+        await axios.delete(`${API_URL}/api/addtocart/remove`, {
           data: { userId: user.id, productId: itemId },
         });
       }

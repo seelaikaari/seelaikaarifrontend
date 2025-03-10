@@ -3,7 +3,7 @@ import "./Popup.css";
 import React, { useState } from "react";
 import email from "../../assets/images/icons/email.png";
 import axios from "axios";
-const API_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_BACKENDURL;
 const PopupForgetPassword = ({ setPopuptoggle }) => {
     const [fpemail, setFpemail] = useState("");
     const [error, setError] = useState("");
