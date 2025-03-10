@@ -28,7 +28,7 @@ const Orderdetail = ({ yourOrders }) => {
     return acc;
   }, []);
 
-  console.log(groupedOrders);
+
   return (
     <>
       <section className="orderinfo-table-wrapper">
@@ -65,12 +65,12 @@ const Orderdetail = ({ yourOrders }) => {
                 <td>{ord.address}</td>
                 <td>
                   <div className="btn-wrapper-ord-inf">
-                    <button
+                    {/* <button
                       className="cancel-order-btn"
                       onClick={() => setCancelPopup(true)}
                     >
                       Cancel
-                    </button>
+                    </button> */}
                     <button className="track-order-btn">Track</button>
                   </div>
                 </td>
