@@ -125,7 +125,7 @@ const Account = () => {
     };
 
     fetchOrders();
-  }, [user.id]); 
+  }, [user]); 
 
   return (
     <>

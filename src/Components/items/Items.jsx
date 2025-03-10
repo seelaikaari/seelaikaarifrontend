@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { fetchWishlist } from "../../api/fetchwishlist";
  
 const Items = ({ prdts}) => {
-  const api=import.meta.env.VITE_BACKENDURL;
+  const API_URL=import.meta.env.VITE_BACKENDURL;
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ const Items = ({ prdts}) => {
     navigate(`/ProductDetail/${prdts.id}`);
   };
   const toggleWishlist = async () => {
+   
     try {
       if (isWishlisted) {
         dispatch(removeFromWishlist({product_id:prdts.id}));
@@ -43,8 +44,11 @@ const Items = ({ prdts}) => {
         toast.success("Removed from Wishlist ❤");
       } else {    
         dispatch(addToWishlist({product_id:prdts.id}));
+        console.log("comming",isWishlisted,prdts.id);
+      console.log(isLogin);
+    
         if(isLogin){
-        await axios.post(API_URL+"/api/wishlist/add", {
+        await axios.post(`${API_URL}/api/wishlist/add`, {
           userId: user.id,
           productId: prdts.id,
         });
@@ -52,6 +56,7 @@ const Items = ({ prdts}) => {
         toast.success("Added to Wishlist ❤");
       }
     } catch (error) {
+     console.log(error);
      
       toast.error("An error occurred. Please try again.");
     }
