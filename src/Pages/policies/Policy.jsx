@@ -12,9 +12,7 @@ const Policy = () => {
                 <h4 className='policy-sub-title'>Shipping</h4>
                 <ul>
                     <li> <p className='policy-content'>Terms of Offer: This Website offers for sale certain products (the "Products"). By placing an order for Products through this Website, you agree to the terms set forth in this Agreement.</p></li>
-                    <li> <p className='policy-content'>Terms of Offer: This Website offers for sale certain products (the "Products"). By placing an order for Products through this Website, you agree to the terms set forth in this Agreement.</p></li>
-                    <li> <p className='policy-content'>Terms of Offer: This Website offers for sale certain products (the "Products"). By placing an order for Products through this Website, you agree to the terms set forth in this Agreement.</p></li>
-                    <li> <p className='policy-content'>Terms of Offer: This Website offers for sale certain products (the "Products"). By placing an order for Products through this Website, you agree to the terms set forth in this Agreement.</p></li>
+                   
                 </ul>
                 <p className='policy-content'>Terms of Offer: This Website offers for sale certain products (the "Products"). By placing an order for Products through this Website, you agree to the terms set forth in this Agreement.</p>
             </div>
