@@ -157,18 +157,18 @@ const Contact = () => {
   const Contactinfo = [
     {
       icon: <MdEmail />,
-      detail: "example@gmail.com",
+      detail: "",
       name: "Email:",
     },
     {
       icon: <MdCall />,
-      detail: "+91-000-000-0000",
+      detail: "",
       name: "Phone:",
 
     },
     {
       icon: <FaLocationDot />,
-      detail: "lorem lorem lorem lorem lorem",
+      detail: "",
       name: "Location:",
 
     },

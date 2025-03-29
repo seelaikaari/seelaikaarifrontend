@@ -35,7 +35,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
         key: razorpayKey,
         amount: totalAmount * 100, // Amount in paise
         currency: "INR",
-        name: "Akilesh Store",
+        name: "Seelaikaari Store",
         order_id: orderData.order.id,
         handler: async function (response) {
           console.log("✅ Payment Success:", response);

@@ -51,7 +51,7 @@ const Navbar = () => {
                                         setSearchtoggle(!searchtoggle);
                                         handelNavigation(searchbox);
                                     }}><FaSearch /></button>
-                                    <Searchsite/>
+                                
                                 </div>
                             </div>
                         </div>
