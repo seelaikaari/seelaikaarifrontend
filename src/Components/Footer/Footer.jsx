@@ -40,10 +40,13 @@ const Footer = () => {
                                     <li><Link to="/Contact" className="ft-nav-link">Contact Us</Link></li>
                                     <li><Link to="/Termsandconditions" className="ft-nav-link">Terms of use</Link></li>
                                     <li><Link to="/Policy" className="ft-nav-link">Privacy Policy</Link></li>
+                                    <li><Link to="/Payment-policy" className="ft-nav-link">Payment Policy</Link></li>
+                                    <li><Link to="/Shipping-policy" className="ft-nav-link">Shipping Policy</Link></li>
+                                    <li><Link to="/Return-exchange-policy" className="ft-nav-link">Returns,Refund & Exchange Policy</Link></li>
                                 </ul>
                             </div>
                         </div>
-                </div>
+                </div>  
             </div>
             <div className="ft-row-2">
                 <div className="container">

@@ -17,6 +17,9 @@ import Termsandconditions from "./Pages/terms/Termsandconditions.jsx";
 import Policy from "./Pages/policies/Policy.jsx";
 import Account from "./Pages/account/Account.jsx";
 import Stories from "./Pages/stories/Stories.jsx";
+import PayementPolicy from "./Pages/PayementPolicy/PayementPolicy.jsx";
+import ShippingPolicy from "./Pages/ShippingPolicy/ShippingPolicy.jsx";
+import ReturnPolicy from "./Pages/ReturnsRefunds/Returns.jsx"
 import { Navigate } from "react-router-dom";
 //Css
 import "./App.css";
@@ -119,6 +122,9 @@ function App() {
           />
           <Route path="/Termsandconditions" element={<Termsandconditions />} />
           <Route path="/Policy" element={<Policy />} />
+          <Route path="/Payment-policy" element={<PayementPolicy />} />
+          <Route path="/Shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/Return-exchange-policy" element={<ReturnPolicy />} />
           <Route
             path="/reset-password"
             element={
