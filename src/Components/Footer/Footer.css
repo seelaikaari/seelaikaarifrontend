@@ -44,3 +44,7 @@
     padding: 15px 0 15px;
     border-top: 1px solid #ffffff;
 }
+.ft-contact-link{
+    text-decoration: none;
+    color: #505050;
+}

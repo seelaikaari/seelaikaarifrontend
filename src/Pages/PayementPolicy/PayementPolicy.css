@@ -36,6 +36,10 @@
     margin-top: 10px;
     font-size: 18px;
 }
+.ft-contact-link{
+    text-decoration: none;
+    color: #505050;
+}
 @media (max-width:767px){
   .payment-policy{  
     padding: 48px !important;

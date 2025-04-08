@@ -25,11 +25,11 @@ function PaymentPolicy() {
         </ul>
 
         <p className="support-text">
-          Any Payment Related Queries Contact Our Customer Support Team On The Number Provided Below OR Contact Us On <strong>INSTAGRAM!</strong>
+          Any Payment Related Queries Contact Our Customer Support Team On The Number Provided Below OR Contact Us On <a className='ft-contact-link' href="https://www.instagram.com/seelaikaari/"><strong >Instagram</strong></a>
         </p>
 
         <p className="customer-support">
-          SEELAIKAARI CUSTOMER SUPPORT TEAM- <strong>+91-1234567890</strong>
+          SEELAIKAARI CUSTOMER SUPPORT TEAM- <a className='ft-contact-link' href="tel:9159312346"><strong>+91-9159312346</strong></a>
         </p>
       </section>
     </>

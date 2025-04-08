@@ -20,10 +20,16 @@ const Footer = () => {
                                     <img src={logo} alt="" style={{width:"200px"}} />
                                 </Link>
                                 <ul className="footer-ul-l1">
-                                    <li><IoLocationSharp/> Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                                    <li><FaPhoneAlt/> +91-000-000-0000</li>
-                                    <li><MdEmail/>example@gmail.com</li>
-                                </ul>
+                                <li><IoLocationSharp/> No 21, Soundara Pandian street, Ashok Nagar, Chennai 600083</li>
+                                <li>
+                                    <FaPhoneAlt />
+                                    <a href="tel:+919159312346" className="ft-contact-link">+91-9159312346</a>
+                                </li>
+                                <li>
+                                    <MdEmail />
+                                    <a href="mailto:seelaikaari123@gmail.com" className="ft-contact-link">seelaikaari123@gmail.com</a>
+                                </li>
+                            </ul>
                             </div>
                             <div className="col-md-4">
                                 <h4 className="title-ft">Quick Links</h4>
@@ -38,7 +44,7 @@ const Footer = () => {
                                 <h4 className="title-ft">Customer Service</h4>
                                 <ul className="ft-ul-wrapper">
                                     <li><Link to="/Contact" className="ft-nav-link">Contact Us</Link></li>
-                                    <li><Link to="/Termsandconditions" className="ft-nav-link">Terms of use</Link></li>
+                                    {/* <li><Link to="/Termsandconditions" className="ft-nav-link">Terms of use</Link></li> */}
                                     <li><Link to="/Policy" className="ft-nav-link">Privacy Policy</Link></li>
                                     <li><Link to="/Payment-policy" className="ft-nav-link">Payment Policy</Link></li>
                                     <li><Link to="/Shipping-policy" className="ft-nav-link">Shipping Policy</Link></li>

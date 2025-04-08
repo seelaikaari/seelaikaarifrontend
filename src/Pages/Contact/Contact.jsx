@@ -157,18 +157,18 @@ const Contact = () => {
   const Contactinfo = [
     {
       icon: <MdEmail />,
-      detail: "",
+      detail: "seelaikaari123@gmail.com",
       name: "Email:",
     },
     {
       icon: <MdCall />,
-      detail: "",
+      detail: "+91-9159312346",
       name: "Phone:",
 
     },
     {
       icon: <FaLocationDot />,
-      detail: "",
+      detail: "No 21, soundara Pandian street, Ashok Nagar ,Chennai 600083",
       name: "Location:",
 
     },
@@ -244,8 +244,7 @@ const Contact = () => {
       </section>
       <section className='contact-sec-2-wrapper'>
         <div className="container-fluide">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.5665920656!2d77.46612495987436!3d12.954280237773864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1739425107013!5m2!1sen!2sin" height="450" width="100%" loading="lazy"></iframe>
-        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.963046210445!2d80.20744607588792!3d13.038024213416831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266e09cf8ba8d%3A0x7bca2c123408d611!2s21%2C%20Soundarapandian%20St%2C%20Zaffarkhanpet%2C%20Kodambakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600024!5e0!3m2!1sen!2sin!4v1744103137493!5m2!1sen!2sin" width="100%" height="450"  loading="lazy" ></iframe>        </div>
       </section>
     </>
   )

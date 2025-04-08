@@ -62,9 +62,9 @@ const Navbar = () => {
                             <div className={`bg-mask d-md-none  ${toggle ? "d-block" : "d-none"}`}></div>
                             <ul className={`nav-ul-wrapper justify-content-start d-md-flex d-none `}>
 
-                                <li className='nav-item'><NavLink to="https://wa.me/910000000000" onClick={handelnavclose} className='nav-link'><SiWhatsapp /></NavLink></li>
-                                <li className='nav-item'><NavLink to="/Contact" onClick={handelnavclose} className='nav-link'><BsInstagram /></NavLink></li>
-                                <li className='nav-item'><NavLink to="/About" onClick={handelnavclose} className='nav-link'><MdEmail /></NavLink></li>
+                                <li className='nav-item'><NavLink to="https://wa.me/9159312346" onClick={handelnavclose} className='nav-link'><SiWhatsapp /></NavLink></li>
+                                <li className='nav-item'><NavLink to="https://www.instagram.com/seelaikaari/" target="blank" onClick={handelnavclose} className='nav-link'><BsInstagram /></NavLink></li>
+                                <li className='nav-item'><NavLink to="mailto:seelaikaari123@gmail.com" onClick={handelnavclose} className='nav-link'><MdEmail /></NavLink></li>
                             </ul>
                             <div className='d-md-none d-block'>
                                 <button className='nav-toggle-btn' onClick={handelnavclose}>
