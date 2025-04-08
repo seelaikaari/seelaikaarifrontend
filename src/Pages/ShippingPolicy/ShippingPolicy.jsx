@@ -21,7 +21,7 @@ function ShippingPolicy() {
         <h3>International Shipping-</h3>
        
         <ul>
-          <li>For international orders a flat fee of INR 1500 will be charged per product.  </li>
+          <li>For international orders a flat fee of INR 2000 will be charged per product.  </li>
           <li>International orders will be shipped through our reputed logistic partner(DHL,FedEX,UPS).</li>
           <li>For international shipment based on the country of import our carrier may need to get customs clearance for your shipment in such case any additional import tax or customs charges levied by the country of import will be borne by the customer. For any further assistance regarding this feel free to contact our customer support team.</li>
           <li>Once the international order is placed, it takes 3 to 5 business days to process and dispatch after placing the order.</li>
