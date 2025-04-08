@@ -105,17 +105,15 @@ const Cart = () => {
       console.error("Error removing item: ", error);
     }
     };
- 
 
   return (
-    <div className="cart-container" style={{ position: "relative" }}>
-      {cartItems.length > 0 && (
-        <img src={flow1} alt="Floral Design" className="floral-decoration-top-left" />
-      )}
+<div className={`cart-parent ${cartItems.length>0 ? "cart-bg":''}`}>
+<div className="cart-container">
 
       <h2>Shopping Cart</h2>
 
       {cartItems.length > 0 ? (
+        <>
         <div className="cart-layout">
           <div className="cart-items">
             {cartItems.map((item) => (
@@ -132,15 +130,19 @@ const Cart = () => {
                     <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
                     <br />
                     <div className="quantity-controls">
+                        <div className="decrease-btn">
                       <FaMinusCircle
                         onClick={() => updateQuantity(item.id, -1)}
                         className="cart-decrease-btn"
                       />
+                        </div>
                       <span className="cart-quantity">{item.quantity}</span>
+                        <div className="increase-btn">
                       <FaPlusCircle
                         onClick={() => updateQuantity(item.id, 1)}
                         className="cart-increase-btn"
                       />
+                    </div>
                     </div>
                     <button className="remove-btn" onClick={() => handleRemoveCart(item.id)}>
                       <FaTrashAlt />
@@ -163,9 +165,12 @@ const Cart = () => {
             >
               Proceed to Checkout
             </button>
-            <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>Continue Shopping</button>
+              <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
+                Continue Shopping
+              </button>
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         <section className="wishList-empty">
           <div className="container">
@@ -180,6 +185,8 @@ const Cart = () => {
 
       <DisclaimerModal showModal={showModal} handleClose={handleTermsClose} />
     </div>
+</div>
+
   );
 };
 
