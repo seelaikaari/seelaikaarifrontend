@@ -24,8 +24,10 @@ const fetcher =async (url, token) =>
       
     });
 const Account = () => {
-  const api = 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_BACKENDURL;
+
   const [orderinfotoggle,setOrderinfotoggle]=useState(false);
+  const [yourOrders,setYourOrders]=useState();
   const [edittoggle, setEdittoggle] = useState(false);
   const { isLogin, user } = useSelector((state) => state.auth);
   const [defaultuserdetail, setDefaultUserdetail] = useState({
@@ -36,7 +38,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
  const { data, error } = useSWR(
-    token && isLogin ? [`${api}/api/users/user-details`, token] : null,
+    token && isLogin ? [`${API_URL}/api/users/user-details`, token] : null,
     ([url, token]) => fetcher(url, token)
   );
   
@@ -74,7 +76,7 @@ const Account = () => {
     }
 
     axios
-      .put(`${api}/api/users/update-user`, userdetail, {
+      .put(`${API_URL}/api/users/update-user`, userdetail, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -111,6 +113,19 @@ const Account = () => {
     setUserdetailerror(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await axios.post(`${API_URL}/api/order/getorders`, { userId: user.id });
+        const data = res.data; // Axios automatically parses the JSON response
+        setYourOrders(data.data)
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, [user]); 
 
   return (
     <>
@@ -203,16 +218,16 @@ const Account = () => {
                             placeholder='Your Email'
                             className='acnt-form-inp'
                           />
-                          {userdetailerror.email && (
+                          { userdetailerror.email && (
                             <div className='err-acted'>
                               {userdetailerror.email}
                             </div>
-                          )}
+                          ) }
                         </div>
                         <div className='col-md-6'>
                           <input
                             type='number'
-                            value={userdetail.phone || ''}
+                            value={ userdetail.phone || '' }
                             onChange={(e) =>
                               setUserdetail({
                                 ...userdetail,
@@ -246,7 +261,7 @@ const Account = () => {
               :
                 <div className='accnt-r-wrap'>
                   <h4 className='acct-r-t'>Order Information</h4>
-                    <Orderdetail/>
+                    <Orderdetail  yourOrders={yourOrders}/>
                 </div>
               }
             </div>

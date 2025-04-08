@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { fetchWishlist } from "../../api/fetchwishlist";
  
 const Items = ({ prdts}) => {
-  const api="http://localhost:5000"
+  const API_URL=import.meta.env.VITE_BACKENDURL;
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const navigate = useNavigate();
@@ -25,14 +25,15 @@ const Items = ({ prdts}) => {
   }, [dispatch, user]);
   
   const handleClick = () => {
-    navigate("/ProductDetail", { state: { product: prdts } });
+    navigate(`/ProductDetail/${prdts.id}`);
   };
   const toggleWishlist = async () => {
+   
     try {
       if (isWishlisted) {
         dispatch(removeFromWishlist({product_id:prdts.id}));
        if(isLogin) {
-        await axios.delete(`${api}/api/wishlist/remove`, {
+        await axios.delete(`${API_URL}/api/wishlist/remove`, {
           data: {
             userId: user.id,
             productId: prdts.id,
@@ -44,7 +45,7 @@ const Items = ({ prdts}) => {
       } else {    
         dispatch(addToWishlist({product_id:prdts.id}));
         if(isLogin){
-        await axios.post(api+"/api/wishlist/add", {
+        await axios.post(`${API_URL}/api/wishlist/add`, {
           userId: user.id,
           productId: prdts.id,
         });
@@ -52,7 +53,7 @@ const Items = ({ prdts}) => {
         toast.success("Added to Wishlist ❤");
       }
     } catch (error) {
-     
+
       toast.error("An error occurred. Please try again.");
     }
   };
@@ -74,7 +75,7 @@ const Items = ({ prdts}) => {
           />
         </div>
         <div className="product-info">
-          <h3 className="product-title popup_cart_title">{prdts.name}</h3>
+          {/* <h3 className="product-title popup_cart_title">{prdts.name}</h3>
           <div>
             <p className="truncate">{prdts.description}</p>
           </div>
@@ -108,13 +109,13 @@ const Items = ({ prdts}) => {
                 </span>
               
             )}
-          </div>
+          </div> */}
           <div>
             <button className="add-to-cart-btn" onClick={handleClick}>
               view more
             </button>
           </div>
-        </div>
+        </div> 
       </div>
     </>
   ) : (

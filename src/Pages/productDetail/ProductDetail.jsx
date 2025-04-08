@@ -10,17 +10,27 @@ import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useParams } from "react-router-dom";
+const API_URL=import.meta.env.VITE_BACKENDURL;
 
-const api="http://localhost:5000"
 const ProductDetail = () => {
-  const location = useLocation();
-  const productItem = location.state?.product;
+  const { id } = useParams();
+  const [productItem,setProductItem]=useState(null);
   const navigate=useNavigate();
   const dispatch=useDispatch();
+  const { products } = useSelector((state) => state.products);
   const wishlist = useSelector((state) => state.wishlist.wishlist);
-  const { isLogin, user,loading } = useSelector((state) => state.auth);
+  const { isLogin, user } = useSelector((state) => state.auth);
   const addedcart = useSelector((state) => state.carts.carts);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const productId = id;
+      const selectedProduct = products.find((item) => item.id === productId);
+      setProductItem(selectedProduct || null);
+    }
+  }, [id, products]);
 
   const isWishlisted = useMemo(() => {
     return wishlist.some(item => item.product_id === productItem?.id);
@@ -30,12 +40,13 @@ const ProductDetail = () => {
     return addedcart.filter(cart => cart.product_id === productItem?.id);
   }, [addedcart, productItem?.id]);
 
+  
   const handleAddtoWishList = useCallback(async () => {
     try {
       if (isWishlisted) {
         dispatch(removeFromWishlist({ product_id: productItem?.id }));
         if (isLogin) {
-          await axios.delete(`${api}/api/wishlist/remove`, {
+          await axios.delete(`${API_URL}/api/wishlist/remove`, {
             data: {
               userId: user?.id,
               productId: productItem?.id,
@@ -46,7 +57,7 @@ const ProductDetail = () => {
       } else {
         dispatch(addToWishlist({ product_id: productItem.id }));
         if (isLogin) {
-          await axios.post(api + "/api/wishlist/add", {
+          await axios.post(API_URL + "/api/wishlist/add", {
             userId: user?.id,
             productId: productItem?.id,
           });
@@ -56,14 +67,14 @@ const ProductDetail = () => {
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     }
-  }, [isWishlisted, isLogin, dispatch, productItem.id, user?.id]);
+  }, [isWishlisted, isLogin, dispatch, productItem?.id, user?.id]);
 
   const handleAddtoCard = useCallback(async () => {
     dispatch(addToCart({ product_id: productItem?.id }));
     try {
       if (isLogin && updatedcart.length === 0) {
        
-        await axios.post(`${api}/api/addtocart/add`, {
+        await axios.post(`${API_URL}/api/addtocart/add`, {
           userId: user?.id,
           productId: productItem?.id,
         });
@@ -88,14 +99,14 @@ const ProductDetail = () => {
                 <ProductDetailSlide img={productItem.images} />
               </div>
               <div className="col-md-7">
-                <h3 className="pro-det-h-title">{productItem.name}</h3>
+              {/*  <h3 className="pro-det-h-title">{productItem.name}</h3>
                 <div className="price-wrapper-pd">
                   <p className="prd-p1">{productItem.price}</p>
                   <p className="prd-p2">{productItem.price}</p>
                   <p className="prd-off">20% OFF</p>
                 </div>
                 <p className="pro-detail-p">{productItem.description}</p>
-                <div className="d-flex gap-5 prd-dir-mob">
+                 <div className="d-flex gap-5 prd-dir-mob">
                   <div>
                     <h4 className="prd-dtc">size</h4>
 
@@ -125,7 +136,7 @@ const ProductDetail = () => {
                   <div>
                     <h4 className="prd-dtc">Color</h4>
                     <div className="pro-det-rat-wrapper d-flex">
-                      {productItem.color.map((colrs,index)=>{
+                      {productItem?.color?.map((colrs,index)=>{
                         return(<div className="pro-det-rat-wrap-in" key={index}>
                             <input
                               type="radio"
@@ -145,7 +156,7 @@ const ProductDetail = () => {
                       })}
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
                   <button className="btn-Shop-t" onClick={handleAddtoCard}>

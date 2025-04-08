@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCallback } from "react";
 import { addToCart } from "../../features/products/AddtoCardSlice";
-const api ="http://localhost:5000"
+
+const api =import.meta.env.VITE_BACKENDURL;
+
 const Wishlist = () => {
   const navigate = useNavigate();
   const handleClick = (item) => {
@@ -47,8 +49,7 @@ const Wishlist = () => {
   const isCartItem = (item) => {
     return addedcart.some(cart => cart.product_id === item?.id);
   };
-  console.log(wishlist);
-  
+ 
   const handleAddtoCard = async (item) => {
     dispatch(addToCart({ product_id: item?.id }));
     try {

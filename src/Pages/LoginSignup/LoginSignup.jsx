@@ -12,9 +12,9 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser,setLoading } from "../../features/users/authSlice";
 import { TiTick } from "react-icons/ti";
-import Popup from "../../Components/popupemailverify/Popup"
-import Popupforgetpassword from "../../Components/popupemailverify/popupforgetpassword";
-const API_URL = "http://localhost:5000";
+import Popup from "../../Components/popupemailverify/Popup.jsx"
+import Popupforgetpassword from "../../Components/popupemailverify/Popupforgetpassword.jsx";
+const API_URL = import.meta.env.VITE_BACKENDURL;
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const GoogleLoginButton = ({ btntext }) => {
   const navigate = useNavigate();

@@ -1,20 +1,33 @@
-.title-policy{
-    font-size: 30px;
-    font-weight: 700;
+.privacy-policy {
+    padding: 80px;
     text-align: center;
-    margin-bottom:40px;
+    background-color: #f5f5f5;
 }
-.policy-sec-wrapper{
-    margin: 60px 0;
+
+.privacy-details {
+    max-width: 800px;
+    margin: 50px auto;
+    font-size: 18px;
+    line-height: 1.8;
 }
-.policy-sub-title{
-    font-size: 20px;
-    font-weight: 700;
+
+.privacy-details h3 {
+    font-weight: bold;
+    margin-top: 30px;
 }
-.policy-content{
-    font-size: 16px;
-    margin: 20px 0;
+
+.privacy-details ul {
+    padding-left: 20px;
 }
-.policy-sec-wrapper ul{
-    padding-left: 40px;
+
+.privacy-details ul li {
+    margin-bottom: 10px;
 }
+
+
+@media (max-width:767px){
+    .privacy-policy{  
+      padding: 48px !important;
+  }
+  }
+

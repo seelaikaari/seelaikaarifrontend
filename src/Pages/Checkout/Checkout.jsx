@@ -12,7 +12,7 @@ function Checkout() {
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
-    mobile: "",
+    phone: "",
     address1: "",
     address2: "",
     state: "",
@@ -25,8 +25,8 @@ function Checkout() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     
-    // Allow only numbers for mobile and pincode fields
-    if ((name === "mobile" || name === "pincode") && !/^\d*$/.test(value)) return;
+    // Allow only numbers for phone and pincode fields
+    if ((name === "phone" || name === "pincode") && !/^\d*$/.test(value)) return;
 
     setUserDetails((prevState) => ({
       ...prevState,
@@ -50,10 +50,10 @@ function Checkout() {
     }
 
     // Mobile validation (must be a 10-digit number)
-    if (!userDetails.mobile.trim()) {
-      errors.mobile = "Mobile number is required";
-    } else if (!/^\d{10}$/.test(userDetails.mobile)) {
-      errors.mobile = "Enter a valid 10-digit mobile number";
+    if (!userDetails.phone.trim()) {
+      errors.phone = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(userDetails.phone)) {
+      errors.phone = "Enter a valid 10-digit phone number";
     }
 
     // Address validation (should not be empty)

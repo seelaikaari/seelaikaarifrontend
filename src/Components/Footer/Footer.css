@@ -10,7 +10,7 @@
     margin: 10px 0;
     display: block;
     font-size: 15px;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 .title-ft{
     color: #505050;
@@ -43,4 +43,8 @@
 .ft-row-2{
     padding: 15px 0 15px;
     border-top: 1px solid #ffffff;
+}
+.ft-contact-link{
+    text-decoration: none;
+    color: #505050;
 }

@@ -188,7 +188,7 @@ const Home = () => {
             <div className="row row-gap-5">
               <div className="col-md-4">
                 <h4 className="sec-2-h-Ct">Wedding Wardrobe Essentials!</h4>
-                <p className="sec-2-p-ct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia dolore ut harum.</p>
+                <p className="sec-2-p-ct">Explore this much-loved collection of striking that travel effortlessly from a day at work to an evening out.</p>
                 <button className="btn-Shop-t" onClick={()=>handleNavigate("WeddingEssentials")}><AiOutlineShoppingCart/> Shop Now </button>
               </div>
               <div className="col-md-8">
@@ -304,7 +304,7 @@ const Home = () => {
               </div>
               <div className="col-md-4">
                 <h4 className="sec-2-h-Ct">Best Selling Products!</h4>
-                <p className="sec-2-p-ct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia dolore ut harum.</p>
+                <p className="sec-2-p-ct">Explore a selection of exquisite fabric lengths woven in fine silk, the perfect accompaniments to your favourite saris this festive season.</p>
                 <button className="btn-Shop-t" onClick={()=>handleNavigate("BestSelling")}><AiOutlineShoppingCart/> Shop Now </button>
               </div>
             </div>

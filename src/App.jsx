@@ -17,6 +17,9 @@ import Termsandconditions from "./Pages/terms/Termsandconditions.jsx";
 import Policy from "./Pages/policies/Policy.jsx";
 import Account from "./Pages/account/Account.jsx";
 import Stories from "./Pages/stories/Stories.jsx";
+import PayementPolicy from "./Pages/PayementPolicy/PayementPolicy.jsx";
+import ShippingPolicy from "./Pages/ShippingPolicy/ShippingPolicy.jsx";
+import ReturnPolicy from "./Pages/ReturnsRefunds/Returns.jsx"
 import { Navigate } from "react-router-dom";
 //Css
 import "./App.css";
@@ -29,7 +32,9 @@ import { fetchProducts } from "./api/fetchProduct.js";
 import { fetchWishlist } from "./api/fetchwishlist.js";
 import ResetPassword from "./Pages/resetpassword/ResetPassword.jsx";
 import ProtectedResetRoute from "./Pages/resetpassword/ProtectedResetRoute.jsx";
-const api = "http://localhost:5000";
+import { Navigation } from "swiper/modules";
+
+const api =import.meta.env.VITE_BACKENDURL;
 
 const ProtectedRoute = ({ isLogin, routeName, children }) => {
     useEffect(() => {
@@ -45,6 +50,8 @@ function App() {
   const { isLogin, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+  const { products,prod_loading } = useSelector((state) => state.products);
+
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -56,7 +63,6 @@ function App() {
           { headers: { Authorization: `Bearer ${token}` } }
         )
         .then((res) => {
-          console.log(res);
           dispatch(setUser(res.data.user));
         })
         .catch(() => localStorage.removeItem("token"))
@@ -104,7 +110,7 @@ function App() {
           <Route path="/Product" element={<Product />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Wishlist" element={<Wishlist />} />
-          <Route path="/ProductDetail" element={<ProductDetail />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route
             path="/Checkout"
@@ -116,6 +122,9 @@ function App() {
           />
           <Route path="/Termsandconditions" element={<Termsandconditions />} />
           <Route path="/Policy" element={<Policy />} />
+          <Route path="/Payment-policy" element={<PayementPolicy />} />
+          <Route path="/Shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/Return-exchange-policy" element={<ReturnPolicy />} />
           <Route
             path="/reset-password"
             element={

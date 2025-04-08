@@ -1,13 +1,16 @@
-[build]
-  publish = "build"
-  functions = "netlify/functions"
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/server"
-  status = 200
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "seelaikaari.com/*"
+  to = "https://www.seelaikaari.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "www.seelaikaari.com/*"
+  to = "https://www.seelaikaari.com/:splat"
+  status = 301
+  force = true

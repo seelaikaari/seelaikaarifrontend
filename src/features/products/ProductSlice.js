@@ -3,7 +3,7 @@ import { fetchProducts } from '../../api/fetchProduct';
 
 const initialState = {
   products: [],
-  loading: false,
+  prod_loading: false,
   error: null,
 };
 
@@ -14,15 +14,15 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.loading = true;
+        state.prod_loading = true;
         state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.loading = false;
+        state.prod_loading = false;
         state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false;
+        state.prod_loading = false;
         state.error = action.error.message;
       });
   },

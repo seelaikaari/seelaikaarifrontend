@@ -21,7 +21,7 @@ const Product = () => {
   const [priceRange, setPriceRange] = useState([0, 0]);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-  useEffect(() => { dispatch(fetchProducts()); }, [dispatch]);
+
   useEffect(() => { category ? handleCategoryFilter() : setFilteredProducts(products); }, [products, category]);
   const handleCategoryFilter = () => setFilteredProducts(products.filter(item => Array.isArray(item.category) ? item.category.some(cat => category.includes(cat)) : category.includes(item.category)));
 
