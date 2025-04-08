@@ -46,7 +46,7 @@ const About = () => {
 
           <h2 className="section-heading">Our Craftsmanship</h2>
           <p>
-            From the regal <strong>Kanjivaram silks</strong> to the delicate each saree is a masterpiece. We
+            From the regal <strong>Kanchipuram silks</strong> to the delicate each saree is a masterpiece. We
             take pride in sourcing pure fabrics, natural dyes, and traditional
             weaving techniques passed down through generations.
           </p>
