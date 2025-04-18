@@ -10,11 +10,15 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import "../productdetailslider/ProductDetailSlide.css";
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+import { MdOutlineZoomOutMap } from "react-icons/md";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const ProductDetailSlide = ({ img = []  }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  console.log(img);
+  
   return (
     <>
       <div className="row slider-wrapper-pro-det">
@@ -54,15 +58,24 @@ const ProductDetailSlide = ({ img = []  }) => {
           </Swiper>
         </div>
         <div className="col-md-9">
+        <PhotoProvider>
           <Swiper
             loop={true}
             spaceBetween={10}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper2 prod-detail-slides"
+            className="mySwiper2 prod-detail-slides "
           >
+            
             {img.map((item, index) => (
               <SwiperSlide key={index}>
+                
+                <div className="image_viewer-ch">
+                <PhotoView src={item.url} >
+                <button ><MdOutlineZoomOutMap/></button>
+                </PhotoView>
+                </div>
+                
                 <ReactImageMagnify
                   {...{
                     smallImage: {
@@ -79,9 +92,13 @@ const ProductDetailSlide = ({ img = []  }) => {
                     ensmallImageContainerClassName: "custom-small-image", // Add custom class
                   }}
                 />
+                
+                
               </SwiperSlide>
             ))}
+            
           </Swiper>
+          </PhotoProvider>
         </div>
       </div>
     </>
