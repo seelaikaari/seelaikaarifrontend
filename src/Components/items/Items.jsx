@@ -84,11 +84,11 @@ const Items = ({ prdts}) => {
             <span className="offer-price">{prdts.price}</span>
             <span className="discount">50%</span>
           </div>
-          <div className="product-size">
+          {/* <div className="product-size">
             {prdts?.size?.map((siz, index) => {
               return <span key={index}>{siz.name}</span>;
             })}
-          </div>
+          </div> */}
           <div className="product-colors">
             {prdts?.color?.slice(0, 3).map((clr, index) => {
               return (
