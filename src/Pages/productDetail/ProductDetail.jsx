@@ -99,15 +99,15 @@ const ProductDetail = () => {
                 <ProductDetailSlide img={productItem.images} />
               </div>
               <div className="col-md-7">
-              {/*  <h3 className="pro-det-h-title">{productItem.name}</h3>
+               <h3 className="pro-det-h-title">{productItem.name}</h3>
                 <div className="price-wrapper-pd">
                   <p className="prd-p1">{productItem.price}</p>
                   <p className="prd-p2">{productItem.price}</p>
-                  <p className="prd-off">20% OFF</p>
+                  {/* <p className="prd-off">20% OFF</p> */}
                 </div>
                 <p className="pro-detail-p">{productItem.description}</p>
                  <div className="d-flex gap-5 prd-dir-mob">
-                  <div>
+                  {/* <div>
                     <h4 className="prd-dtc">size</h4>
 
                     <div className="pro-det-rat-wrapper-size d-flex">
@@ -132,7 +132,7 @@ const ProductDetail = () => {
                         );
                       })}
                     </div>
-                  </div>
+                  </div> */}
                   <div>
                     <h4 className="prd-dtc">Color</h4>
                     <div className="pro-det-rat-wrapper d-flex">
@@ -156,7 +156,7 @@ const ProductDetail = () => {
                       })}
                     </div>
                   </div>
-                </div> */}
+                </div>
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
                   <button className="btn-Shop-t" onClick={handleAddtoCard}>

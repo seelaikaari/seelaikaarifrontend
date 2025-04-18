@@ -49,7 +49,7 @@ const Product = () => {
         <div className={`col-lg-3 mobile-filter-menu ${isMobileFilterOpen ? "open" : ""}`}>
           <div className="container-sticky filterScroll" style={{ height: `${window.innerHeight - 50}px`, overflow: "scroll" }}>
             <h2 className="filter-heading"><span>🔍</span> Filter<MdClose onClick={() => setIsMobileFilterOpen(false)} /></h2>
-            {['price', 'category', 'material', 'color', 'size'].map((title) => (
+            {['price', 'category', 'material', 'color'].map((title) => (
               <ProductSideBar key={title} filopt={title === 'price' ? [maxPrice, minPrice] : getUniqueValues(title)} title={title} handleChange={title === 'price' ? setPriceRange : handleChange} />
             ))}
           </div>

@@ -82,7 +82,7 @@ const Items = ({ prdts}) => {
           <div className="product-price">
             <span className="normal-price">{prdts.price}</span>
             <span className="offer-price">{prdts.price}</span>
-            <span className="discount">50%</span>
+            {/* <span className="discount">50%</span> */}
           </div>
           {/* <div className="product-size">
             {prdts?.size?.map((siz, index) => {
