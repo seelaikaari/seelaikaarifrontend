@@ -75,7 +75,7 @@ const Items = ({ prdts}) => {
           />
         </div>
         <div className="product-info">
-          {/* <h3 className="product-title popup_cart_title">{prdts.name}</h3>
+          <h3 className="product-title popup_cart_title">{prdts.name}</h3>
           <div>
             <p className="truncate">{prdts.description}</p>
           </div>
@@ -109,7 +109,7 @@ const Items = ({ prdts}) => {
                 </span>
               
             )}
-          </div> */}
+          </div>
           <div>
             <button className="add-to-cart-btn" onClick={handleClick}>
               view more
