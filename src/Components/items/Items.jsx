@@ -66,7 +66,7 @@ const Items = ({ prdts}) => {
         <div className="wishlist-icon" onClick={toggleWishlist}>
           <FaHeart className={isWishlisted ? "wishlist-heart" : ""} />
         </div>
-        <div className="product-img">
+        <div className="product-img" onClick={handleClick}>
           <img
             src={prdts?.images[0]?.url}
             alt="Aila organza"
