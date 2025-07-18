@@ -32,11 +32,22 @@
 }
 .ft-copy{
     color: #505050;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     text-align: end;
     margin: 0;
+    text-decoration: none;
 }
+.foot-content{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+}
+.footerLogo{
+    width: 45px;
+}
+
 .ft-row-1{
     padding: 80px 0 50px;
 }
@@ -47,4 +58,11 @@
 .ft-contact-link{
     text-decoration: none;
     color: #505050;
+}
+
+@media only screen and (max-width:767px){
+    .ft-row-2 {
+    padding: 15px 0 86px;
+    border-top: 1px solid #ffffff;
+}
 }
