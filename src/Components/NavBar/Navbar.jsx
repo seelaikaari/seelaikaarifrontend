@@ -31,7 +31,7 @@ const Navbar = () => {
     const handelnavclose = () => { setToggle(!toggle) }
     const { isLogin } = useSelector((state) => state.auth);
     const handelNavigation = (itemcategory) => {
-        navigate("/Product", { state: { category: itemcategory } });
+        navigate("/product", { state: { category: itemcategory } });
         // handelnavclose()
         setToggle(false)
     }
@@ -81,8 +81,8 @@ const Navbar = () => {
                             <ul className='nav-ul-wrapper justify-content-end nav-c-icon'>
                                 <li className='nav-item d-md-block d-none'><p className='nav-link' onClick={() => setSearchtoggle(!searchtoggle)}><FaSearch /></p></li>
                                 <li className='nav-item d-md-block d-none'><Link to={!isLogin?"/login":"/Account"} className='nav-link '><FaRegUserCircle /></Link></li>
-                                <li className='nav-item'><Link to="/Cart" className='nav-link prod-count'><MdOutlineShoppingCart /> <span className="prod-count-num">{addedcart}</span></Link></li>
-                                <li className='nav-item'><Link to="/Wishlist" className='nav-link  prod-count'><FaRegHeart /> <span className="prod-count-num">{wishlist}</span></Link></li>
+                                <li className='nav-item'><Link to="/cart" className='nav-link prod-count'><MdOutlineShoppingCart /> <span className="prod-count-num">{addedcart}</span></Link></li>
+                                <li className='nav-item'><Link to="/wishlist" className='nav-link  prod-count'><FaRegHeart /> <span className="prod-count-num">{wishlist}</span></Link></li>
                             </ul>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ const Navbar = () => {
                                 <button className="mob-nav-close-btn" onClick={handelnavclose}><IoClose /></button>
                             </li>
                             <li className='nav-item'><NavLink to="/" onClick={handelnavclose} className='nav-link'>Home</NavLink></li>
-                            <li className='nav-item'><NavLink to="/Product" onClick={handelnavclose} className='nav-link'>Shop</NavLink></li>
+                            <li className='nav-item'><NavLink to="/product" onClick={handelnavclose} className='nav-link'>Shop</NavLink></li>
                             <li className='nav-item nav-drop-parent'><p className='nav-link'>Sarees <IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
@@ -116,12 +116,12 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             </li>
-                            <li className='nav-item'><NavLink to="/Contact" onClick={handelnavclose} className='nav-link'>Contact</NavLink></li>
+                            <li className='nav-item'><NavLink to="/contact" onClick={handelnavclose} className='nav-link'>Contact</NavLink></li>
                             <li className='nav-item nav-drop-parent'><p  className='nav-link'>About<IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
-                                        <li className="nav-item"><Link to="/About" className="nav-link">About Seelaikaari</Link></li>
-                                        <li className="nav-item"><Link to="/Stories" className="nav-link">The Seelaikaari Story</Link></li>
+                                        <li className="nav-item"><Link to="/about" className="nav-link">About Seelaikaari</Link></li>
+                                        <li className="nav-item"><Link to="/stories" className="nav-link">The Seelaikaari Story</Link></li>
                                     </ul>
                                 </div></li>
                         </ul>

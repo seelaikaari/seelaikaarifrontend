@@ -139,12 +139,12 @@ const Account = () => {
                   <li onClick={()=>setOrderinfotoggle(false)}>Dashboard</li>
                   <li onClick={()=>setOrderinfotoggle(true)}>Order Info</li>
                   <li>
-                    <Link to='/Wishlist' className='nav-link'>
+                    <Link to='/wishlist' className='nav-link'>
                       Your Wishlist
                     </Link>
                   </li>
                   <li>
-                    <Link to='/Cart' className='nav-link'>
+                    <Link to='/cart' className='nav-link'>
                       Your Cart
                     </Link>
                   </li>

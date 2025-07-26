@@ -17,7 +17,7 @@ const api =import.meta.env.VITE_BACKENDURL;
 const Wishlist = () => {
   const navigate = useNavigate();
   const handleClick = (item) => {
-    navigate("/ProductDetail", { state: { product: item } });
+    navigate("/product-details", { state: { product: item } });
   };
   const dispatch = useDispatch();
   const { wishlist, loading, error } = useSelector((state) => state.wishlist);
@@ -117,7 +117,7 @@ const Wishlist = () => {
               <h5 className="wish-empty-title text-center">
                 No wishes yet! Find something you love and add it here.
               </h5>
-              <Link to="/Product" className="empty-wishlist-btn">
+              <Link to="/product" className="empty-wishlist-btn">
                 Shop Now
               </Link>
             </div>

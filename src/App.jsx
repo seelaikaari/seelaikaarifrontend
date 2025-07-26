@@ -105,26 +105,26 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Product" element={<Product />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/Wishlist" element={<Wishlist />} />
-          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/product-details/:id" element={<ProductDetail />} /> 
           <Route path="/login" element={<LoginSignup />} />
           <Route
-            path="/Checkout"
+            path="/checkout"
             element={
               <ProtectedRoute isLogin={isLogin} routeName={"checkout"}>
                 <Checkout />
               </ProtectedRoute>
             }
           />
-          <Route path="/Termsandconditions" element={<Termsandconditions />} />
-          <Route path="/Policy" element={<Policy />} />
-          <Route path="/Payment-policy" element={<PayementPolicy />} />
-          <Route path="/Shipping-policy" element={<ShippingPolicy />} />
-          <Route path="/Return-exchange-policy" element={<ReturnPolicy />} />
+          <Route path="/terms-and-conditions" element={<Termsandconditions />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/payment-policy" element={<PayementPolicy />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/return-exchange-policy" element={<ReturnPolicy />} />
           <Route
             path="/reset-password"
             element={
@@ -141,7 +141,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/Stories" element={<Stories />} />
+          <Route path="/stories" element={<Stories />} />
         </Routes>
       </main>
       <Footer />

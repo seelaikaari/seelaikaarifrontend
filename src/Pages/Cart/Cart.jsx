@@ -166,7 +166,7 @@ const Cart = () => {
             >
               Proceed to Checkout
             </button>
-              <button className="continue-shopping-btn" onClick={() => navigate("/Product")}>
+              <button className="continue-shopping-btn" onClick={() => navigate("/product")}>
                 Continue Shopping
               </button>
             </div>
@@ -178,7 +178,7 @@ const Cart = () => {
             <div className="inner-empt-wlist">
               <img src={emptyCartImg} width="200px" alt="Empty Cart" />
               <h5 className="wish-empty-title text-center">Oops! No items found. Browse and add some</h5>
-              <Link to="/Product" className="empty-wishlist-btn">Shop Now</Link>
+              <Link to="/product" className="empty-wishlist-btn">Shop Now</Link>
             </div>
           </div>
         </section>

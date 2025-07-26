@@ -57,7 +57,7 @@ const Home = () => {
   const navigate =useNavigate();
 
   const handleNavigate=(itemcategory)=>{
-    navigate("/Product", { state: { category: itemcategory } });
+    navigate("/product", { state: { category: itemcategory } });
   }
   const homeBanner=[
     {

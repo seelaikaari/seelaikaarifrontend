@@ -36,20 +36,20 @@ const Footer = () => {
                                 <h4 className="title-ft">Quick Links</h4>
                                 <ul className="ft-ul-wrapper">
                                     <li><Link to="/" className="ft-nav-link">Home</Link></li>
-                                    <li><Link to="/About" className="ft-nav-link">About</Link></li>
-                                    <li><Link to="/Contact" className="ft-nav-link">Contact</Link></li>
-                                    <li><Link to="/Product" className="ft-nav-link">Shop</Link></li>
+                                    <li><Link to="/about" className="ft-nav-link">About</Link></li>
+                                    <li><Link to="/contact" className="ft-nav-link">Contact</Link></li>
+                                    <li><Link to="/product" className="ft-nav-link">Shop</Link></li>
                                 </ul>
                             </div>
                             <div className="col-md-3">
                                 <h4 className="title-ft">Customer Service</h4>
                                 <ul className="ft-ul-wrapper">
-                                    <li><Link to="/Contact" className="ft-nav-link">Contact Us</Link></li>
-                                    {/* <li><Link to="/Termsandconditions" className="ft-nav-link">Terms of use</Link></li> */}
-                                    <li><Link to="/Policy" className="ft-nav-link">Privacy Policy</Link></li>
-                                    <li><Link to="/Payment-policy" className="ft-nav-link">Payment Policy</Link></li>
-                                    <li><Link to="/Shipping-policy" className="ft-nav-link">Shipping Policy</Link></li>
-                                    <li><Link to="/Return-exchange-policy" className="ft-nav-link">Returns,Refund & Exchange Policy</Link></li>
+                                    <li><Link to="/contact" className="ft-nav-link">Contact Us</Link></li>
+                                    {/* <li><Link to="/terms-and-conditions" className="ft-nav-link">Terms of use</Link></li> */}
+                                    <li><Link to="/policy" className="ft-nav-link">Privacy Policy</Link></li>
+                                    <li><Link to="/payment-policy" className="ft-nav-link">Payment Policy</Link></li>
+                                    <li><Link to="/shipping-policy" className="ft-nav-link">Shipping Policy</Link></li>
+                                    <li><Link to="/return-exchange-policy" className="ft-nav-link">Returns,Refund & Exchange Policy</Link></li>
                                 </ul>
                             </div>
                         </div>
