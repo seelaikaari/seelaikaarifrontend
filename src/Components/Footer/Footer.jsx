@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom"
 //images
 import logo from "../../assets/images/logo-1.png"
+import footerLogo from "../../assets/images/footer-logo.png"
 //icons
 import { IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -55,8 +56,10 @@ const Footer = () => {
                 </div>  
             </div>
             <div className="ft-row-2">
-                <div className="container">
-                    <h2 className="ft-copy">@Copyrights 2025</h2>
+               
+  <div className="container foot-content ">
+                    <img src={footerLogo} alt="footerLogo" className="footerLogo" />
+                    <a href="https://slbdigitals.com/" target="_blank" className="ft-copy">© 2025 Sai Logabala. All rights reserved.</a>
                 </div>
             </div>
         </footer>
