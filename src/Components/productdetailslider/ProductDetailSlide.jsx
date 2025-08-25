@@ -17,8 +17,7 @@ import { MdOutlineZoomOutMap } from "react-icons/md";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const ProductDetailSlide = ({ img = []  }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  console.log(img);
-  
+
   return (
     <>
       <div className="row slider-wrapper-pro-det">

@@ -57,6 +57,8 @@ const Items = ({ prdts}) => {
       toast.error("An error occurred. Please try again.");
     }
   };
+console.log(typeof prdts.price);
+
  
   return prdts ? (
     <>
@@ -80,8 +82,8 @@ const Items = ({ prdts}) => {
             <p className="truncate">{prdts.description}</p>
           </div>
           <div className="product-price">
-            <span className="normal-price">{prdts.price}</span>
-            <span className="offer-price">{prdts.price}</span>
+            <span className="normal-price">{(Number(prdts.price)).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            {/* <span className="offer-price">{prdts.price}</span> */}
             {/* <span className="discount">50%</span> */}
           </div>
           {/* <div className="product-size">
@@ -89,7 +91,7 @@ const Items = ({ prdts}) => {
               return <span key={index}>{siz.name}</span>;
             })}
           </div> */}
-          <div className="product-colors">
+          {/* <div className="product-colors">
             {prdts?.color?.slice(0, 3).map((clr, index) => {
               return (
                 <span
@@ -109,7 +111,7 @@ const Items = ({ prdts}) => {
                 </span>
               
             )}
-          </div>
+          </div> */}
           <div>
             <button className="add-to-cart-btn" onClick={handleClick}>
               view more
