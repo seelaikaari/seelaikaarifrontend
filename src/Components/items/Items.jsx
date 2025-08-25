@@ -82,7 +82,7 @@ console.log(typeof prdts.price);
             <p className="truncate">{prdts.description}</p>
           </div>
           <div className="product-price">
-            <span className="normal-price">{(Number(prdts.price)).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <span className="normal-price">INR {(Number(prdts.price)).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             {/* <span className="offer-price">{prdts.price}</span> */}
             {/* <span className="discount">50%</span> */}
           </div>
