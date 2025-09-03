@@ -99,12 +99,12 @@ const Navbar = () => {
                             <li className='nav-item nav-drop-parent'><p className='nav-link'>Sarees <IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
-                                        <li className="nav-item"><p onClick={() => handelNavigation("Bridal")} className="nav-link">Bridal Sarees</p></li>
-                                        <li className="nav-item"><p onClick={() => handelNavigation("Chanderi")} className="nav-link">Designer Sarees</p></li>
+                                        <li className="nav-item"><p onClick={() => handelNavigation("Bridal")} className="nav-link">Kanjivaram Bridal Sarees</p></li>
+                                        <li className="nav-item"><p onClick={() => handelNavigation("Chanderi")} className="nav-link">Kanjivaram Designer Sarees</p></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li className='nav-item nav-drop-parent'><p className='nav-link'>Shop by occasion <IoIosArrowDown /></p>
+                            {/* <li className='nav-item nav-drop-parent'><p className='nav-link'>Shop by occasion <IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
                                         <li className="nav-item"><p onClick={() => handelNavigation("Wedding")} className="nav-link">Wedding / Reception</p></li>
@@ -115,7 +115,7 @@ const Navbar = () => {
                                         <li className="nav-item"><p onClick={() => handelNavigation("Wedding")} className="nav-link">Wedding Guest</p></li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> */}
                             <li className='nav-item'><NavLink to="/contact" onClick={handelnavclose} className='nav-link'>Contact</NavLink></li>
                             <li className='nav-item nav-drop-parent'><p  className='nav-link'>About<IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">

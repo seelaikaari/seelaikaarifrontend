@@ -133,7 +133,7 @@ const ProductDetail = () => {
                       })}
                     </div>
                   </div> */}
-                  <div>
+                  {/* <div>
                     <h4 className="prd-dtc">Color</h4>
                     <div className="pro-det-rat-wrapper d-flex">
                       {productItem?.color?.map((colrs,index)=>{
@@ -155,7 +155,7 @@ const ProductDetail = () => {
                           </div>);
                       })}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
