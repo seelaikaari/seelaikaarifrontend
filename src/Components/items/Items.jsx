@@ -57,7 +57,6 @@ const Items = ({ prdts}) => {
       toast.error("An error occurred. Please try again.");
     }
   };
-console.log(typeof prdts.price);
 
  
   return prdts ? (
@@ -113,8 +112,8 @@ console.log(typeof prdts.price);
             )}
           </div> */}
           <div>
-            <button className="add-to-cart-btn" onClick={handleClick}>
-              view more
+            <button className="add-to-cart-btn" onClick={handleClick} disabled={prdts.stock<1} style={{ background: prdts.stock < 1 ? "#9a9a9a" : "#ff6f61" }}>
+             {prdts.stock>=1?"view more":"out of stock"} 
             </button>
           </div>
         </div> 

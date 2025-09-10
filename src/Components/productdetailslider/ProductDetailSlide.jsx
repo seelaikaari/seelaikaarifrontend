@@ -104,4 +104,4 @@ const ProductDetailSlide = ({ img = []  }) => {
   );
 };
 
-export default React.memo(ProductDetailSlide);;
+export default React.memo(ProductDetailSlide);

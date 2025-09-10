@@ -15,7 +15,8 @@ const Product = () => {
   const category = location.state?.category || "";
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-
+  
+   
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({ category: [], material: [], color: [], size: [] });
   const [priceRange, setPriceRange] = useState([0, 0]);
@@ -23,12 +24,17 @@ const Product = () => {
 
 
   useEffect(() => { category ? handleCategoryFilter() : setFilteredProducts(products); }, [products, category]);
-  const handleCategoryFilter = () => setFilteredProducts(products.filter(item => Array.isArray(item.category) ? item.category.some(cat => category.includes(cat)) : category.includes(item.category)));
+
+  const handleCategoryFilter = () =>{ 
+    setFilteredProducts(products.filter(item => category==item.category.toLowerCase()))
+  };
 
   const getUniqueValues = useMemo(() => (key) => key === "color" || key === "size" ? [...new Set(products.flatMap((p) => p[key]?.map((c) => c.name) || []))] : [...new Set(products.map((p) => p[key]))], [products]);
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
+    // console.log( name, value, checked );
+    
     setSelectedFilters((prev) => ({ ...prev, [name]: checked ? [...prev[name], value] : prev[name].filter((v) => v !== value) }));
   };
 
@@ -41,7 +47,7 @@ const Product = () => {
   const prices = useMemo(() => products.map(prd => Number(prd.price)).filter(price => !isNaN(price) && price > 0), [products]);
   const maxPrice = Math.max(...prices, 0);
   const minPrice = Math.min(...prices, Infinity);
-
+  //  console.log(category,filteredProducts);
   return (
     <div className="product-pages container">
       <button className="mobile-filter-toggle" onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}><FaFilter /> Filters</button>
