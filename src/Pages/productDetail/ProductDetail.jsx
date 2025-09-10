@@ -101,8 +101,8 @@ const ProductDetail = () => {
               <div className="col-md-7">
                <h3 className="pro-det-h-title">{productItem.name}</h3>
                 <div className="price-wrapper-pd">
-                  <p className="prd-p1">{productItem.price}</p>
-                  <p className="prd-p2">{productItem.price}</p>
+                  <p className="prd-p1">INR {(Number(productItem.price)).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</p>
+                  {/* <p className="prd-p2">{productItem.price}</p> */}
                   {/* <p className="prd-off">20% OFF</p> */}
                 </div>
                 <p className="pro-detail-p">{productItem.description}</p>

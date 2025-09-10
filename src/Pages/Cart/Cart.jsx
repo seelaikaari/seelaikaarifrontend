@@ -126,9 +126,9 @@ const Cart = () => {
                     {item.name}
                   </h3>
                   <p>{item.description}</p>
-                  <p><strong>Size:</strong> {item.size}</p>
+                  {/* <p><strong>Size:</strong> {item.size}</p> */}
                   <div className="cart-actions">
-                    <span className="price">Rs. {item.discountedPrice * item.quantity}</span>
+                    <span className="price">Rs. {(Number(item.price * item.quantity)).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
                     <br />
                     <div className="quantity-controls">
                         <div className="decrease-btn">
