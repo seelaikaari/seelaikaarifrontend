@@ -99,12 +99,12 @@ const Navbar = () => {
                             <li className='nav-item nav-drop-parent'><p className='nav-link'>Sarees <IoIosArrowDown /></p>
                                 <div className="pos-nav-drop">
                                     <ul className="nav-dropdown-ul nav-ul-wrapper ">
-                                     <li className="nav-item"><p onClick={() => handelNavigation("vintage")} className="nav-link">Kanjivaram vintage Sarees</p></li>
-                                        <li className="nav-item"><p onClick={() => handelNavigation("royal")} className="nav-link">Kanjivaram royal Sarees</p></li>
-                                           <li className="nav-item"><p onClick={() => handelNavigation("traditional")} className="nav-link">Kanjivaram traditional Sarees</p></li>
-                                              <li className="nav-item"><p onClick={() => handelNavigation("vairavosi")} className="nav-link">Kanjivaram vairavosi Sarees</p></li>
-                                                 <li className="nav-item"><p onClick={() => handelNavigation("kattam")} className="nav-link">Kanjivaram kattam Sarees</p></li>
-                                                    <li className="nav-item"><p onClick={() => handelNavigation("bridal")} className="nav-link">Kanjivaram bridal Sarees</p></li>
+                                     <li className="nav-item"><p onClick={() => handelNavigation("vintage")} className="nav-link">Kanchipuram vintage Sarees</p></li>
+                                        <li className="nav-item"><p onClick={() => handelNavigation("royal")} className="nav-link">Kanchipuram royal Sarees</p></li>
+                                           <li className="nav-item"><p onClick={() => handelNavigation("traditional")} className="nav-link">Kanchipuram traditional Sarees</p></li>
+                                              <li className="nav-item"><p onClick={() => handelNavigation("vairavosi")} className="nav-link">Kanchipuram vairavosi Sarees</p></li>
+                                                 <li className="nav-item"><p onClick={() => handelNavigation("kattam")} className="nav-link">Kanchipuram kattam Sarees</p></li>
+                                                    <li className="nav-item"><p onClick={() => handelNavigation("bridal")} className="nav-link">Kanchipuram bridal Sarees</p></li>
                                     </ul>
                                 </div>
                             </li>
