@@ -23,6 +23,7 @@ const fetcher =async (url, token) =>
       console.error('Error fetching data:', error);
       
     });
+    
 const Account = () => {
   const API_URL = import.meta.env.VITE_BACKENDURL;
 

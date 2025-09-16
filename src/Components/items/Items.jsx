@@ -8,8 +8,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import {  toast } from 'react-toastify';
 import axios from "axios";
-import { useEffect } from "react";
-import { fetchWishlist } from "../../api/fetchwishlist";
+// import { useEffect } from "react";
+// import { fetchWishlist } from "../../api/fetchwishlist";
  
 const Items = ({ prdts}) => {
   const API_URL=import.meta.env.VITE_BACKENDURL;
@@ -18,13 +18,18 @@ const Items = ({ prdts}) => {
   const navigate = useNavigate();
   const { isLogin, user } = useSelector((state) => state.auth);
   const isWishlisted = wishlist.some((item) => item.product_id === prdts.id);
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchWishlist(user.id));
-    }
-  }, [dispatch, user]);
+
+// useEffect(() => {
+//   if (user?.id) {
+//     dispatch(fetchWishlist(user.id));
+//     console.log("kkaka");
+    
+//   }
+// }, [dispatch, user?.id]); 
+
   
   const handleClick = () => {
+    if(prdts.stock>=1)
     navigate(`/product-details/${prdts.id}`);
   };
   const toggleWishlist = async () => {

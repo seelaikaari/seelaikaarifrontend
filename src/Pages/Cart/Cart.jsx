@@ -130,7 +130,7 @@ const Cart = () => {
                   <div className="cart-actions">
                     <span className="price">Rs. {(Number(item.price * item.quantity)).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
                     <br />
-                    <div className="quantity-controls">
+                    {/* <div className="quantity-controls">
                         <div className="decrease-btn">
                       <FaMinusCircle
                         onClick={() => updateQuantity(item.id, -1)}
@@ -144,7 +144,7 @@ const Cart = () => {
                         className="cart-increase-btn"
                       />
                     </div>
-                    </div>
+                    </div> */}
                     <button className="remove-btn" onClick={() => handleRemoveCart(item.id)}>
                       <FaTrashAlt />
                     </button>

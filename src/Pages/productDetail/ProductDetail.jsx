@@ -2,6 +2,7 @@ import ProductDetailSlide from "../../Components/productdetailslider/ProductDeta
 import SimilarProduct from "../../Components/similarproduct/SimilarProduct";
 import { IoCart } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
+import { MdRemoveShoppingCart } from "react-icons/md";
 import "../productDetail/ProductDetail.css";
 import { useLocation,useNavigate } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
@@ -89,6 +90,7 @@ const ProductDetail = () => {
   }, [isLogin, updatedcart, dispatch, productItem?.id, user?.id, navigate]);
 
 
+
   return (
     productItem && (
       <>
@@ -159,9 +161,12 @@ const ProductDetail = () => {
                 </div>
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
-                  <button className="btn-Shop-t" onClick={handleAddtoCard}>
+                  {productItem.stock>=1?<button className="btn-Shop-t" onClick={handleAddtoCard}>
                     <IoCart /> {updatedcart.length !== 0 ? "Go to Cart" : "Add to Cart" }  
-                  </button>
+                  </button>:
+                  <button className="btn-Shop-t" style={{backgroundColor:"#a11717"}}>
+                    <MdRemoveShoppingCart /> Out of Stock
+                  </button>}
                   <button className="btn-pr-dt-wishlist" onClick={handleAddtoWishList}>
                     <FaHeart /> {isWishlisted?"Remove from WishList":"Add to WishList"}
                   </button>

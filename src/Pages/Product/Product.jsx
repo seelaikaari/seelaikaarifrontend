@@ -1,7 +1,6 @@
 // Fixed handleChange ReferenceError
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../api/fetchProduct";
 import ProductSideBar from "../../Components/productsidebar/ProductSidebar.jsx";
 import "../Product/Product.css";
 import Items from "../../Components/items/Items.jsx";
