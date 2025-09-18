@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
 import "../Checkout/Checkout.css";
+import { Country, State, City } from "country-state-city";
 
 function Checkout() {
   const location = useLocation();
-  const { cartItems = [], totalAmount = 0 } = location.state || {}; // Ensuring default values
+  const { cartItems = [], totalAmount = 0 } = location.state || {};
 
   const [showPayment, setShowPayment] = useState(false);
 
@@ -15,6 +16,7 @@ function Checkout() {
     phone: "",
     address1: "",
     address2: "",
+    country: "",
     state: "",
     city: "",
     pincode: "",
@@ -24,59 +26,33 @@ function Checkout() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
-    // Allow only numbers for phone and pincode fields
-    if ((name === "phone" || name === "pincode") && !/^\d*$/.test(value)) return;
 
-    setUserDetails((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    // Reset dependent fields
+    if (name === "country") {
+      setUserDetails((prev) => ({ ...prev, country: value, state: "", city: "" }));
+    } else if (name === "state") {
+      setUserDetails((prev) => ({ ...prev, state: value, city: "" }));
+    } else {
+      // Allow only numbers for phone and pincode
+      if ((name === "phone" || name === "pincode") && !/^\d*$/.test(value)) return;
+      setUserDetails((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const validateForm = () => {
     let errors = {};
 
-    // Name validation (should not be empty)
-    if (!userDetails.name.trim()) {
-      errors.name = "Name is required";
-    }
-
-    // Email validation (must be a valid email format)
-    if (!userDetails.email.trim()) {
-      errors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(userDetails.email)) {
-      errors.email = "Enter a valid email address";
-    }
-
-    // Mobile validation (must be a 10-digit number)
-    if (!userDetails.phone.trim()) {
-      errors.phone = "Mobile number is required";
-    } else if (!/^\d{10}$/.test(userDetails.phone)) {
-      errors.phone = "Enter a valid 10-digit phone number";
-    }
-
-    // Address validation (should not be empty)
-    if (!userDetails.address1.trim()) {
-      errors.address1 = "Address is required";
-    }
-
-    // City validation (should not be empty)
-    if (!userDetails.city.trim()) {
-      errors.city = "City is required";
-    }
-
-    // State validation (should not be empty)
-    if (!userDetails.state.trim()) {
-      errors.state = "State is required";
-    }
-
-    // Pincode validation (must be a 6-digit number)
-    if (!userDetails.pincode.trim()) {
-      errors.pincode = "Pincode is required";
-    } else if (!/^\d{6}$/.test(userDetails.pincode)) {
-      errors.pincode = "Enter a valid 6-digit pincode";
-    }
+    if (!userDetails.name.trim()) errors.name = "Name is required";
+    if (!userDetails.email.trim()) errors.email = "Email is required";
+    else if (!/^\S+@\S+\.\S+$/.test(userDetails.email)) errors.email = "Enter a valid email";
+    if (!userDetails.phone.trim()) errors.phone = "Mobile is required";
+    else if (!/^\d{10}$/.test(userDetails.phone)) errors.phone = "Enter 10-digit phone";
+    if (!userDetails.address1.trim()) errors.address1 = "Address is required";
+    if (!userDetails.country.trim()) errors.country = "Country is required";
+    if (!userDetails.state.trim()) errors.state = "State is required";
+    if (!userDetails.city.trim()) errors.city = "City is required";
+    if (!userDetails.pincode.trim()) errors.pincode = "Pincode is required";
+    else if (!/^\d{6}$/.test(userDetails.pincode)) errors.pincode = "Enter 6-digit pincode";
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -84,10 +60,23 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      setShowPayment(true);
-    }
+    console.log(userDetails);
+    
+    if (validateForm()) setShowPayment(true);
   };
+
+  // 👉 Fetch dynamic lists
+  const countries = Country.getAllCountries();
+// To find selected country object by name
+const selectedCountry = countries.find(c => c.name === userDetails.country);
+const states = selectedCountry ? State.getStatesOfCountry(selectedCountry.isoCode) : [];
+
+// To find selected state object by name
+const selectedState = states.find(s => s.name === userDetails.state);
+const cities = selectedState
+  ? City.getCitiesOfState(selectedCountry.isoCode, selectedState.isoCode)
+  : [];
+
 
   return (
     <div className="chkout-outer">
@@ -99,25 +88,131 @@ function Checkout() {
             <div className="col-md-8 form-contains">
               <form onSubmit={handleSubmit}>
                 <div className="row">
-                  {Object.keys(userDetails).map((field) => (
-                    <div key={field} className="form-group col-md-6">
-                      <label htmlFor={field}>
-                        {field.charAt(0).toUpperCase() + field.slice(1)}:
-                      </label>
-                      <input
-                        type={field === "email" ? "email" : "text"}
-                        className="form-control"
-                        id={field}
-                        name={field}
-                        value={userDetails[field]}
-                        onChange={handleInputChange}
-                        placeholder={`Enter ${field}`}
-                      />
-                      {formErrors[field] && (
-                        <p className="error">{formErrors[field]}</p>
-                      )}
-                    </div>
-                  ))}
+                  {/* Name */}
+                  <div className="form-group col-md-6">
+                    <label>Name:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="name"
+                      value={userDetails.name}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.name && <p className="error">{formErrors.name}</p>}
+                  </div>
+
+                  {/* Email */}
+                  <div className="form-group col-md-6">
+                    <label>Email:</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      value={userDetails.email}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.email && <p className="error">{formErrors.email}</p>}
+                  </div>
+
+                  {/* Phone */}
+                  <div className="form-group col-md-6">
+                    <label>Phone:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="phone"
+                      value={userDetails.phone}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.phone && <p className="error">{formErrors.phone}</p>}
+                  </div>
+
+                  {/* Address */}
+                  <div className="form-group col-md-6">
+                    <label>Address 1:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="address1"
+                      value={userDetails.address1}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.address1 && <p className="error">{formErrors.address1}</p>}
+                  </div>
+
+                  {/* Country Dropdown */}
+                  <div className="form-group col-md-6">
+                    <label>Country:</label>
+                    <select
+                      className="form-control"
+                      name="country"
+                      value={userDetails.country}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">-- Select Country --</option>
+                      {countries.map((c) => (
+                        <option key={c.isoCode} value={c.name}>
+                          {c.name}
+                        </option>
+                      ))}
+                    </select>
+                    {formErrors.country && <p className="error">{formErrors.country}</p>}
+                  </div>
+
+                  {/* State Dropdown */}
+                  <div className="form-group col-md-6">
+                    <label>State:</label>
+                    <select
+                      className="form-control"
+                      name="state"
+                      value={userDetails.state}
+                      onChange={handleInputChange}
+                      disabled={!states.length}
+                    >
+                      <option value="">-- Select State --</option>
+                      {states.map((s) => (
+                        <option key={s.isoCode} value={s.name}>
+                          {s.name}
+                        </option>
+                      ))}
+                    </select>
+                    {formErrors.state && <p className="error">{formErrors.state}</p>}
+                  </div>
+
+                  {/* City Dropdown */}
+                  <div className="form-group col-md-6">
+                    <label>City:</label>
+                    <select
+                      className="form-control"
+                      name="city"
+                      value={userDetails.city}
+                      onChange={handleInputChange}
+                      disabled={!cities.length}
+                    >
+                      <option value="">-- Select City --</option>
+                      {cities.map((c) => (
+                        <option key={c.name} value={c.name}>
+                          {c.name}
+                        </option>
+                      ))}
+                    </select>
+                    {formErrors.city && <p className="error">{formErrors.city}</p>}
+                  </div>
+
+                  {/* Pincode */}
+                  <div className="form-group col-md-6">
+                    <label>Pincode:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="pincode"
+                      value={userDetails.pincode}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.pincode && <p className="error">{formErrors.pincode}</p>}
+                  </div>
+
+                  {/* Continue Button */}
                   <div className="col-12 text-center">
                     <button type="submit" className="btn btn-primary mt-2 mb-3">
                       Continue
@@ -127,35 +222,25 @@ function Checkout() {
               </form>
             </div>
 
-            {/* Cart Items Display */}
+            {/* Cart Items */}
             <div className="col-md-4 chkout-summary">
               <div className="summary-content">
-                <h3 className="chkout-head-summary text-center">
-                  Order Summary
-                </h3>
-                <div className="row">
-                  {cartItems.map((item, index) => (
-                    <div
-                      className="d-flex align-items-center mb-3 des-details"
-                      key={index}>
-                      <div className="col-2">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="img-fluid"
-                        />
-                      </div>
-                      <div className="col-10 crt-details">
-                        <h3>{item.name}</h3>
-                        <p>Price: {item.price}</p>
-                        <p>Quantity: {item.quantity}</p>
-                      </div>
+                <h3 className="chkout-head-summary text-center">Order Summary</h3>
+                {cartItems.map((item, idx) => (
+                  <div key={idx} className="d-flex align-items-center mb-3 des-details">
+                    <div className="col-2">
+                      <img src={item.image} alt={item.name} className="img-fluid" />
                     </div>
-                  ))}
-                  <hr />
-                  <div className="col-12 text-center final-price">
-                    <p>Total Rs: {totalAmount}</p>
+                    <div className="col-10 crt-details">
+                      <h3>{item.name}</h3>
+                      <p>Price: {item.price}</p>
+                      <p>Quantity: {item.quantity}</p>
+                    </div>
                   </div>
+                ))}
+                <hr />
+                <div className="col-12 text-center final-price">
+                  <p>Total Rs: {totalAmount}</p>
                 </div>
               </div>
             </div>
