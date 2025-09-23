@@ -45,14 +45,7 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "vite": "^6.0.5"
-  },
-  "overrides": {
-  "react-cursor-position": {
-    "react": "^18.0.0"
-  },
-  "react-image-magnify": {
-    "react": "^18.0.0"
   }
-}
+
 
 }
