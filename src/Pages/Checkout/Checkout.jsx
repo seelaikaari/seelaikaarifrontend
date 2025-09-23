@@ -6,7 +6,7 @@ import { Country, State, City } from "country-state-city";
 
 function Checkout() {
   const location = useLocation();
-  const { cartItems = [], totalAmount = 0 } = location.state || {};
+  let { cartItems = [], totalAmount = 0 } = location.state || {};
 
   const [showPayment, setShowPayment] = useState(false);
 
@@ -60,7 +60,6 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userDetails);
     
     if (validateForm()) setShowPayment(true);
   };
@@ -77,6 +76,9 @@ const cities = selectedState
   ? City.getCitiesOfState(selectedCountry.isoCode, selectedState.isoCode)
   : [];
 
+ if(userDetails?.country!="India"){
+     totalAmount =parseInt(totalAmount)+2000 
+    }
 
   return (
     <div className="chkout-outer">
@@ -235,11 +237,13 @@ const cities = selectedState
                       <h3>{item.name}</h3>
                       <p>Price: {item.price}</p>
                       <p>Quantity: {item.quantity}</p>
+
                     </div>
                   </div>
                 ))}
                 <hr />
                 <div className="col-12 text-center final-price">
+                  {userDetails.country!="India" && <p>International Shipping Charge : 2000 </p>}
                   <p>Total Rs: {totalAmount}</p>
                 </div>
               </div>

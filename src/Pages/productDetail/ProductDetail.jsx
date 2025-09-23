@@ -187,4 +187,4 @@ const ProductDetail = () => {
   );
 };
 
-export default React.memo(ProductDetail);;
+export default React.memo(ProductDetail);
