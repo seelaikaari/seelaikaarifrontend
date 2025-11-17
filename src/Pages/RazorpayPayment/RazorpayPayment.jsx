@@ -28,8 +28,6 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
         return;
       }
 
-      console.log("Razorpay Order Created:", orderData.order.id);
-
       // Open Razorpay Payment Window
       const options = {
         key: razorpayKey,
@@ -62,7 +60,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
           });
 
           const paymentData = await paymentResponse.json();
-          console.log("Payment Verification Response:", paymentData);
+          // console.log("Payment Verification Response:", paymentData);
 
           if (paymentData.success) {
             alert("Order stored successfully!");

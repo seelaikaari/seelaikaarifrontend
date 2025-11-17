@@ -1,37 +1,6 @@
 import HomeCategory from "../../Components/homecategories/HomeCategory";
 //images
-
-
 import banner1 from "../../assets/images/banner-images/home-banner-1.jpg"
-import product1 from "../../assets/images/pose-1/prod-1.jpg"
-import product2 from "../../assets/images/pose-1/prod-2.jpg"
-import product3 from "../../assets/images/pose-1/prod-3.jpg"
-import product4 from "../../assets/images/pose-1/prod-4.jpg"
-import product5 from "../../assets/images/pose-1/prod-5.jpg"
-import product31 from "../../assets/images/pose-2/prod-31.jpg"
-import product32 from "../../assets/images/pose-2/prod-32.jpg"
-import product33 from "../../assets/images/pose-2/prod-33.jpg"
-import product34 from "../../assets/images/pose-2/prod-34.jpg"
-import product35 from "../../assets/images/pose-2/prod-35.jpg"
-import product61 from "../../assets/images/pose-3/prod-61.jpg"
-import product62 from "../../assets/images/pose-3/prod-62.jpg"
-
-import product63 from "../../assets/images/pose-3/prod-63.jpg"
-import product64 from "../../assets/images/pose-3/prod-64.jpg"
-import product65 from "../../assets/images/pose-3/prod-65.jpg"
-import product66 from "../../assets/images/pose-3/prod-66.jpg"
-import product67 from "../../assets/images/pose-3/prod-67.jpg"
-import product68 from "../../assets/images/pose-3/prod-68.jpg"
-import product69 from "../../assets/images/pose-3/prod-69.jpg"
-
-import product36 from "../../assets/images/pose-2/prod-36.jpg"
-import product37 from "../../assets/images/pose-2/prod-37.jpg"
-import product38 from "../../assets/images/pose-2/prod-38.jpg"
-import product39 from "../../assets/images/pose-2/prod-39.jpg"
-import product40 from "../../assets/images/pose-2/prod-40.jpg"
-import product41 from "../../assets/images/pose-2/prod-41.jpg"
-import product42 from "../../assets/images/pose-2/prod-42.jpg"
-import product43 from "../../assets/images/pose-2/prod-43.jpg"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -59,110 +28,116 @@ const Home = () => {
   const handleNavigate=(itemcategory)=>{
     navigate("/product", { state: { category: itemcategory } });
   }
+
   const homeBanner=[
     {
       img:banner1,
       imgCaption:"Banner1"
     },
   ]
+
   const EssentialSlider=[
     {
-      img:product1,
+      img:"/images/pose-1/prod-1.jpg",
       imgCaption:"product1"
     },
     {
-      img:product2,
+      img:"/images/pose-1/prod-2.jpg",
       imgCaption:"product2"
     },
     {
-      img:product3,
+      img:"/images/pose-1/prod-3.jpg",
       imgCaption:"product3"
     },
     {
-      img:product4,
+      img:"/images/pose-1/prod-4.jpg",
       imgCaption:"product4"
     },
     {
-      img:product5,
+      img:"/images/pose-1/prod-5.jpg",
       imgCaption:"product5"
     },
     {
-      img:product31,
+      img:'/images/pose-2/prod-31.jpg',
       imgCaption:"product31"
     },
     {
-      img:product32,
+      img:'/images/pose-2/prod-32.jpg',
       imgCaption:"product32"
     },
     {
-      img:product33,
+      img:'/images/pose-2/prod-33.jpg',
       imgCaption:"product33"
     },
   ]
+
   const bestSelling=[
     {
-      img:product36,
+      img:'/images/pose-2/prod-36.jpg',
       imgCaption:"product36"
     },
     {
-      img:product37,
+      img:'/images/pose-2/prod-37.jpg',
       imgCaption:"product37"
     },
     {
-      img:product38,
+      img:'/images/pose-2/prod-38.jpg',
       imgCaption:"product38"
     },
     {
-      img:product39,
+      img:'/images/pose-2/prod-39.jpg',
       imgCaption:"product39"
     },
     {
-      img:product40,
+      img:'/images/pose-2/prod-40.jpg',
       imgCaption:"product40"
     },
     {
-      img:product41,
+      img:'/images/pose-2/prod-41.jpg',
       imgCaption:"product42"
     },
     {
-      img:product43,
+      img:'/images/pose-2/prod-43.jpg',
       imgCaption:"product43"
     },
   ]
+
   const Category=[
+    
     {
-      img:product61,
+      img:'/images/pose-3/prod-61.jpg',
       imgCaption:"product61"
     },
     {
-      img:product62,
+      img:'/images/pose-3/prod-62.jpg',
       imgCaption:"product62"
     },
     {
-      img:product63,
+      img:'/images/pose-3/prod-63.jpg',
       imgCaption:"product63"
     },
     {
-      img:product64,
+      img:'/images/pose-3/prod-64.jpg',
       imgCaption:"product64"
     },
     {
-      img:product65,
+      img:'/images/pose-3/prod-65.jpg',
       imgCaption:"product65"
     },
     {
-      img:product66,
+      img:'/images/pose-3/prod-66.jpg',
       imgCaption:"product66"
     },
     {
-      img:product67,
+      img:'/images/pose-3/prod-67.jpg',
       imgCaption:"product67"
     },
     {
-      img:product68,
+      img:'/images/pose-3/prod-68.jpg',
       imgCaption:"product68"
     },
   ]
+    
   return (
     <>
       <section className="home-sec-1-wrapper">
@@ -176,7 +151,7 @@ const Home = () => {
           >
             {homeBanner.map((items, index) => (
               <SwiperSlide key={index}>
-                <img src={items.img} alt={items.imgCaption} className="w-100" />
+                <img src={items.img} alt={items.imgCaption} className="w-100" loading="lazy" />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -229,7 +204,7 @@ const Home = () => {
                   {EssentialSlider.map((items,index)=>(
                       <SwiperSlide key={index}>
                         <div>
-                          <img src={items.img} className="w-100" alt={items.imgCaption} />
+                          <img src={items.img} className="w-100" alt={items.imgCaption} loading="lazy"/>
                         </div>
                       </SwiperSlide>
                   ))}
@@ -293,7 +268,7 @@ const Home = () => {
                   {bestSelling.map((item,index)=>
                      <SwiperSlide key={index}>
                       <div>
-                        <img src={item.img} className="w-100" alt={item.imgCaption} />
+                        <img src={item.img} className="w-100" alt={item.imgCaption} loading="lazy"/>
                       </div>
                     </SwiperSlide>
                   )}

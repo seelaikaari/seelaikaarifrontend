@@ -1,7 +1,6 @@
 import React from 'react'
 
 import "./Termsandconditions.css"
-import bannerimg from "../../assets/images/terms.jpg"
 const Termsandconditions = () => {
   return (
     <>

@@ -16,7 +16,6 @@ import { MdEmail } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import Searchsite from "./Searchsite.jsx";
 //images
 import logo from "../../assets/images/logo-1.png"
 

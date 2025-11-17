@@ -1,5 +1,4 @@
 import React from 'react'
-import abtimg from '../../assets/images/homepage/about-image.webp'
 import abtimgbg from '../../assets/images/bg-2.png'
 import bannerimg from "../../assets/images/banner-images/home-banner-1.jpg"
 import "./Stories.css"

@@ -32,7 +32,6 @@ import { fetchProducts } from "./api/fetchProduct.js";
 import { fetchWishlist } from "./api/fetchwishlist.js";
 import ResetPassword from "./Pages/resetpassword/ResetPassword.jsx";
 import ProtectedResetRoute from "./Pages/resetpassword/ProtectedResetRoute.jsx";
-import { Navigation } from "swiper/modules";
 
 const api =import.meta.env.VITE_BACKENDURL;
 
@@ -64,7 +63,7 @@ function App() {
         )
         .then((res) => {
           dispatch(setUser(res.data.user));
-        })
+        })  
         .catch(() => localStorage.removeItem("token"))
         .finally(() => {
           dispatch(setLoading(false));
@@ -87,6 +86,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
 
   return (
     <>

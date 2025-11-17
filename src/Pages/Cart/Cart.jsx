@@ -5,7 +5,6 @@ import { FaTrashAlt, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { removeFromCart } from "../../features/products/AddtoCardSlice";
-import { fetchaddtoCard } from "../../api/fetchAddtocard";
 import flow1 from "../../assets/images/images-floral/f-1.jpg";
 import flow2 from "../../assets/images/images-floral/f-2.jpg";
 import emptyCartImg from "../../assets/images/wishlist/empty-cart.png";
@@ -119,10 +118,10 @@ const Cart = () => {
           <div className="cart-items">
             {cartItems.map((item) => (
               <div key={item.id} className="cart-card">
-                <img src={item.image} alt={item.name} className="cart-img" />
+                <img src={item.image} alt={item.name} className="cart-img" loading="lazy"/>
                 <div className="cart-details">
                   <h3>
-                    <img src={flow1} alt="Floral Icon" className="floral-icon" />
+                    <img src={flow1} alt="Floral Icon" className="floral-icon" loading="lazy"/>
                     {item.name}
                   </h3>
                   <p>{item.description}</p>

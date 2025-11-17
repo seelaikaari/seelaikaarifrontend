@@ -1,9 +1,5 @@
 import { FaArrowsSpin } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
-import { FaTruckLoading } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
-import { LuPackageX } from "react-icons/lu";
-import { LuPackageCheck } from "react-icons/lu";
 import cancelpopup from "../../assets/images/icons/cancel.png";
 import "./Orderdetail.css";
 import { useState } from "react";
