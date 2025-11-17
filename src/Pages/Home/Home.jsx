@@ -14,7 +14,6 @@ import 'swiper/css/navigation';
 import { Pagination,Autoplay,Navigation } from 'swiper/modules';
 
 //icons 
-// import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 //Css
@@ -285,7 +284,7 @@ const Home = () => {
             </div>
         </div>
       </section>
-    </>
+    </>   
   )
 }
 

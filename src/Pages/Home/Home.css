@@ -78,31 +78,7 @@
         margin: 10px 0 40px;
     }
 }
-/* .sect-4-bg-texture{
-    position: relative;
-}
-.sect-4-bg-texture::after{
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: url("../../assets/images/homepage/bg-texture.png") top center no-repeat;
-    background-size: 400px;
-    top: 1%;
 
-} */
-
-/* .hom-sec2-bg{
-    background: url(../../assets/images/r3f3g-1735320754.png) top center no-repeat;
-    background-position: 199px 147px;
-    background-size: 168px auto;
-}
-
-.hom-sec2-bg{
-    background: url(../../assets/images/bgbgbgbggbgbgb.jpg) top center no-repeat;
-    background-position: 0 0;
-    background-size: cover;
-} */
 
 .hom-sec2-bg {
     position: relative;

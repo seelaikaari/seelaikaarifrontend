@@ -3,7 +3,8 @@
     position: relative;
 }
 .chkout-outer::after{
-    background-image: url(../../assets/images/images-floral/saree-bg.png);    position: absolute;
+    background-image: url(../../assets/images/images-floral/saree-bg.png);   
+    position: absolute;
     content: "";
     top: 0;
     left: 0;
