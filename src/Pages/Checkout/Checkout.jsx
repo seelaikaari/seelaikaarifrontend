@@ -34,7 +34,17 @@ function Checkout() {
       setUserDetails((prev) => ({ ...prev, state: value, city: "" }));
     } else {
       // Allow only numbers for phone and pincode
-      if ((name === "phone" || name === "pincode") && !/^\d*$/.test(value)) return;
+       if (name === "phone" && !/^\d*$/.test(value)) return;
+
+        // India: pincode must be digits only
+        if (name === "pincode" && userDetails.country === "India" && !/^\d*$/.test(value)) return;
+
+        // Other countries: allow alphanumeric postal codes
+        if (
+            name === "pincode" &&
+            userDetails.country !== "India" &&
+            !/^[A-Za-z0-9\s-]*$/.test(value)
+        ) return;
       setUserDetails((prev) => ({ ...prev, [name]: value }));
     }
   };
