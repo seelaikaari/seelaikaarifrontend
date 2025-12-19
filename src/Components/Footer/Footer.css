@@ -40,7 +40,7 @@
 }
 .foot-content{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
@@ -64,5 +64,8 @@
     .ft-row-2 {
     padding: 15px 0 86px;
     border-top: 1px solid #ffffff;
+}
+    .foot-content{
+        flex-direction: column;
 }
 }

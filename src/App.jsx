@@ -16,7 +16,7 @@ import { fetchProducts } from "./api/fetchProduct.js";
 import { fetchWishlist } from "./api/fetchwishlist.js";
 
 // pages imports
-const Home = lazy(() => import("./Pages/Home/Home"));
+const Home = lazy(() => import("./Pages/Home/Home.jsx"));
 const Cart = lazy(() => import("./Pages/Cart/Cart"));
 const About = lazy(() => import("./Pages/About/About"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));

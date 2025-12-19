@@ -18,9 +18,9 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 //images
 import logo from "../../assets/images/logo-1.png"
+import NavbarSearch from "../customsearch/search";
 
 const Navbar = () => {
-    const [searchbox, setSearchbox] = useState("")
     const navigate = useNavigate();
     const wishlist = useSelector((state) => state.wishlist.wishlist.length);
     const addedcart = useSelector((state) => state.carts.carts.length);
@@ -37,23 +37,11 @@ const Navbar = () => {
 
     return (
         <header>
+            <Marquee />
             <nav className='nav-wrapper'>
                 <div className="container nav-wrap-inner">
                     {searchtoggle &&
-                        <div className="search-nav">
-                            <div className="pos-ser-btn-p">
-                                <button className="nav-search-close-btn" onClick={() => setSearchtoggle(!searchtoggle)}><IoClose /></button>
-                                <h3 className="nav-search-title">Search Our Site</h3>
-                                <div className="nav-ser-pro-pos">
-                                    <input type="text" value={searchbox} onChange={(e) => setSearchbox(e.target.value)} className="nav-search" placeholder="Search for products.." />
-                                    <button className="inp-search-p-btn" onClick={() => {
-                                        setSearchtoggle(!searchtoggle);
-                                        handelNavigation(searchbox);
-                                    }}><FaSearch /></button>
-                                
-                                </div>
-                            </div>
-                        </div>
+                        <NavbarSearch setSearchtoggle={setSearchtoggle} searchtoggle={searchtoggle}/>
                     }
 
                     <div className="row align-items-center">
@@ -137,5 +125,19 @@ const Navbar = () => {
 
     )
 }
+
+function Marquee() {
+  return (
+    <div className="marquee">
+      <span>
+        seelaikaari.com&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Silk Sarees&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Kanchivaram&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Handloom Cotton&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Bridal Collection&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Free Shipping (Domestic Orders)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;International Shipping ₹2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Limited Offer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Trusted by 10,000+ Customers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Festive Collection&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;seelaikaari.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Silk Sarees
+    </span>
+    </div>
+  );
+}
+
+
+
+
 
 export default Navbar

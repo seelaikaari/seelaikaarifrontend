@@ -56,12 +56,19 @@ const Footer = () => {
                 </div>  
             </div>
             <div className="ft-row-2">
-               
-  <div className="container foot-content ">
-                    <img src={footerLogo} alt="footerLogo" className="footerLogo" />
-                    <a href="https://slbdigitals.com/" target="_blank" className="ft-copy">© 2025 Sai Logabala. All rights reserved.</a>
+              
+                <div className="container foot-content ">
+                    <div>
+                        <img src={logo} alt="footerLogo" className="footerLogo" />
+                    <a href="https://seelaikaari.com/" target="_blank" className="ft-copy">© 2025 Seelaikaari. All rights reserved.</a>
+                    </div>
+                    <div>
+                        <img src={footerLogo} alt="footerLogo" className="footerLogo" />
+                        <a href="https://slbdigitals.com/" target="_blank" className="ft-copy">Designed & Developed by Sai Logabala</a>
+                    </div>
                 </div>
             </div>
+        
         </footer>
     )
 }
