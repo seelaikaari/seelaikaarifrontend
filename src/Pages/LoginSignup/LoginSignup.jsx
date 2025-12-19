@@ -15,7 +15,7 @@ import { TiTick } from "react-icons/ti";
 import Popup from "../../Components/popupemailverify/Popup.jsx";
 import Popupforgetpassword from "../../Components/popupemailverify/Popupforgetpassword.jsx";
 import { mergeGuestWishlist } from "../wishlist/LSWishlistAddRemove.js";
-import { mergeGuestCart } from "../Cart/LScartaddremove.js";
+import { mergeGuestCart } from "../Cart/LSCartAddRemove.js";
 
 const API_URL = import.meta.env.VITE_BACKENDURL;
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || "";
