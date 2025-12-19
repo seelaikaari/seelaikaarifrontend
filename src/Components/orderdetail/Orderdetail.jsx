@@ -1,28 +1,26 @@
 import { FaArrowsSpin } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
-import cancelpopup from "../../assets/images/icons/cancel.png";
 import "./Orderdetail.css";
-import { useState } from "react";
 const Orderdetail = ({ yourOrders }) => {
-  const [cancelPopup, setCancelPopup] = useState(false);
 
-  const groupedOrders = yourOrders.reduce((acc, order) => {
-    let existingOrder = acc.find((o) => o.order_id === order.order_id);
-    if (existingOrder) {
-      existingOrder.product_names.push(order.name);
-    } else {
-      acc.push({
+  const groupedOrders = Object.values(
+  yourOrders.reduce((acc, order) => {
+    if (!acc[order.order_id]) {
+      acc[order.order_id] = {
         order_id: order.order_id,
         total_amount: order.total_amount,
         order_status: order.order_status,
         shipment_id: order.shipment_id,
         payment_id: order.payment_id,
         address: order.address,
-        product_names: [order.name], // Initialize as an array
-      });
+        product_names: [],
+      };
     }
+    acc[order.order_id].product_names.push(order.name);
     return acc;
-  }, []);
+  }, {})
+);
+
 
 
   return (
@@ -37,7 +35,6 @@ const Orderdetail = ({ yourOrders }) => {
               <th>Payment Status</th>
               <th>Total</th>
               <th>Address</th>
-              <th>Actions </th>
             </tr>
           </thead>
           <tbody>
@@ -59,42 +56,13 @@ const Orderdetail = ({ yourOrders }) => {
                 </td>
                 <td>{ord.total_amount}</td>
                 <td>{ord.address}</td>
-                <td>
-                  <div className="btn-wrapper-ord-inf">
-                    {/* <button
-                      className="cancel-order-btn"
-                      onClick={() => setCancelPopup(true)}
-                    >
-                      Cancel
-                    </button> */}
-                    <button className="track-order-btn">Track</button>
-                  </div>
-                </td>
+        
               </tr>
             ))}
           </tbody>
         </table>
       </section>
-      {cancelPopup && (
-        <div className="cancel-popup-wrapper">
-          <div className="cancel-popup-inner text-center">
-            <img src={cancelpopup} width="63px" alt="" />
-            <h3 className="pop-can-tit">
-              Do you really want to cancel this product?
-            </h3>
-
-            <div className="pop-can-order">
-              <button
-                className="btn-keep-popup"
-                onClick={() => setCancelPopup(false)}
-              >
-                Keep Order
-              </button>
-              <button className="btn-Cancel-popup">Cancel the Order</button>
-            </div>
-          </div>
-        </div>
-      )}
+    
     </>
   );
 };

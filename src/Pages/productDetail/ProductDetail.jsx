@@ -1,18 +1,19 @@
 import ProductDetailSlide from "../../Components/productdetailslider/ProductDetailSlide";
 import SimilarProduct from "../../Components/similarproduct/SimilarProduct";
+
 import { IoCart } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import "../productDetail/ProductDetail.css";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation,useNavigate,useParams } from "react-router-dom";
 import {addToWishlist,removeFromWishlist} from '../../features/products/WishlistSlice';
 import {addToCart} from '../../features/products/AddtoCardSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+
 import axios from "axios";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+
 const API_URL=import.meta.env.VITE_BACKENDURL;
 
 const ProductDetail = () => {
@@ -33,9 +34,11 @@ const ProductDetail = () => {
     }
   }, [id, products]);
 
+
   const isWishlisted = useMemo(() => {
     return wishlist.some(item => item.product_id === productItem?.id);
   }, [wishlist, productItem?.id]);
+
 
   const updatedcart = useMemo(() => {
     return addedcart.filter(cart => cart.product_id === productItem?.id);
@@ -161,7 +164,7 @@ const ProductDetail = () => {
                 </div>
 
                 <div className="pro-d-btn-wrapper d-flex align-items-center">
-                  {productItem.stock>=1?<button className="btn-Shop-t" onClick={handleAddtoCard}>
+                  {productItem?.stock>=1?<button className="btn-Shop-t" onClick={handleAddtoCard}>
                     <IoCart /> {updatedcart.length !== 0 ? "Go to Cart" : "Add to Cart" }  
                   </button>:
                   <button className="btn-Shop-t" style={{backgroundColor:"#a11717"}}>

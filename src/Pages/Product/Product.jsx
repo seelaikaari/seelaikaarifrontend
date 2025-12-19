@@ -32,8 +32,6 @@ const Product = () => {
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-    // console.log( name, value, checked );
-    
     setSelectedFilters((prev) => ({ ...prev, [name]: checked ? [...prev[name], value] : prev[name].filter((v) => v !== value) }));
   };
 

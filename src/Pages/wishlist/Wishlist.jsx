@@ -9,64 +9,70 @@ import { removeFromWishlist } from "../../features/products/WishlistSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCallback } from "react";
 import { addToCart } from "../../features/products/AddtoCardSlice";
 
-const api =import.meta.env.VITE_BACKENDURL;
+const api = import.meta.env.VITE_BACKENDURL;
 
 const Wishlist = () => {
+
   const navigate = useNavigate();
   const handleClick = (item) => {
     navigate("/product-details", { state: { product: item } });
   };
   const dispatch = useDispatch();
-  const { wishlist, loading, error } = useSelector((state) => state.wishlist);
+  const { wishlist } = useSelector((state) => state.wishlist);
   const { products } = useSelector((state) => state.products);
   const { isLogin, user } = useSelector((state) => state.auth);
   const addedcart = useSelector((state) => state.carts.carts);
 
   const handleRemoveClick = async (id) => {
      try{
-      dispatch(removeFromWishlist({product_id:id}));
-      if(isLogin) {
-        await axios.delete(`${api}/api/wishlist/remove`, {
-          data: {
-            userId: user.id,
-            productId:id,
-          },
-        });
-      }
-       toast.error("Removed from Wishlist ❤");
+
+        dispatch(removeFromWishlist({product_id:id}));
+
+        if(isLogin) {
+          await axios.delete(`${api}/api/wishlist/remove`, {
+            data: {
+              userId: user.id,
+              productId:id,
+            },
+          });
+        }
+
+        toast.error("Removed from Wishlist ❤");
     
     }catch (error) {
-    toast.error("An error occurred. Please try again.");
-  }
+
+        toast.error("An error occurred. Please try again.");
+    }
   };
 
   const wishlistProducts = products.filter((product) =>
     wishlist.some((item) => item.product_id === product.id)
   );
+
   const isCartItem = (item) => {
     return addedcart.some(cart => cart.product_id === item?.id);
   };
  
   const handleAddtoCard = async (item) => {
+    
     dispatch(addToCart({ product_id: item?.id }));
     try {
-      if (isLogin && !isCartItem(item)) {
-      
-        await axios.post(`${api}/api/addtocart/add`, {
-          userId: user?.id,
-          productId: item?.id,
-        });
- 
-        toast.success("Added to cart ❤");
-        navigate("/cart", { state: { product: item } });
-      } else {
-        navigate("/cart", { state: { product: item } });
-      }
+        if (isLogin && !isCartItem(item)) {
+        
+          await axios.post(`${api}/api/addtocart/add`, {
+            userId: user?.id,
+            productId: item?.id,
+          });
+  
+          toast.success("Added to cart ❤");
+          navigate("/cart", { state: { product: item } });
+        } else {
+          navigate("/cart", { state: { product: item } });
+        }
     } catch (error) {
-      console.log("err :", error);
+        console.log("err :", error);
     }
   };
   return (

@@ -14,6 +14,8 @@ import { setUser, setLoading } from "../../features/users/authSlice";
 import { TiTick } from "react-icons/ti";
 import Popup from "../../Components/popupemailverify/Popup.jsx";
 import Popupforgetpassword from "../../Components/popupemailverify/Popupforgetpassword.jsx";
+import { mergeGuestWishlist } from "../wishlist/LSWishlistAddRemove.js";
+import { mergeGuestCart } from "../Cart/LScartaddremove.js";
 
 const API_URL = import.meta.env.VITE_BACKENDURL;
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || "";
@@ -87,6 +89,7 @@ const InputField = ({
 );
 
 const LoginSignup = () => {
+
   const [isLogintype, setisLogintype] = useState(true);
   const [rememberMe, setRememberMe] = useState(false);
   const [formData, setFormData] = useState({
@@ -98,12 +101,13 @@ const LoginSignup = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLogin, loading } = useSelector((state) => state.auth);
+  const { isLogin } = useSelector((state) => state.auth);
   const [popuptoggle, setPopuptoggle] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
-  const [verificationLoading, setVerificationLoading] = useState(false);
+  const [setVerificationLoading] = useState(false);
   const [isemailverify, setIsemailverify] = useState(false);
   const [fpemail, setfpemail] = useState(false);
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(setLoading(true));
@@ -161,17 +165,30 @@ const LoginSignup = () => {
       const response = await axios.post(`${API_URL}${endpoint}`, formData);
       const token = response.data.token;
 
-      if (token) {
-        rememberMe
-          ? localStorage.setItem("token", token)
-          : localStorage.setItem("token", token);
-        dispatch(setUser(response.data.user));
-        navigate("/");
-      }
+      if (!token) {
+          throw new Error("No token returned");
+        }
 
-      toast.success(
-        isLogintype ? "Logged in successfully!" : "Signed up successfully!",
-      );
+        rememberMe ? localStorage.setItem("token", token) : localStorage.setItem("token", token);
+       
+        const validateRes = await axios.post(
+          `${API_URL}/api/users/validate-token`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        const user = validateRes.data.user;
+
+        await mergeGuestWishlist(user.id);
+        await mergeGuestCart(user.id);
+
+        dispatch(setUser(user));
+
+        navigate("/Account");
+        
+        toast.success(
+          isLogintype ? "Logged in successfully!" : "Signed up successfully!",
+        );
+      
       setFormData({ name: "", email: "", password: "", phone: "" });
     } catch (error) {
       console.log(error);

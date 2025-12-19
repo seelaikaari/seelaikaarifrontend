@@ -7,7 +7,9 @@ import axios from 'axios';
 import { clearUser } from '../../features/users/authSlice';
 import useSWR from 'swr';
 import Orderdetail from '../../Components/orderdetail/Orderdetail';
-
+import {setCart} from "../../features/products/AddtoCardSlice";
+import {setWishlist} from "../../features/products/WishlistSlice";
+import { useNavigate } from "react-router-dom";
 const fetcher =async (url, token) =>
  await axios
     .get(url, {
@@ -25,6 +27,7 @@ const fetcher =async (url, token) =>
     });
     
 const Account = () => {
+
   const API_URL = import.meta.env.VITE_BACKENDURL;
 
   const [orderinfotoggle,setOrderinfotoggle]=useState(false);
@@ -37,8 +40,9 @@ const Account = () => {
     phone: '',
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
- const { data, error } = useSWR(
+ const { data } = useSWR(
     token && isLogin ? [`${API_URL}/api/users/user-details`, token] : null,
     ([url, token]) => fetcher(url, token)
   );
@@ -64,12 +68,18 @@ const Account = () => {
   }, [data]);
 
   const handlelogOut = () => {
+    
     localStorage.removeItem('token');
     dispatch(clearUser(null));
+    dispatch(setCart([]));
+    dispatch(setWishlist([]));
+    toast.success('Logged out successfully!');
+    navigate("/");
   };
 
   const [userdetail, setUserdetail] = useState(defaultuserdetail);
   const [userdetailerror, setUserdetailerror] = useState({});
+
   const handeleditpersonalinfo = async (e) => {
     e.preventDefault();
     if (!handelEditError()) {
@@ -117,6 +127,7 @@ const Account = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
+        if(!user?.id) return;
         const res = await axios.post(`${API_URL}/api/order/getorders`, { userId: user.id });
         const data = res.data; // Axios automatically parses the JSON response
         setYourOrders(data.data)

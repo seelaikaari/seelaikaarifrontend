@@ -17,11 +17,13 @@ const PopupForgetPassword = ({ setPopuptoggle }) => {
         if (!fpemail) {
             setError("Email is required");
             toast.error("Please enter your email address");
+            setLoading(false)
             return;
         }
         if (!validateEmail(fpemail)) {
             setError("Invalid email format");
             toast.error("Please enter a valid email address");
+            setLoading(false)
             return;
         }
        try{
@@ -36,6 +38,7 @@ const PopupForgetPassword = ({ setPopuptoggle }) => {
          setError("");
         setLoading(false)
        }
+      console.log(loading);
       
     };
     return (

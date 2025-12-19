@@ -1,24 +1,29 @@
-import React from "react";
+import { useState } from "react";
 import "../RazorpayPayment/RazorpayPayment.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
 const API_URL = import.meta.env.VITE_BACKENDURL;
 
 
 const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }) => {
+
   const navigate = useNavigate();
-  const { isLogin,loading,user} = useSelector((state) => state.auth);
+  const { user} = useSelector((state) => state.auth);
+  const [setLoading] = useState(false);
+
  
   const handlePayment = async () => {
  
     try {
+
       // Create Razorpay Order
       const orderResponse = await fetch(`${API_URL}/api/order/create-razorpay-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: totalAmount }),
+        body: JSON.stringify({ amount: totalAmount,userDetails,cartItems,user:user?.id}),
       });
 
       const orderData = await orderResponse.json();
@@ -28,13 +33,24 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
         return;
       }
 
+      if (!window.Razorpay) {
+        alert("Payment gateway not loaded. Try again.");
+        setLoading(false);
+        return;
+      }
       // Open Razorpay Payment Window
       const options = {
         key: razorpayKey,
-        amount: totalAmount * 100, // Amount in paise
+        order_id: orderData.order.id,
+        amount: orderData.order.amount,
         currency: "INR",
         name: "Seelaikaari Store",
-        order_id: orderData.order.id,
+        description: "Secure Saree Purchase",
+        prefill: {
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone || "",
+        },
         handler: async function (response) {
           console.log("✅ Payment Success:", response);
 
@@ -43,49 +59,19 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
             alert("Payment verification failed! Try again.");
             return;
           }
-
-          // Verify Payment with Backend
-          const paymentResponse = await fetch(`${API_URL}/api/order/verify-payment`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              order_id: orderData.order.id,
-              payment_id: response.razorpay_payment_id,
-              signature: response.razorpay_signature,
-              userDetails,
-              cartItems,
-              totalAmount,
-              user:user.id
-            }),
-          });
-
-          const paymentData = await paymentResponse.json();
-          // console.log("Payment Verification Response:", paymentData);
-
-          if (paymentData.success) {
-            alert("Order stored successfully!");
-            navigate(`/Account`, {
-              state: {
-                payment_id: response.razorpay_payment_id,
-                orderId: orderData.order.id,
-                totalAmount,
-                email: userDetails.email,
-              },
-            });
-          } else {
-            alert("Payment verification failed!");
+         
+        },
+      
+         modal: {
+          ondismiss: function () {
+            alert("Payment was cancelled. Please try again.");
           }
-        },
-        prefill: {
-          name: userDetails.name,
-          email: userDetails.email,
-          contact: userDetails.mobile || "",
-        },
+        }
         // theme: { color: "#3399cc" },
       };
 
       const rzp = new window.Razorpay(options);
-      setTimeout(() => rzp.open(), 2000); 
+      setTimeout(() => rzp.open(), 1000); 
       rzp.on('payment.failed', function (response) {
         console.error("❌ Payment Failed:", response.error);
         alert("Payment Failed: " + response.error.description);
@@ -93,7 +79,13 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
       
       // Try logging the payment success event
       rzp.on('payment.success', function (response) {
-        console.log("✅ Payment Success:", response);
+        // console.log("✅ Payment Success:", response);
+        if(user){
+          navigate(`/Account`);
+        }else{
+          navigate(`/`);
+        }
+        toast.success("Order placed successfully! Please check your email for details.");
       });
       
     } catch (error) {
@@ -107,7 +99,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
       <h2>Review & Pay</h2>
       <p><strong>Name:</strong> {userDetails.name}</p>
       <p><strong>Email:</strong> {userDetails.email}</p>
-      <p><strong>Mobile:</strong> {userDetails.mobile}</p>
+      <p><strong>Mobile:</strong> {userDetails.phone}</p>
       <p><strong>Total Amount:</strong> <b>Rs. {totalAmount}</b></p>
 
       <button onClick={handlePayment} className="btn btn-success checkoutButton">
@@ -117,7 +109,7 @@ const RazorpayPayment = ({ totalAmount, userDetails, cartItems, setShowPayment }
         Edit Details
       </button>
       <p className="help-text mt-2">
-        Need help? <a href="mailto:support@example.com">Contact us</a>
+        Need help? <a href="mailto:seelaikaari588@gmail.com">Contact us</a>
       </p>
     </div>
   );

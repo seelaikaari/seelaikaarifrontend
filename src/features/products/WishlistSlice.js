@@ -1,6 +1,7 @@
 // src/redux/wishlist/wishlistSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchWishlist } from '../../api/fetchwishlist';
+import { getGuestWishlist, setGuestWishlist } from '../../Pages/wishlist/LSWishlistAddRemove';
 
 const initialState = {
   wishlist: [],
@@ -14,15 +15,30 @@ const wishlistSlice = createSlice({
   reducers: {
     addToWishlist: (state, action) => {
       const product = action.payload;
+      if(!product) return;
       const existingProduct = state.wishlist.find(item => item.product_id === product.product_id);
       if (!existingProduct) {
         state.wishlist.push(product);
       }
+
+      const guestWishlist = getGuestWishlist();
+        if (!guestWishlist.find(item => item.product_id === product.product_id)) {
+          guestWishlist.push(product);
+          setGuestWishlist(guestWishlist);
+        }   
     },
     removeFromWishlist: (state, action) => {
       const productId = action.payload;
+      if(!productId) return;
       state.wishlist = state.wishlist.filter(item => item.product_id !== productId.product_id);
+
+      // Remove from guest localStorage
+      const guestWishlist = getGuestWishlist().filter(item => item.product_id !== productId.product_id);
+      setGuestWishlist(guestWishlist);
     },
+     setWishlist: (state, action) => {
+      state.wishlist = action.payload; // for rehydrating Redux
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -41,5 +57,5 @@ const wishlistSlice = createSlice({
   },
 });
 
-export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
+export const { addToWishlist, removeFromWishlist,setWishlist  } = wishlistSlice.actions;
 export default wishlistSlice.reducer;

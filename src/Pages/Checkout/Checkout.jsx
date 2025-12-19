@@ -1,12 +1,21 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
-import "../Checkout/Checkout.css";
+import React, { useState,useMemo } from "react";
+import { useLocation,Navigate  } from "react-router-dom";
 import { Country, State, City } from "country-state-city";
 
+import "../Checkout/Checkout.css";
+import RazorpayPayment from "../RazorpayPayment/RazorpayPayment";
+
 function Checkout() {
-  const location = useLocation();
-  let { cartItems = [], totalAmount = 0 } = location.state || {};
+
+   const location = useLocation();
+
+   const cartItems = location.state?.cartItems || [];
+
+   const baseTotal = Number(location.state?.totalAmount || 0);
+
+   if (!cartItems.length) {
+       return <Navigate to="/cart" replace />;
+  }
 
   const [showPayment, setShowPayment] = useState(false);
 
@@ -24,14 +33,55 @@ function Checkout() {
 
   const [formErrors, setFormErrors] = useState({});
 
+  // 👉 Fetch dynamic lists
+  const countries = useMemo(() => Country.getAllCountries(), []);
+
+  const selectedCountry = useMemo(
+      () => countries.find(c => c.name === userDetails.country),
+      [countries, userDetails.country]
+    );
+
+  const states = useMemo(
+    () => selectedCountry ? State.getStatesOfCountry(selectedCountry.isoCode) : [],
+    [selectedCountry]
+  );
+
+
+  const selectedState = useMemo(
+    () => states.find(s => s.name === userDetails.state),
+    [states, userDetails.state]
+  );
+
+  const cities = useMemo(
+    () =>
+      selectedCountry && selectedState
+        ? City.getCitiesOfState(selectedCountry.isoCode, selectedState.isoCode)
+        : [],
+    [selectedCountry, selectedState]
+  );
+
+  const shippingCharge = useMemo(() => {
+      if (!userDetails.country) return 0;
+      return userDetails.country !== "India" ? 2000 : 0;
+    }, [userDetails.country]);
+
+  const finalTotal = useMemo(
+    () => baseTotal + shippingCharge,
+      [baseTotal, shippingCharge]
+  );
+
+
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+
+    const { name, value } = e.target; 
 
     // Reset dependent fields
     if (name === "country") {
       setUserDetails((prev) => ({ ...prev, country: value, state: "", city: "" }));
+      return;
     } else if (name === "state") {
       setUserDetails((prev) => ({ ...prev, state: value, city: "" }));
+      return;
     } else {
       // Allow only numbers for phone and pincode
        if (name === "phone" && !/^\d*$/.test(value)) return;
@@ -74,21 +124,6 @@ function Checkout() {
     if (validateForm()) setShowPayment(true);
   };
 
-  // 👉 Fetch dynamic lists
-  const countries = Country.getAllCountries();
-// To find selected country object by name
-const selectedCountry = countries.find(c => c.name === userDetails.country);
-const states = selectedCountry ? State.getStatesOfCountry(selectedCountry.isoCode) : [];
-
-// To find selected state object by name
-const selectedState = states.find(s => s.name === userDetails.state);
-const cities = selectedState
-  ? City.getCitiesOfState(selectedCountry.isoCode, selectedState.isoCode)
-  : [];
-
- if(userDetails?.country!="India"){
-     totalAmount =parseInt(totalAmount)+2000 
-    }
 
   return (
     <div className="chkout-outer">
@@ -253,15 +288,15 @@ const cities = selectedState
                 ))}
                 <hr />
                 <div className="col-12 text-center final-price">
-                  {userDetails.country!="India" && <p>International Shipping Charge : 2000 </p>}
-                  <p>Total Rs: {totalAmount}</p>
+                  {shippingCharge > 0 && <p>International Shipping: ₹2000</p>}
+                  <p>Total Rs: ₹{finalTotal}</p>
                 </div>
               </div>
             </div>
           </div>
         ) : (
           <RazorpayPayment
-            totalAmount={totalAmount}
+            totalAmount={finalTotal}
             userDetails={userDetails}
             cartItems={cartItems || []}
             setShowPayment={setShowPayment}

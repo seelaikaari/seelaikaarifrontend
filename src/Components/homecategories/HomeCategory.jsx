@@ -1,4 +1,3 @@
-
 import "../homecategories/HomeCategory.css"
 const HomeCategory = ({items,handleNavigate}) => {
     return (

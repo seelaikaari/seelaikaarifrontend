@@ -8,9 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import {  toast } from 'react-toastify';
 import axios from "axios";
-// import { useEffect } from "react";
-// import { fetchWishlist } from "../../api/fetchwishlist";
- 
+
 const Items = ({ prdts}) => {
   const API_URL=import.meta.env.VITE_BACKENDURL;
   const dispatch = useDispatch();
@@ -29,7 +27,6 @@ const Items = ({ prdts}) => {
 
   
   const handleClick = () => {
-    if(prdts.stock>=1)
     navigate(`/product-details/${prdts.id}`);
   };
   const toggleWishlist = async () => {
@@ -117,8 +114,8 @@ const Items = ({ prdts}) => {
             )}
           </div> */}
           <div>
-            <button className="add-to-cart-btn" onClick={handleClick} disabled={prdts.stock<1} style={{ background: prdts.stock < 1 ? "#9a9a9a" : "#ff6f61" }}>
-             {prdts.stock>=1?"view more":"out of stock"} 
+            <button className="add-to-cart-btn" onClick={handleClick}  style={{ background: "#ff6f61" }}>
+             {"view more"} 
             </button>
           </div>
         </div> 

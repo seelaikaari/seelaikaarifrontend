@@ -3,6 +3,7 @@
 // src/redux/carts/cartsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchaddtoCard } from '../../api/fetchAddtocard';
+import { getGuestCart, setGuestCart } from '../../Pages/Cart/LScartaddremove';
 
 const initialState = {
   carts: [],
@@ -16,14 +17,30 @@ const Cartslice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const product = action.payload;
-      const existingProduct = state.carts.find(item => item.product_id === product.product_id);
+      if(!product) return;
+      const existingProduct = state.carts.find(item => item.product_id === product?.product_id);
       if (!existingProduct) {
         state.carts.push(product);
       }
+      // Update guest localStorage
+      const guestCart = getGuestCart();
+        if (!guestCart.find(item => item.product_id === product?.product_id)) {
+          guestCart.push(product);
+          setGuestCart(guestCart);
+        }
     },
     removeFromCart: (state, action) => {
       const productId = action.payload;  
+      if(!productId) return;
       state.carts = state.carts.filter(item => item.product_id !== productId);
+       // Update guest localStorage
+      const guestCart = getGuestCart().filter(
+        (item) => item.product_id !== productId
+      );
+      setGuestCart(guestCart);
+    },
+    setCart: (state, action) => {
+      state.carts = action.payload; // Used for rehydrating Redux from localStorage
     },
   },
   extraReducers: (builder) => {
@@ -43,7 +60,7 @@ const Cartslice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart } = Cartslice.actions;
+export const { addToCart, removeFromCart, setCart } = Cartslice.actions;
 export default Cartslice.reducer;
 
 
