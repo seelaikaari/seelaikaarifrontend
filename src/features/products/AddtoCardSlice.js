@@ -3,7 +3,7 @@
 // src/redux/carts/cartsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchaddtoCard } from '../../api/fetchAddtocard';
-import { getGuestCart, setGuestCart } from '../../Pages/Cart/LScartaddremove';
+import { getGuestCart, setGuestCart } from '../../Pages/Cart/LSCartAddRemove';
 
 const initialState = {
   carts: [],

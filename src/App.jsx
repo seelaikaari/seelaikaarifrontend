@@ -50,7 +50,7 @@ const ProtectedResetRoute = lazy(() =>
 //Css
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-import { getGuestCart } from "./Pages/Cart/LScartaddremove.js";
+import { getGuestCart } from "./Pages/Cart/LSCartAddRemove.js";
 import { setCart } from "./features/products/AddtoCardSlice.js";
 import { getGuestWishlist, mergeGuestWishlist } from "./Pages/wishlist/LSWishlistAddRemove.js";
 import { setWishlist } from "./features/products/WishlistSlice.js";
